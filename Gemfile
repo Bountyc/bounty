@@ -45,8 +45,10 @@ group :development, :test do
   gem 'spring'
 
   gem 'devise'
-  
+
   gem 'pry'
+
+  gem 'rename'
 end
 
 group :test do
