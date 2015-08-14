@@ -1,5 +1,6 @@
 class BountiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :define_user
 
   def index
   	@bounties = Bounty.all
@@ -7,6 +8,13 @@ class BountiesController < ApplicationController
 
   def show
   	set_bounty
+  	if @bounty.poster == @signed_in_user
+  		@user_role = :poster
+  	elsif @signed_in_user
+  		@user_role = :hunter
+  	else
+  		@user_role = :guest
+  	end
   end
 
   def new
@@ -31,6 +39,6 @@ class BountiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bounty_params
-	 params.require(:bounty).permit(:title, :description)
+	 params.require(:bounty).permit(:title, :description, :price)
   end
 end
