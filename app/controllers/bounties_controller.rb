@@ -11,7 +11,13 @@ class BountiesController < ApplicationController
   	if @bounty.poster == @signed_in_user
   		@user_role = :poster
   	elsif @signed_in_user
-  		@user_role = :hunter
+  		if @bounty.hunters.include? @signed_in_user
+  			bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(@signed_in_user)
+
+  			@user_role = bounty_hunter_relation_object.status.to_sym
+  		else
+  			@user_role = :hunter
+  		end
   	else
   		@user_role = :guest
   	end
@@ -29,6 +35,14 @@ class BountiesController < ApplicationController
     else
         render :new
     end
+  end
+
+  def add_working_user
+  	@bounty = Bounty.find(params[:id])
+
+  	@bounty.hunters << current_user
+
+  	redirect_to @bounty
   end
 
   private

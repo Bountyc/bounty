@@ -4,4 +4,10 @@ description: <%= @bounty.description %>
 <br>
 
 <br><br><br>
-<%= @user_role %>
+role: <%= @user_role %>
+
+<br><br><br>
+
+<% if @user_role == :hunter %>
+	<%= link_to "I started working on this", add_working_user_bounty_path(@bounty.id)%>
+<% end %>

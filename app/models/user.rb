@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :bounty_hunters
-	has_many :bounties
+	has_many :bounties, :foreign_key => "poster_id"
+
+	# TODO think of a better name instead of hunting bounties
+	has_many :hunting_bounties, through: :bounty_hunters, source: :bounty
 end

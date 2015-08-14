@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814025540) do
+ActiveRecord::Schema.define(version: 20150814114915) do
 
   create_table "bounties", force: :cascade do |t|
     t.string   "title"
@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 20150814025540) do
     t.float    "price"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "user_id"
+    t.integer  "poster_id"
     t.integer  "status",      default: 0
   end
 
   create_table "bounty_hunters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bounty_id"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "bounties#index"
   devise_for :users
-  resources :bounties
+  resources :bounties do
+    member do
+      get "add_working_user"
+    end
+  end
   resources :users
   resources :tags
   # The priority is based upon order of creation: first created -> highest priority.
