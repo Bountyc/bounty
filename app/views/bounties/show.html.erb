@@ -2,3 +2,12 @@ title: <%= @bounty.title %>
 <br>
 description: <%= @bounty.description %>
 <br>
+
+<br><br><br>
+role: <%= @user_role %>
+
+<br><br><br>
+
+<% if @user_role == :hunter %>
+	<%= link_to "I started working on this", add_working_user_bounty_path(@bounty.id)%>
+<% end %>
