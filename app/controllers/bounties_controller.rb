@@ -8,11 +8,11 @@ class BountiesController < ApplicationController
 
   def show
   	set_bounty
-  	if @bounty.poster == @signed_in_user
+  	if @bounty.poster == current_user
   		@user_role = :poster
-  	elsif @signed_in_user
-  		if @bounty.hunters.include? @signed_in_user
-  			bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(@signed_in_user)
+  	elsif current_user
+  		if @bounty.hunters.include? current_user
+  			bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
 
   			@user_role = bounty_hunter_relation_object.status.to_sym
   		else
@@ -21,6 +21,8 @@ class BountiesController < ApplicationController
   	else
   		@user_role = :guest
   	end
+
+  	@answer = Answer.new
   end
 
   def new
@@ -33,7 +35,8 @@ class BountiesController < ApplicationController
   	if @bounty.save
 		redirect_to @bounty, notice: 'Bounty was successfully created.'
     else
-        render :new
+
+        render plain: @bounty.errors.full_messages.join(", ")
     end
   end
 
@@ -54,17 +57,14 @@ class BountiesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_bounty
-    @bounty = Bounty.find(params[:id])
-  end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def bounty_params
-	 params.require(:bounty).permit(:title, :description, :price)
-  end
+	  # Use callbacks to share common setup or constraints between actions.
+	  def set_bounty
+	    @bounty = Bounty.find(params[:id])
+	  end
 
-  def answer_params
-   params.require(:answer).permit(:description)
-  end
+	  # Never trust parameters from the scary internet, only allow the white list through.
+	  def bounty_params
+		 params.require(:bounty).permit(:title, :description, :price)
+	  end
 end

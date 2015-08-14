@@ -1,3 +1,4 @@
+
 title: <%= @bounty.title %>
 <br>
 description: <%= @bounty.description %>
@@ -6,15 +7,38 @@ description: <%= @bounty.description %>
 <br><br><br>
 role: <%= @user_role %>
 
+
 <br><br><br>
-<% if @user_role == :hunter %>
+status: <%= @bounty.status %>
+<br><br><br>
+
+
+currently working:
+
+	<% @bounty.bounty_hunters.each do |bount_hunter| %>
+		<%= bount_hunter.hunter.email %>
+		<br>
+	<% end %>
+
+<br><br>
+
+<% if @user_role == :hunter and @bounty.open? %>
 	<%= link_to "I started working on this", add_working_user_bounty_path(@bounty.id)%>
 <% end %>
 
-<% if @user_role != :guest %>
-	<%= form_for(:answer, :url => {:action => "add_answer"}) do |a| %>
-  		a.text_area(:description, :size => "40x5")
-  		submit_tag("Add Answer")
+<br>
+
+<% if @bounty.open? %>
+	<% if [:hunter, :working].include? @user_role %>
+		<%= form_for(@answer) do |f| %>
+		  <div class="field">
+		    <%= f.label :description %><br>
+		    <%= f.text_area :description %>
+		  </div>
+		  <%= f.hidden_field :bounty_id, :value => @bounty.id %>
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+		<% end %>
 	<% end %>
 <% end %>
-
