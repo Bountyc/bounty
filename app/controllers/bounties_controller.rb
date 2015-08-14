@@ -35,7 +35,8 @@ class BountiesController < ApplicationController
   	if @bounty.save
 		redirect_to @bounty, notice: 'Bounty was successfully created.'
     else
-        render :new
+
+        render plain: @bounty.errors.full_messages.join(", ")
     end
   end
 
@@ -48,13 +49,13 @@ class BountiesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_bounty
-    @bounty = Bounty.find(params[:id])
-  end
+	  # Use callbacks to share common setup or constraints between actions.
+	  def set_bounty
+	    @bounty = Bounty.find(params[:id])
+	  end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def bounty_params
-	 params.require(:bounty).permit(:title, :description, :price)
-  end
+	  # Never trust parameters from the scary internet, only allow the white list through.
+	  def bounty_params
+		 params.require(:bounty).permit(:title, :description, :price)
+	  end
 end

@@ -9,6 +9,8 @@ role: <%= @user_role %>
 
 
 <br><br><br>
+status: <%= @bounty.status %>
+<br><br><br>
 
 currently working:
 
@@ -19,21 +21,23 @@ currently working:
 
 <br><br>
 
-<% if @user_role == :hunter %>
+<% if @user_role == :hunter and @bounty.open? %>
 	<%= link_to "I started working on this", add_working_user_bounty_path(@bounty.id)%>
 <% end %>
 
 <br>
 
-<% if [:hunter, :working].include? @user_role %>
-	<%= form_for(@answer) do |f| %>
-	  <div class="field">
-	    <%= f.label :description %><br>
-	    <%= f.text_area :description %>
-	  </div>
-
-	  <div class="actions">
-	    <%= f.submit %>
-	  </div>
+<% if @bounty.open? %>
+	<% if [:hunter, :working].include? @user_role %>
+		<%= form_for(@answer) do |f| %>
+		  <div class="field">
+		    <%= f.label :description %><br>
+		    <%= f.text_area :description %>
+		  </div>
+		  <%= f.hidden_field :bounty_id, :value => @bounty.id %>
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+		<% end %>
 	<% end %>
 <% end %>
