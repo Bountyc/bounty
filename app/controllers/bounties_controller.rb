@@ -1,4 +1,6 @@
 class BountiesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
   	@bounties = Bounty.all
   end
@@ -13,15 +15,10 @@ class BountiesController < ApplicationController
 
   def create
   	@bounty = Bounty.new(bounty_params)
-
-    respond_to do |format|
-      if @bounty.save
-        format.html { redirect_to @bounty, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+  	if @bounty.save
+		redirect_to @bounty, notice: 'Bounty was successfully created.'
+    else
+        render :new
     end
   end
 
