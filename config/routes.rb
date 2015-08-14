@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :tags
+  namespace :transfer do 
+    resources :payments do 
+      collection do 
+        get "custom_action"
+        get "create"
+      end
+    end
+  end
   resources :answers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

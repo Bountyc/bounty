@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
 
 	# TODO think of a better name instead of hunting bounties
 	has_many :hunting_bounties, through: :bounty_hunters, source: :bounty
+
+	has_many :withdrawals
 end
