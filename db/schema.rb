@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814114915) do
+ActiveRecord::Schema.define(version: 20150814200212) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -50,11 +50,12 @@ ActiveRecord::Schema.define(version: 20150814114915) do
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"
 
   create_table "payments", force: :cascade do |t|
-    t.string   "transaction_id"
     t.integer  "user_id"
     t.float    "amount"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "payer_id"
+    t.string   "payment_id"
   end
 
   add_index "payments", ["user_id"], name: "index_payments_on_user_id"

@@ -45,6 +45,14 @@ class BountiesController < ApplicationController
   	redirect_to @bounty
   end
 
+  def add_answer
+    answer = Answer.new(answer_params)
+    bounty = set_bounty
+
+    answer.bounty = bounty
+    answer.save
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_bounty
@@ -54,5 +62,9 @@ class BountiesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def bounty_params
 	 params.require(:bounty).permit(:title, :description, :price)
+  end
+
+  def answer_params
+   params.require(:answer).permit(:description)
   end
 end
