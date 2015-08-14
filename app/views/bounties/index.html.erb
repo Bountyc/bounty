@@ -10,4 +10,6 @@
 
 
 <br><br><br>
-Viewer: <%= @signed_in_user.email %>
+Viewer: <% if @signed_in_user %>
+<%= @signed_in_user.email %>
+<% end %>
