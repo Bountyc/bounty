@@ -4,5 +4,4 @@ class BountyHunter < ActiveRecord::Base
 
 	enum status: [:working, :requesting, :denied, :approved]
 
-	
 end

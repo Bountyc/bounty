@@ -23,6 +23,10 @@ class BountiesController < ApplicationController
   	end
 
   	@answer = Answer.new
+
+  	if @bounty.pending?
+  		@suggested_answer = Answer.pending_message(@bounty.id)
+  	end
   end
 
   def new

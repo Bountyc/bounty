@@ -42,3 +42,10 @@ currently working:
 		<% end %>
 	<% end %>
 <% end %>
+
+<% if @bounty.pending? %>
+	answer: <%= @suggested_answer.description %>
+<% end %>
+
+<% if @user_role %>
+<% end %>
