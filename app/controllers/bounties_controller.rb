@@ -15,6 +15,7 @@ class BountiesController < ApplicationController
 
   def create
   	@bounty = Bounty.new(bounty_params)
+  	@bounty.poster = current_user
   	if @bounty.save
 		redirect_to @bounty, notice: 'Bounty was successfully created.'
     else
