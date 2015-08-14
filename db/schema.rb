@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814011218) do
+ActiveRecord::Schema.define(version: 20150814025449) do
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "bounty_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "bounties", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +31,13 @@ ActiveRecord::Schema.define(version: 20150814011218) do
     t.integer  "user_id"
   end
 
+  create_table "bounties_tags", id: false, force: :cascade do |t|
+    t.integer "bounty_id"
+    t.integer "tag_id"
+  end
+
+  add_index "bounties_tags", ["bounty_id", "tag_id"], name: "index_bounties_tags_on_bounty_id_and_tag_id"
+
   create_table "bounty_hunters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bounty_id"
@@ -32,6 +47,16 @@ ActiveRecord::Schema.define(version: 20150814011218) do
   end
 
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "transaction_id"
+    t.integer  "user_id"
+    t.float    "amount"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -56,5 +81,12 @@ ActiveRecord::Schema.define(version: 20150814011218) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "withdrawals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

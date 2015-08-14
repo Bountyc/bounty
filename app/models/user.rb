@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :bounty_hunters
 	has_many :bounties
+
+	has_many :payments
+
+	has_many :answers
 end
