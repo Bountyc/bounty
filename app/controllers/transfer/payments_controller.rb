@@ -37,13 +37,15 @@ module Transfer
   				:id => payment.payment_id})
 
 			@paypal_payment_execute.execute( :payer_id => payment.payer_id  )
-
+			if @paypal_payment_execute.transactions[0].amount.total == nil
+				render :plain => "dont fuck with da system"
+				return
+			end
 			payment.amount = @paypal_payment_execute.transactions[0].amount.total
 			payment.save
-			byebug
 			current_user.balance += payment.amount 
 			current_user.save
-			render :plain => "successfully added " + payment.amount + " to "+current_user.id + "'s account"
+			render :plain => "successfully added " + payment.amount.to_s + " to "+current_user.id.to_s + "'s account"
 		end
 
 
