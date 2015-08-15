@@ -124,6 +124,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redcarpet (3.3.2)
     rename (1.0.2)
       rails (>= 3.0.0)
     responders (2.1.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   paypal-sdk-rest
   pry
   rails (= 4.2.3)
+  redcarpet
   rename
   rspec-rails
   sass-rails (~> 5.0)

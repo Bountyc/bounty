@@ -30,6 +30,7 @@ gem 'paypal-sdk-rest'
 
  gem 'devise'
 
+gem 'redcarpet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
