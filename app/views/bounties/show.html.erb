@@ -13,20 +13,9 @@
           <% end %>
         </div>
         <div class="body-contant">
-          <p>I have compiled Tesseract 3.04.00 with the OpenCL option enabled. While trying to extract text from an image using GetUTF8Text(), there is a malloc error, a memory leak I suppose. </p>
-          <p> I found a patch for a memory leak error that was previously added, however, the version I have compiled already has the patch added. I am not sure as to why the memory leak has occurred. </p>
-          <p> This is the output I am getting:</p>
+          <%= render "partials/code_view", text: @bounty.description %>
         </div>
-        <div class="danger-box">
-          <p>[DS] Profile read from file (tesseract_opencl_profile_devices.dat).</p>
-          <p>[DS] Device[1] 1:Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz score is 14049349632.000000</p>
-          <p>[DS] Device[2] 1:HD Graphics 5000 score is 14049349632.000000</p>
-          <p>[DS] Device[3] 0:(null) score is 21474836480.000000</p>
-          <p>[DS] Selected Device[2]: "HD Graphics 5000" (OpenCL)</p>
-          <p><span>ACP(15114,0x7fff795bf300) malloc: *** mach_vm_map(size=1125865547108352) failed (error code=3)</span></p>
-          <p><span>*** error: can't allocate region</span></p>
-          <p><span>*** set a breakpoint in malloc_error_break to debug </span> </p>
-        </div>
+        
         <p class="mb30">Has anyone faced this problem before? How do I fix this?</p>
         <div class="post-header">
           <div class="row">
@@ -96,50 +85,6 @@
       </div>
       <div class="clr"></div>
     </div>
-    <div class="col-sm-4">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="video"> <img src="images/sm-banner.jpg" alt="Video" class="block-img"> </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="sm-heading">
-            <h3><span><img src="images/dolor-icon.png" class="dolor-icon">Highest Price Bounties</span></h3>
-          </div>
-          <div class="custom-list">
-            <ul class="nav">
-              <li>Apache module request_rec->args can't handle url encoded entiti<span>$59</span></li>
-              <li>cant get a code to work properly python retail item <span>$50 </span></li>
-              <li>asp.net c# Wonderware InTouch scada <span>$45 </span></li>
-              <li>Android Yahoo Aviate Launcher Page Swipe Effects <span>$42 </span></li>
-              <li>InvalidStateError in internet explorer 11 during blob creation <span>$41 </span></li>
-              <li>cannot initialize Grails 3.0.1 app in IntelliJ 14.1 <span>$39 </span></li>
-              <li>The host path of the shared folder is missing: path/to/file Mac <span>$39 </span></li>
-              <li>SQL Performance involving Full Text Index <span>$37 </span></li>
-              <li>Disable browser password save on redirect <span>$36 </span></li>
-              <li>problems with redirection and cookies, scrapy redirect 302 <span>$35 </span></li>
-            </ul>
-          </div>
-          <div class="sm-heading">
-            <h3><span><img src="images/eye-icon.png" class="dolor-icon">Most Viewed Bounties</span></h3>
-          </div>
-          <div class="default-list">
-            <ul class="nav">
-              <li>Twig: Slug with Regex in Twig?<span>321</span></li>
-              <li>Mysql can't get data of my parent in a subquery <span>287</span></li>
-              <li>Is it possible to rename a qt sub window? <span>265</span></li>
-              <li>Can't deduce template type <span>261</span></li>
-              <li>Batch File To Dynamically Create New Directory Based on Date <span>257</span></li>
-              <li>Net::SSH::Perl Permission denied <span>232</span></li>
-              <li>MCV Use RenderPartial to access class List <span>231</span></li>
-              <li>Generic extension method refactor <span>229</span></li>
-              <li>Loop within function in a cursor <span>223</span></li>
-              <li>Trying to find a way to secure a client certificate from steali <span>219</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'bounties/highest_bounties' %>
   </div>
 </div>
