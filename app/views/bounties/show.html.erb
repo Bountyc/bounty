@@ -13,7 +13,7 @@
           <% end %>
         </div>
         <div class="body-contant">
-          <%= render "partials/code_view", text: @bounty.description %>
+          <%= markdown(@bounty.description) %>
           <%= @bounty.status %>
           <br>
           <%= @user_role %>
@@ -33,7 +33,6 @@
                     <li><a href="#">html5 </a></li>
                   </ul>
                 </div>
-                <div class="edit-nav">
                   <ul class="nav pull-right">
                     <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
                     <li><a href="#"><%= image_tag "edit-icon.png" %> edit</a></li>
@@ -44,13 +43,17 @@
           </div>
         </div>
 
-        <div class="post-body">
+        <div>
           <% if @bounty.status == "open" and (@user_role == :hunter or @user_role == :working)%>
-
-          <%= render 'answers/new_answer', {bounty: @bounty} %>
-       
+            <% if @bounty.bounty_hunters.find_by_user_id.status == "denied"%>
+              <%= render 'answers/new_answer', {bounty_id: @bounty.id} %>
+            <% else %>
+              <%= render 'answers/denied_answer', {bounty_id: @bounty.id} %>
+            <% end %>
+        
 
           <% elsif @bounty.status == "pending" %>
+          
           <%= render 'answers/pending', {text: @bounty.pending_answer, role: @user_role} %>
 
           <% elsif @bounty.status == "closed" %>
@@ -59,9 +62,10 @@
 
 
           <% unless @bounty.status == "closed" %>
-          <div class="user-bounty">
+          <div class="user-bounty" style="margin-top:15px">
             <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
           </div>
+
           <div class="commtent-panel">
             <% @working_bounty_hunters.each do |bounty_hunter| %>
             <div class="user-info user-comment">
@@ -71,7 +75,7 @@
             <% end %>
           </div>
           <% end %>
-        </div>
+      
       </div>
       <div class="clr"></div>
     </div>
