@@ -2,8 +2,25 @@ class AnswersController < ApplicationController
 	def create
 		@answer = Answer.new(answer_params)
 		@answer.user = current_user
-		@answer.bounty = bounty
+		bounty = Bounty.find params[:bounty_id]
+		bh = bounty.bounty_hunters.find_by_user_id(current_user)
+		if bh
+			bh.pending!
+			bounty.pending!
+		else
+			bh = BountyHunter.new
+			bh.hunter = current_user
+			bh.bounty = bounty
+			bh.pending!
+			bounty.pending!
+		end
+		
+		bh.answer = @answer
+		@answer.bounty_hunter = bh
+		bh.save
 		@answer.save
+		bounty.save
+
 		redirect_to :back
 	end
 

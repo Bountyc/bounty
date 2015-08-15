@@ -19,10 +19,11 @@
 						<%= render "bounties/preview_list",bounty_list: @resolved_bounties, total_bounty_list_count: @resolved_bounties_count %>
 					</div>
 
-
+					<% if @signed_in_user %>
 					<div class="tab-pane fade" id="tab3">
 						<%= render "bounties/preview_list",bounty_list: @my_bounties, total_bounty_list_count: @my_bounties_count %>
 					</div>
+					<% end %>
 
 				</div>
 			</div>
