@@ -50,20 +50,17 @@ group :development, :test do
 
   gem 'rename'
 
+  gem 'sqlite3'
+
   gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 end
 
 group :test do
   gem 'simplecov'
-  gem 'pg'
 end
 
 group :production do 
   gem 'pg'
   gem 'rails_12factor', group: :production
-end
-
-group :development do
-  gem 'sqlite3'
 end
