@@ -7,4 +7,49 @@
   <% end %>
   <span>PENDING</span></h3>
   <%= markdown(@bounty.pending_answer.description) %>
+  <div class="comments-header">
+	<div class="row">
+	  <div class="user-info">
+	    <div class="col-sm-6">
+	      <div class="user-image"> <a href="#"><%= image_tag "user-image-2.jpg", alt: "Image" %> by <span>Tom Morgan </span> </a> <span> - </span> <span> 34 mins ago copy</span> </div>
+	    </div>
+	    <div class="col-sm-6 mt10">
+	      <div class="edit-nav mb0">
+	        <ul class="nav pull-right">
+	          <% if @user_role == :poster %>
+		          <li class="accept"><a href="#"><%= image_tag "green-tick.jpg" %> Accpeted </a></li>
+		          <li class="reject"> <a href="#myModal" role="button" class="btn" data-toggle="modal"> <%= image_tag "crose-icon.png" %> Rejected </a> </li>
+	          <% end %>
+	          <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h3 class="modal-title" id="myModalLabel">Reason for Rejection
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+        
+         
+      </div>
+      <div class="modal-body"><div class="model-body-inn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae scelerisque nunc. Maecenas bibendum vehicula urna quis elementum. Aenean scelerisque enim tellus, non auctor ex sagittis sit amet. Donec fringilla diam ut purus ultrices, et elementum magna posuere </div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal">REJECT</button>
+      
+      </div>
+      
+      
+      
+      
+    </div>
+  </div>
 </div>
