@@ -9,14 +9,16 @@
             <li><a href="#"><%= image_tag "sm-eye-icon.png" %> <%= @bounty.views.count %> views </a></li>
           </ul>
           <% if @user_role == :hunter and @bounty.open? %>
-            <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
+          <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
           <% end %>
         </div>
         <div class="body-contant">
           <%= render "partials/code_view", text: @bounty.description %>
+          <%= @bounty.status %>
+          <br>
+          <%= @user_role %>
         </div>
         
-        <p class="mb30">Has anyone faced this problem before? How do I fix this?</p>
         <div class="post-header">
           <div class="row">
             <div class="user-info">
@@ -41,23 +43,30 @@
             </div>
           </div>
         </div>
+
         <div class="post-body">
-          <%= render "answers/new_answer", bounty: @bounty %>
-        </div>
-        <div class="line"></div>
-        <div class="rejection-panel">
-          <h3><%= image_tag "error-icon.png" %> Reason for <span>REJECTION</span></h3>
-          <p>This sulution was tried and it did not worked.  It gave an error that mess up everything else. I don’t think this was the right approach to my problem. Sorry, but I will wait for another solution.</p>
-          <a href="#" class="btn btn-red"> DISPUTE </a> </div>
-        <div class="user-bounty">
-          <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
-        </div>
-        <div class="commtent-panel">
-          <% @working_bounty_hunters.each do |bounty_hunter| %>
+          <% if @bounty.status == "open" and (@user_role == :hunter or @user_role == :working)%>
+          <%= render 'answers/answer', {bounty: @bounty.id} %>
+
+          <% elsif @bounty.status == "pending" %>
+          <%= render 'answers/pending', {text: @bounty.pending_answer, role: @user_role} %>
+
+          <% elsif @bounty.status == "closed" %>
+          <%= render 'answers/solved', {text: @bounty.approved_answer} %>
+          <% end %>
+
+          <% unless @bounty.status == "closed" %>
+          <div class="user-bounty">
+            <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
+          </div>
+          <div class="commtent-panel">
+            <% @working_bounty_hunters.each do |bounty_hunter| %>
             <div class="user-info user-comment">
               <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for <%=time_differance_string(Time.now - bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
               </div>
             </div>
+            <% end %>
+          </div>
           <% end %>
         </div>
       </div>
