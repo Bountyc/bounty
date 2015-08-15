@@ -1,0 +1,10 @@
+<div class="post-body">
+  <h3><%= image_tag "comment-icon.png" %>
+  <% if @user_role == :pending %>
+  	You're resolution is
+  <% else %>
+  	Resolution is
+  <% end %>
+  <span>PENDING</span></h3>
+  <%= markdown(@bounty.pending_answer.description) %>
+</div>
