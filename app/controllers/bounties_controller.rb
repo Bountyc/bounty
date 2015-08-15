@@ -29,12 +29,16 @@ class BountiesController < ApplicationController
   		@suggested_answer = Answer.pending_answer(@bounty.id)
   	end
 
-    if !current_user.views.any?{|v| v.bounty == @bounty}
-      view = View.new
-      view.user = current_user
-      view.bounty = @bounty
-      view.save
+    if current_user
+      if !current_user.views.any?{|v| v.bounty == @bounty}
+        view = View.new
+        view.user = current_user
+        view.bounty = @bounty
+        view.save
+      end
     end
+
+    @working_bounty_hunters = @bounty.working_bounty_hunters
   end
 
   def new
@@ -54,7 +58,11 @@ class BountiesController < ApplicationController
   def add_working_user
   	@bounty = Bounty.find(params[:id])
 
-  	@bounty.hunters << current_user
+    bh = BountyHunter.new
+    bh.hunter = current_user
+    bh.bounty = @bounty
+    bh.started_working_at = Time.now
+    bh.save
 
   	redirect_to @bounty
   end

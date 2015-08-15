@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815070414) do
+ActiveRecord::Schema.define(version: 20150815113313) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 20150815070414) do
   create_table "bounty_hunters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bounty_id"
-    t.integer  "status",     default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "status",             default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "answer_id"
+    t.datetime "started_working_at"
   end
 
   add_index "bounty_hunters", ["answer_id"], name: "index_bounty_hunters_on_answer_id"

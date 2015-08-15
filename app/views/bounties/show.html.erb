@@ -1,51 +1,145 @@
-
-title: <%= @bounty.title %>
-<br>
-description: <%= @bounty.description %>
-<br>
-
-<br><br><br>
-role: <%= @user_role %>
-
-
-<br><br><br>
-status: <%= @bounty.status %>
-<br><br><br>
-
-
-currently working:
-
-	<% @bounty.bounty_hunters.each do |bount_hunter| %>
-		<%= bount_hunter.hunter.email %>
-		<br>
-	<% end %>
-
-<br><br>
-
-<% if @user_role == :hunter and @bounty.open? %>
-	<%= link_to "I started working on this", add_working_user_bounty_path(@bounty.id)%>
-<% end %>
-
-<br>
-
-<% if @bounty.open? %>
-	<% if [:hunter, :working].include? @user_role %>
-		<%= form_for(@answer) do |f| %>
-		  <div class="field">
-		    <%= f.label :description %><br>
-		    <%= f.text_area :description %>
-		  </div>
-		  <%= f.hidden_field :bounty_id, :value => @bounty.id %>
-		  <div class="actions">
-		    <%= f.submit %>
-		  </div>
-		<% end %>
-	<% end %>
-<% end %>
-
-<% if @bounty.pending? %>
-	answer: <%= @suggested_answer.description %>
-<% end %>
-
-<% if @user_role %>
-<% end %>
+<div class="container">
+  <div class="row mt40">
+    <div class="col-sm-8">
+      <div class="left-body">
+        <h2><span>$<%= @bounty.price %></span> <%= @bounty.title %></h2>
+        <div class="bounty-nav">
+          <ul class="nav">
+            <li class="active"><a href="#"> <%= @bounty.status.upcase %> </a></li>
+            <li><a href="#"><%= image_tag "sm-eye-icon.png" %> <%= @bounty.views.count %> views </a></li>
+          </ul>
+          <% if @user_role == :hunter and @bounty.open? %>
+            <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
+          <% end %>
+        </div>
+        <div class="body-contant">
+          <p>I have compiled Tesseract 3.04.00 with the OpenCL option enabled. While trying to extract text from an image using GetUTF8Text(), there is a malloc error, a memory leak I suppose. </p>
+          <p> I found a patch for a memory leak error that was previously added, however, the version I have compiled already has the patch added. I am not sure as to why the memory leak has occurred. </p>
+          <p> This is the output I am getting:</p>
+        </div>
+        <div class="danger-box">
+          <p>[DS] Profile read from file (tesseract_opencl_profile_devices.dat).</p>
+          <p>[DS] Device[1] 1:Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz score is 14049349632.000000</p>
+          <p>[DS] Device[2] 1:HD Graphics 5000 score is 14049349632.000000</p>
+          <p>[DS] Device[3] 0:(null) score is 21474836480.000000</p>
+          <p>[DS] Selected Device[2]: "HD Graphics 5000" (OpenCL)</p>
+          <p><span>ACP(15114,0x7fff795bf300) malloc: *** mach_vm_map(size=1125865547108352) failed (error code=3)</span></p>
+          <p><span>*** error: can't allocate region</span></p>
+          <p><span>*** set a breakpoint in malloc_error_break to debug </span> </p>
+        </div>
+        <p class="mb30">Has anyone faced this problem before? How do I fix this?</p>
+        <div class="post-header">
+          <div class="row">
+            <div class="user-info">
+              <div class="col-sm-6">
+                <div class="user-image"> <a href="#"> <%= image_tag "user-image.jpg", alt: "Image" %> by <span> Hank </span> </a> <span> - </span> <span> 1 hour ago</span> </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="comment-nav">
+                  <ul class="nav pull-right">
+                    <li><a href="#">javascript </a></li>
+                    <li><a href="#"> css</a></li>
+                    <li><a href="#">html5 </a></li>
+                  </ul>
+                </div>
+                <div class="edit-nav">
+                  <ul class="nav pull-right">
+                    <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
+                    <li><a href="#"><%= image_tag "edit-icon.png" %> edit</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-body">
+          <h3><%= image_tag "comment-icon.png" %> Resolution is <span>REJECTED</span></h3>
+          <p>Parse has great PHP docs that can help here. Because you are using a custom push notification handler in Android, the default Push code won't likely work for you. </p>
+          <p> One of the things to look at is the Parse Query to the "_Installation" object. </p>
+          <p> Your code would be:</p>
+          <div class="danger-box"> <code> $query = new ParseQuery("_Installation"); // or try ParseInstallation()?</code> <code>$query->equalTo("objectId", $yourObjectId);</code> <code>$result = $query->first();</code> <code>if ($result->get("deviceType") == "android") {</code> <code class="ml8"> // we are Android</code> <code> } else {</code> <code class="ml8"> // we are iOS</code> <code> } </code> </div>
+          <p> It would help to know what other data you have on the Installation prior to the push. If you have objectId, that makes this code work. If you have an array of channels, you'll need to select users in those channels, and then foreach over the array, grab the objectId, and make a query that way. </p>
+          <p> Happy to explain if you leave a comment letting me know one way or the other. </p>
+          <div class="comments-header">
+            <div class="row">
+              <div class="user-info">
+                <div class="col-sm-6">
+                  <div class="user-image"> <a href="#"> <%= image_tag "user-image-2.jpg", alt: "Image" %> by <span>Tom Morgan </span> </a> <span> - </span> <span> 34 mins ago copy</span> </div>
+                </div>
+                <div class="col-sm-6 mt10">
+                  <div class="edit-nav mb0">
+                    <ul class="nav pull-right">
+                      <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="rejection-panel">
+          <h3><%= image_tag "error-icon.png" %> Reason for <span>REJECTION</span></h3>
+          <p>This sulution was tried and it did not worked.  It gave an error that mess up everything else. I don’t think this was the right approach to my problem. Sorry, but I will wait for another solution.</p>
+          <a href="#" class="btn btn-red"> DISPUTE </a> </div>
+        <div class="user-bounty">
+          <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
+        </div>
+        <div class="commtent-panel">
+          <% @working_bounty_hunters.each do |bounty_hunter| %>
+            <div class="user-info user-comment">
+              <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for <%=time_differance_string(Time.now - bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="video"> <img src="images/sm-banner.jpg" alt="Video" class="block-img"> </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="sm-heading">
+            <h3><span><img src="images/dolor-icon.png" class="dolor-icon">Highest Price Bounties</span></h3>
+          </div>
+          <div class="custom-list">
+            <ul class="nav">
+              <li>Apache module request_rec->args can't handle url encoded entiti<span>$59</span></li>
+              <li>cant get a code to work properly python retail item <span>$50 </span></li>
+              <li>asp.net c# Wonderware InTouch scada <span>$45 </span></li>
+              <li>Android Yahoo Aviate Launcher Page Swipe Effects <span>$42 </span></li>
+              <li>InvalidStateError in internet explorer 11 during blob creation <span>$41 </span></li>
+              <li>cannot initialize Grails 3.0.1 app in IntelliJ 14.1 <span>$39 </span></li>
+              <li>The host path of the shared folder is missing: path/to/file Mac <span>$39 </span></li>
+              <li>SQL Performance involving Full Text Index <span>$37 </span></li>
+              <li>Disable browser password save on redirect <span>$36 </span></li>
+              <li>problems with redirection and cookies, scrapy redirect 302 <span>$35 </span></li>
+            </ul>
+          </div>
+          <div class="sm-heading">
+            <h3><span><img src="images/eye-icon.png" class="dolor-icon">Most Viewed Bounties</span></h3>
+          </div>
+          <div class="default-list">
+            <ul class="nav">
+              <li>Twig: Slug with Regex in Twig?<span>321</span></li>
+              <li>Mysql can't get data of my parent in a subquery <span>287</span></li>
+              <li>Is it possible to rename a qt sub window? <span>265</span></li>
+              <li>Can't deduce template type <span>261</span></li>
+              <li>Batch File To Dynamically Create New Directory Based on Date <span>257</span></li>
+              <li>Net::SSH::Perl Permission denied <span>232</span></li>
+              <li>MCV Use RenderPartial to access class List <span>231</span></li>
+              <li>Generic extension method refactor <span>229</span></li>
+              <li>Loop within function in a cursor <span>223</span></li>
+              <li>Trying to find a way to secure a client certificate from steali <span>219</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

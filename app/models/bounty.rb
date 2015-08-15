@@ -16,6 +16,15 @@ class Bounty < ActiveRecord::Base
 	validates :price, :numericality => { :greater_than => 0}
 
 	validate :poster_can_afford
+
+	def working_users
+		return User.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.bounty_id = ?", [self.id])
+	end
+
+	def working_bounty_hunters
+		return self.bounty_hunters.where(status: 0)
+	end
+
 	private
 		def change_user_balance
 			poster = self.poster
