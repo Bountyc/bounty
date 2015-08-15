@@ -1,0 +1,21 @@
+<% load_notifications %>
+<div class="dropdown"> 
+  <a id="dLabel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <%= image_tag("alert.jpg") %><span class="alert-count"><%=@total_notification_count%></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dLabel">
+              <% @notifications.each do |n| %>
+              
+                <li>
+                    <a href="#"> 
+
+                      <span>
+                        <% if n.bounty_hunter %><%= n.bounty_hunter.bounty.poster %><% end %><%=n.message%>
+                      </span>
+                      
+                      <h5>- <%=time_ago_in_words(n.created_at)%> ago</h5>
+                    </a>
+                </li>
+              <% end %>
+              
+              <li><a class="btn btn-default custom-btn" href="#" role="button">View All</a></li>
+            </ul>
+          </div>

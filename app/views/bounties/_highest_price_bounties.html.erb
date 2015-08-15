@@ -1,0 +1,11 @@
+<% load_highest_paying_bounties %>
+
+          <div class="custom-list">
+            <h3><span><%= image_tag("dolor-icon.png", :class => "dolor-icon") %>Highest Price Bounties</span></h3>
+            <ul>
+              <% @highest_paying_bounties.each do |b| %>
+              <li><%= b.title %><span>$<%= b.price %></span></li>
+              
+              <% end %>
+            </ul>
+          </div>

@@ -2,6 +2,7 @@ class BountiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :define_user
 
+
   def index
   	@bounties = Bounty.all
   end
@@ -25,8 +26,15 @@ class BountiesController < ApplicationController
   	@answer = Answer.new
 
   	if @bounty.pending?
-  		@suggested_answer = Answer.pending_message(@bounty.id)
+  		@suggested_answer = Answer.pending_answer(@bounty.id)
   	end
+
+    if !current_user.views.any?{|v| v.bounty == @bounty}
+      view = View.new
+      view.user = current_user
+      view.bounty = @bounty
+      view.save
+    end
   end
 
   def new
@@ -51,14 +59,7 @@ class BountiesController < ApplicationController
 
   	redirect_to @bounty
   end
-
-  def add_answer
-    answer = Answer.new(answer_params)
-    bounty = set_bounty
-
-    answer.bounty = bounty
-    answer.save
-  end
+  
 
   private
 

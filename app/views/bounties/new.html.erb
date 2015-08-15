@@ -90,47 +90,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="video"> <%= image_tag("video-image.jpg", :alt => "Video", :class => "block-img") %></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="custom-list">
-            <h3><span><%= image_tag("dolor-icon.png", :class => "dolor-icon") %>Highest Price Bounties</span></h3>
-            <ul>
-              <li>Apache module request_rec->args can't handle url encoded entiti<span>$59</span></li>
-              <li>cant get a code to work properly python retail item <span>$50 </span></li>
-              <li>asp.net c# Wonderware InTouch scada <span>$45 </span></li>
-              <li>Android Yahoo Aviate Launcher Page Swipe Effects <span>$42 </span></li>
-              <li>InvalidStateError in internet explorer 11 during blob creation <span>$41 </span></li>
-              <li>cannot initialize Grails 3.0.1 app in IntelliJ 14.1 <span>$39 </span></li>
-              <li>The host path of the shared folder is missing: path/to/file Mac <span>$39 </span></li>
-              <li>SQL Performance involving Full Text Index <span>$37 </span></li>
-              <li>Disable browser password save on redirect <span>$36 </span></li>
-              <li>problems with redirection and cookies, scrapy redirect 302 <span>$35 </span></li>
-            </ul>
-          </div>
-          <div class="custom-list most-veiwed">
-            <h3><span><%= image_tag("eye-icon.png", :class => "dolor-icon") %>Most Viewed Bounties</span></h3>
-            <ul>
-              <li>Twig: Slug with Regex in Twig?<span>321</span></li>
-              <li>Mysql can't get data of my parent in a subquery <span>287</span></li>
-              <li>Is it possible to rename a qt sub window? <span>265</span></li>
-              <li>Can't deduce template type <span>261</span></li>
-              <li>Batch File To Dynamically Create New Directory Based on Date <span>257</span></li>
-              <li>Net::SSH::Perl Permission denied <span>232</span></li>
-              <li>MCV Use RenderPartial to access class List <span>231</span></li>
-              <li>Generic extension method refactor <span>229</span></li>
-              <li>Loop within function in a cursor <span>223</span></li>
-              <li>Trying to find a way to secure a client certificate from steali <span>219</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'bounties/highest_bounties' %>
   </div>
 </div>
 

@@ -3,8 +3,9 @@ class Bounty < ActiveRecord::Base
 	has_many :bounty_hunters
 	has_many :hunters, through: :bounty_hunters
 	has_and_belongs_to_many :tags
+	has_many :views
 
-	has_many :answers
+	has_many :answers, through: :bounty_hunters, source: :answer
 	belongs_to :poster, :class_name => "User", :foreign_key => "poster_id"
 	
 	enum status: [:open, :pending, :closed]
@@ -13,7 +14,6 @@ class Bounty < ActiveRecord::Base
 
 	validates :price, presence: true
 	validate :poster_can_afford
-
 	private
 		def change_user_balance
 			poster = self.poster

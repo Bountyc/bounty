@@ -28,23 +28,9 @@
       <ul>
         <li><a href="#">Help</a></li>
         <li>
-          <div class="dropdown"> <a id="dLabel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <%= image_tag("alert.jpg") %><span class="alert-count">9</span></a>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
-              <li><a href="#"> <span>Peter Li</span> just posted a resolution for
-                <label>What does set the stack size?</label>
-                <h5>- 45 mins ago</h5>
-                </a></li>
-              <li><a href="#"> <span>Peter Li</span> just posted a resolution for
-                <label>What does set the stack size?</label>
-                <h5>- 45 mins ago</h5>
-                </a></li>
-              <li><a href="#"> <span>Peter Li</span> just posted a resolution for
-                <label>What does set the stack size?</label>
-                <h5>- 45 mins ago</h5>
-                </a></li>
-              <li><a class="btn btn-default custom-btn" href="#" role="button">View All</a></li>
-            </ul>
-          </div>
+          <% if @signed_in_user %>
+          <%= render "notifications/preview_list" %>
+          <% end %>
         </li>
         <li><a href="#">Profile</a></li>
       </ul>
@@ -54,7 +40,7 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <%= link_to "Create A Bounty", {:controller => 'bounties', :action =>'new'}, class: "navbar-brand" %>
+        <%= link_to "Create A Bounty", new_bounty_path, class: "navbar-brand" %>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">

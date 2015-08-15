@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814230524) do
+ActiveRecord::Schema.define(version: 20150815070414) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
-    t.integer  "user_id"
-    t.integer  "bounty_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "denial_reason"
   end
 
   create_table "bounties", force: :cascade do |t|
@@ -45,9 +44,21 @@ ActiveRecord::Schema.define(version: 20150814230524) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "answer_id"
   end
 
+  add_index "bounty_hunters", ["answer_id"], name: "index_bounty_hunters_on_answer_id"
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "bounty_hunter_id"
+    t.integer  "user_id"
+    t.integer  "notification_type"
+    t.string   "message"
+    t.boolean  "seen",              default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
 
   create_table "payments", force: :cascade do |t|
     t.integer  "user_id"
@@ -84,6 +95,13 @@ ActiveRecord::Schema.define(version: 20150814230524) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "views", force: :cascade do |t|
+    t.integer  "bounty_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "withdrawals", force: :cascade do |t|
     t.integer  "user_id"

@@ -7,13 +7,17 @@ class User < ActiveRecord::Base
 
 	has_many :payments
 
-	has_many :answers
+	has_many :answers, through: :bounty_hunters, source: :answer
 	has_many :bounties, :foreign_key => "poster_id"
 
 	# TODO think of a better name instead of hunting bounties
 	has_many :hunting_bounties, through: :bounty_hunters, source: :bounty
+	
+	has_many :notifications
 
 	has_many :withdrawals
+
+	has_many :views
 
 	def reload_balance
 		total_payments = 0
