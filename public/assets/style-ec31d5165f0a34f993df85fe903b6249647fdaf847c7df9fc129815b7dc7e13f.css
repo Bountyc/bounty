@@ -1,0 +1,1254 @@
+/* line 1, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 5, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+body {
+  font-size: 14px;
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 10, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* line 13, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+ul, li {
+  list-style: none;
+  margin: 0px;
+}
+
+/* line 17, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 20, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.container {
+  width: 100%;
+  max-width: 1170px;
+}
+
+/* line 24, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.clr {
+  clear: both;
+}
+
+/* line 27, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.mt9 {
+  margin-top: 9px;
+}
+
+/* line 30, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.mb15 {
+  margin-bottom: 15px !important;
+}
+
+/*..........Main Style..............*/
+/*..........Header Style..............*/
+/* line 35, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+header {
+  padding-bottom: 15px;
+}
+
+/* line 38, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.logo {
+  float: left;
+  margin-top: 15px;
+}
+
+/* line 42, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content {
+  float: right;
+}
+
+/* line 45, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li {
+  float: left;
+  margin: 0px 20px;
+  position: relative;
+}
+
+/* line 50, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul {
+  float: left;
+}
+
+/* line 53, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li a {
+  float: left;
+  height: 82px;
+  line-height: 80px;
+  color: #b9bdc6;
+}
+
+/* line 59, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li:last-child {
+  margin-right: 0px;
+}
+
+/* line 62, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li:last-child a {
+  background: #f1f4f9;
+  color: #34353f;
+  padding: 0px 30px;
+}
+
+/* line 67, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li a span.alert-count {
+  background: #e0694c;
+  height: 18px;
+  width: 18px;
+  border-radius: 30px;
+  color: #fff;
+  position: absolute;
+  top: 14px;
+  line-height: normal;
+  text-align: center;
+}
+
+/* line 78, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropup, .right-content ul li .dropdown {
+  height: 82px;
+}
+
+/* line 81, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu {
+  left: -110px !important;
+  width: 270px;
+  background: #f1f4f9;
+  border-radius: 0px;
+  box-shadow: none;
+  margin-top: 0px;
+}
+
+/* line 89, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li {
+  width: 100%;
+  margin-left: 0px;
+  padding: 0px 27px;
+}
+
+/* line 94, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a {
+  border-bottom: 1px solid #dae1ec;
+  display: block;
+  word-break: break-all;
+  white-space: normal;
+  line-height: normal;
+  height: auto;
+  padding: 10px 0px;
+  color: #adb2bc;
+}
+
+/* line 104, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a:hover {
+  background: none;
+}
+
+/* line 107, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a span {
+  color: #34353f;
+}
+
+/* line 110, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a label {
+  display: inline;
+  font-weight: normal;
+  color: #d1664f;
+}
+
+/* line 115, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a h5 {
+  font-weight: normal;
+  color: #adb2bc;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+/* line 121, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.right-content ul li .dropdown-menu li a.custom-btn {
+  background: #34353f;
+  border-radius: 0;
+  border: 1px solid #dae1ec;
+  color: #fff;
+  margin-top: 15px;
+  padding: 7px 20px;
+}
+
+/* line 129, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn.custom-btn {
+  background: #34353f;
+  border-radius: 0;
+  border: 1px solid #dae1ec;
+  color: #fff;
+  padding: 7px 20px;
+}
+
+/* line 136, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar-default .navbar-nav > li > a {
+  height: 45px;
+  line-height: 17px;
+}
+
+/* line 140, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav.navbar-nav {
+  float: right;
+}
+
+/* line 143, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar-default .navbar-brand {
+  height: 45px;
+  line-height: 17px;
+  background: #e0694c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0px 0px 1px #d06247;
+}
+
+/* line 152, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav.navbar-nav {
+  background: #dae1ec;
+}
+
+/* line 155, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav.navbar-nav li {
+  border-left: 1px solid #eaeef5;
+}
+
+/* line 158, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav.navbar-nav li a {
+  font-size: 14px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* line 163, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar-form {
+  margin-top: 8px;
+}
+
+/* line 166, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar {
+  min-height: 47px;
+}
+
+/* line 169, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar-form .form-control {
+  background: #f1f4f9 url("/assets/search-icon-a80385066dbe97d1c4e638c7513885a249a82b47554647820ff59c3605edee02.png") 96% 5px no-repeat;
+  border: 1px solid #d5dae2;
+  border-radius: 0;
+  box-shadow: none;
+  height: 29px;
+  padding-right: 40px;
+  margin-right: 15px;
+}
+
+/* line 178, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.navbar-form a {
+  color: #adb2bc;
+}
+
+/* Start Left Side */
+/* line 182, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.left-side {
+  max-width: 700px;
+}
+
+/* line 185, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.control-label {
+  color: #34353f;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+/* line 190, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.form-control {
+  background: #fafcfe;
+  border-color: #dce3ee;
+  border-radius: 0;
+  box-shadow: none;
+  height: 38px;
+  color: #72737d;
+  font-size: 14px;
+}
+
+/* line 199, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.form-control:focus {
+  box-shadow: none;
+  border-color: #e0694c;
+}
+
+/*  The rest is from Twitter Bootstrap */
+/* line 204, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+input, .input-append {
+  display: inline-block;
+  vertica-align: middle;
+}
+
+/* line 208, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.input-append .form-control {
+  background: #fafcfe;
+  border-color: #dce3ee;
+  border-radius: 0;
+  box-shadow: none;
+  height: 38px;
+  color: #72737d;
+  display: inline-block;
+  font-size: 14px;
+  width: 170px;
+  margin: 0px;
+  float: left;
+}
+
+/* line 221, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn-file {
+  background: #eaeef5;
+  border-radius: 0;
+  padding: 8px 22px;
+  margin: 0px;
+  border-color: #dce3ee;
+  border-left: 0px;
+  float: left;
+  color: #72737d;
+  font-size: 14px;
+}
+
+/* line 232, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-multi .chosen-choices {
+  background: #fafcfe;
+  border-color: #dce3ee;
+  border-radius: 0;
+  padding: 3px 12px;
+  box-shadow: none;
+  color: #72737d;
+  display: inline-block;
+  font-size: 14px;
+}
+
+/* line 242, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+  top: 8px;
+  right: 7px;
+}
+
+/* line 246, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-multi .chosen-choices li.search-choice {
+  border: none;
+  padding: 8px 25px 6px 13px;
+  background: url("/assets/tags-bg-44d14ab0574bc89385594b9379aa36b8be32c9fa37139eded8dbab745a640f24.png") left top repeat-x;
+}
+
+/* line 251, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-multi .chosen-choices li.search-choice span {
+  color: #686f79;
+  font-size: 14px;
+}
+
+/* line 255, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container.chosen-with-drop .chosen-drop {
+  border-color: #dce3ee;
+  box-shadow: none;
+  border-top: 1px solid #dce3ee;
+}
+
+/* line 260, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.w66 {
+  width: 66px !important;
+}
+
+/* line 263, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.select-option {
+  float: left;
+  width: 80px;
+  margin-left: 10px;
+}
+
+/* line 268, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.select-option .chzn-select {
+  float: left;
+  width: 100%;
+}
+
+/* line 272, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-single .chosen-single {
+  background: #fafcfe;
+  border-radius: 0;
+  box-shadow: none;
+  height: 38px;
+  border: 1px solid #dce3ee;
+}
+
+/* line 279, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-single .chosen-single span {
+  line-height: 34px;
+}
+
+/* line 282, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-container-single .chosen-single div b {
+  background: url("/assets/down-arrow-8186d38e91990817569ee0e229a0e0159f9f501c8e4fc2cb222b176af1e50214.jpg") left no-repeat;
+}
+
+/* line 285, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.chosen-search {
+  display: none;
+}
+
+/* line 288, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.ui-spinner.ui-widget.ui-widget-content.ui-corner-all {
+  background: none;
+  border: none;
+}
+
+/* line 292, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.ui-spinner-input {
+  background: #fafcfe none repeat scroll 0 0;
+  border: #dce3ee 1px solid;
+  border-radius: 0;
+  box-shadow: none;
+  color: #e0694c;
+  font-size: 18px !important;
+  height: 38px;
+  margin-left: 0px;
+  width: 66px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* line 305, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.ui-icon-triangle-1-n {
+  background: url("/assets/toparrow-1d43c2221fe930d01f78fd4addd13fc721347e5d601310f47e0cbbbfca9cd57f.png") left 5px no-repeat !important;
+}
+
+/* line 308, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.ui-spinner .ui-icon-triangle-1-s {
+  background: url("/assets/down-arrow-ff53150763e7525cebf4dbcf568879e5a69404e4f55c6c12e40cb23e466726da.png") left top no-repeat;
+}
+
+/* line 311, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.set-deadline label {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+/* line 315, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.wmd-panel {
+  min-width: 100%;
+}
+
+/* line 318, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.line {
+  border-top: 1px solid #dce3ee;
+}
+
+/*.............right side...........*/
+/* line 322, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.block-img {
+  width: 100%;
+  max-width: none;
+}
+
+/* line 326, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.custom-list h3 {
+  padding-bottom: 3px;
+  color: #29282e;
+  border-bottom: 1px solid #e7eaed;
+  margin-bottom: 20px;
+}
+
+/* line 332, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.custom-list h3 span {
+  border-bottom: 1px solid #e7eaed;
+  display: block;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+/* line 338, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.dolor-icon {
+  margin-right: 5px;
+  margin-top: -4px;
+}
+
+/* line 342, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.custom-list ul li {
+  padding-right: 30px;
+  margin-bottom: 25px;
+  color: #7c7a87;
+  font-size: 14px;
+  position: relative;
+}
+
+/* line 349, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.custom-list ul li span {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: #d1593b;
+  font-weight: bold;
+}
+
+/* line 356, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.custom-list.most-veiwed ul li span {
+  color: #7c7a87;
+}
+
+/* line 359, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+footer {
+  background: #34353f;
+  padding: 10px 0px;
+  color: #adb2bc;
+  font-size: 12px;
+}
+
+/* line 365, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn.footer-btn {
+  background-color: transparent;
+  border: 1px solid #4c4d58;
+  border-radius: 0;
+  padding: 12px 30px;
+  font-weight: 700;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.2s all ease-in-out;
+}
+
+/* line 375, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn.footer-btn:hover {
+  background: #fff;
+  color: #34353f;
+}
+
+/* line 379, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+footer .pull-right a {
+  margin-right: 10px;
+}
+
+/*..........Index.............*/
+/* line 383, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.jumbotron {
+  background: url("/assets/banner-bfd1ca1e882b45208720ce94749434fa9f25a1f1236fde757f149379b029191c.jpg") left top no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+/* line 390, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.jumbotron h2 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* line 395, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.jumbotron h3 {
+  color: #e0694c;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* line 400, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.jumbotron h4 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* line 405, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.how-it-works {
+  background: #34353f;
+  padding: 40px 0px;
+  margin-bottom: 50px;
+}
+
+/* line 410, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.how-it-work-wrapper {
+  max-width: 710px;
+  margin: auto;
+}
+
+/* line 414, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.how-it-work-inn {
+  float: left;
+  width: 33%;
+  text-align: center;
+  color: #fff;
+}
+
+/* line 420, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.how-it-work-inn.first {
+  margin-top: 55px;
+}
+
+/* line 423, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.works-heading {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* line 428, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.works-heading span {
+  color: #e0694c;
+}
+
+/* line 431, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.how-it-work-inn span {
+  color: #9593a0;
+  font-size: 18px;
+  font-style: italic;
+}
+
+/*.............Home Page...........*/
+/* line 437, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav-tabs > li > a {
+  padding: 18px 20px;
+  border-bottom: none;
+  color: #34353f;
+  font-size: 18px;
+}
+
+/* line 443, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav-tabs > li > a:hover {
+  border-color: #dae1ec;
+  background-color: #FFF;
+  border-radius: 0;
+}
+
+/* line 448, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border-radius: 0;
+  border-color: #dae1ec;
+  background-color: #FFF;
+  border-bottom: none;
+  border-radius: 0;
+  color: #34353f;
+  font-weight: bold;
+  outline: none;
+}
+
+/* line 458, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.tab-content {
+  padding: 40px 0;
+}
+
+/* line 461, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.tab-content .tab-pane .navbar-form {
+  padding-left: 0px;
+  margin: 0;
+}
+
+/* line 465, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.tab-content .tab-pane .navbar-form .form-control {
+  width: 255px;
+}
+
+/* line 468, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.tab-content .tab-pane .navbar-form a {
+  color: #e0694c;
+  font-size: 14px;
+}
+
+/* line 472, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-list {
+  margin: 25px 0 30px 0;
+}
+
+/* line 475, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-list:last-child {
+  margin-bottom: 10px;
+}
+
+/* line 480, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-header .open-bounties-price {
+  color: #e0694c;
+  font-size: 30px;
+  font-weight: bold;
+  float: left;
+}
+
+/* line 486, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-header h3 {
+  margin-top: 12px;
+  color: #404450;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 30px;
+  display: inline-block;
+}
+
+/* line 494, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-header .open-bounties-views {
+  float: right;
+  color: #c5cdd9;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* line 500, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-header .open-bounties-views i {
+  margin-right: 2px;
+}
+
+/* line 503, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-list-desc {
+  margin-top: 20px;
+}
+
+/* line 506, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-desc {
+  color: #adb2bc;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* line 511, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-desc span {
+  color: #34353f;
+}
+
+/* line 514, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-desc a {
+  color: #e0694c;
+}
+
+/* line 517, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-tags {
+  float: right;
+}
+
+/* line 520, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.open-bounties-tags a {
+  padding: 5px 18px;
+  color: #686f79;
+  margin-right: 5px;
+  font-size: 14px;
+  background: url("/assets/tags-bg-44d14ab0574bc89385594b9379aa36b8be32c9fa37139eded8dbab745a640f24.png") left top repeat-x;
+  float: left;
+}
+
+/* line 528, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.reviewing {
+  font-style: italic;
+}
+
+/* line 531, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.load-more {
+  text-align: center;
+}
+
+/* line 534, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.load-more a {
+  color: #404450;
+  font-size: 24px;
+}
+
+/* line 538, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.load-more a:hover {
+  text-decoration: none;
+}
+
+/* line 541, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.load-more span {
+  display: block;
+}
+
+/* line 544, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.left-body {
+  float: left;
+  width: 100%;
+}
+
+/* line 548, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.left-body h2 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #404450;
+  border-bottom: 1px solid #dce3ee;
+  padding-bottom: 35px;
+  margin-bottom: 15px;
+}
+
+/* line 556, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.left-body h2 span {
+  font-size: 30px;
+  color: #e0694c;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* line 562, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav {
+  float: left;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+/* line 567, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul {
+  float: left;
+}
+
+/* line 570, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul li {
+  float: left;
+}
+
+/* line 573, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul li a:hover, .bounty-nav ul li a:focus, .bounty-nav ul li a {
+  color: #c5cdd9;
+  background-color: transparent;
+  outline: none;
+  padding: 5px 7px;
+}
+
+/* line 579, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul li a span {
+  display: inline-block;
+  margin-left: 13px;
+}
+
+/* line 583, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul li.active-hover a {
+  color: #e0694c;
+}
+
+/* line 586, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav ul li.active a {
+  background: #34353f;
+  color: #fff;
+}
+
+/* line 590, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn-simple {
+  background: #dae1ec;
+  color: #34353f;
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid #bdc9db;
+  border-radius: 0px;
+}
+
+/* line 598, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-nav .btn-simple {
+  padding: 10px 33px;
+}
+
+/* line 601, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.body-contant {
+  float: left;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+/* line 606, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.body-contant p {
+  margin-bottom: 33px;
+  line-height: 25px;
+}
+
+/***** Comment Header *******/
+/* line 612, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.post-header {
+  float: left;
+  width: 100%;
+}
+
+/* line 616, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-info {
+  float: left;
+  width: 100%;
+}
+
+/* line 620, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-info a {
+  color: #dae1ec;
+}
+
+/* line 623, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-info a span {
+  color: #34353f;
+  font-weight: 700;
+  margin: 0px;
+}
+
+/* line 628, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-info a img {
+  display: inline-block;
+  border: 2px solid #dae1ec;
+  margin-right: 5px;
+}
+
+/* line 633, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-info span {
+  margin-left: 10px;
+  color: #dae1ec;
+}
+
+/***** post *******/
+/* line 639, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.comment-nav {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* line 644, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.comment-nav ul li {
+  float: left;
+  margin-left: 5px;
+}
+
+/* line 648, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.comment-nav ul li a, .comment-nav ul li a:hover, .comment-nav ul li a:focus {
+  background: url("/assets/pattren-bg-27fa2da3c95eed6bbdd110a8c166942f83e9eb4b537ee1ef04fb1256c8ebcd1d.png") center top repeat;
+  color: #686f79;
+  outline: none;
+}
+
+/* line 653, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.edit-nav {
+  margin-bottom: 35px;
+  float: left;
+  width: 100%;
+}
+
+/* line 658, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.edit-nav ul li {
+  float: left;
+}
+
+/* line 661, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.edit-nav ul li a, .edit-nav ul li a:hover, .edit-nav ul li a:focus {
+  background: none;
+  padding: 5px;
+}
+
+/* line 665, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.edit-nav ul li a img {
+  border: 0px;
+}
+
+/******** post body *********/
+/* line 670, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.post-body {
+  padding: 25px 30px 15px;
+  background: url("/assets/pattren-bg-27fa2da3c95eed6bbdd110a8c166942f83e9eb4b537ee1ef04fb1256c8ebcd1d.png") left top repeat;
+  width: 100%;
+  float: left;
+}
+
+/* line 676, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.post-body h3 {
+  font-size: 20px;
+  color: #404450;
+  margin-bottom: 30px;
+}
+
+/* line 681, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.post-body h3 span {
+  color: #e0694c;
+}
+
+/* line 684, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.post-body p {
+  color: #34353f;
+  margin-bottom: 30px;
+  line-height: 25px;
+}
+
+/****** danger box *******/
+/* line 691, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.danger-box {
+  background: #fbf5f3;
+  border: 1px solid #e7ddd9;
+  float: left;
+  width: 100%;
+  margin-bottom: 35px;
+  padding: 45px;
+}
+
+/* line 699, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.danger-box code {
+  display: block;
+  color: #34353f;
+  background: none;
+}
+
+/* line 704, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.danger-box p {
+  margin-bottom: 0px;
+  color: #34353f;
+  font-size: 14px;
+}
+
+/* line 709, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.danger-box p span {
+  color: #999999;
+}
+
+/* line 712, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.line {
+  margin: 3px 0 5px;
+  width: 100%;
+  float: left;
+}
+
+/* line 717, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.rejection-panel {
+  float: left;
+  width: 100%;
+  margin-bottom: 55px;
+  padding: 25px 30px 15px;
+  background: url("/assets/radish-pattren-bg-523b84d221668f6638d302a59f472ae2a70f0e1fa16cdf42e940b228c414db84.png") left top repeat;
+}
+
+/* line 724, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.rejection-panel h3 {
+  font-size: 20px;
+  color: #404450;
+  margin-bottom: 30px;
+}
+
+/* line 729, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.rejection-panel h3 span {
+  color: #e0694c;
+}
+
+/* line 732, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.btn-red {
+  color: #fff;
+  border: 0px;
+  background: #e3785e;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 10px 13px;
+  border-radius: 0px;
+}
+
+/******* user working bounty ********/
+/* line 743, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-bounty {
+  padding: 15px;
+  float: left;
+  width: 100%;
+  background: url("/assets/pattren-bg-27fa2da3c95eed6bbdd110a8c166942f83e9eb4b537ee1ef04fb1256c8ebcd1d.png") left top repeat;
+  margin-bottom: 30px;
+}
+
+/* line 750, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-bounty h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #404450;
+  margin: 0px;
+  padding: 0px;
+}
+
+/********** Comments Panel *********/
+/* line 759, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.commtent-panel {
+  float: left;
+  width: 100%;
+}
+
+/* line 763, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.start-chat {
+  background: url("/assets/chat-icon-993d3b45aafc8cf60887511557b0aad7fd315d5de51636938cdddb138cb0d8a8.png") left center no-repeat;
+  padding-left: 25px;
+  margin-left: 10px;
+}
+
+/* line 768, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.start-chat:hover, .start-chat:focus {
+  text-decoration: none;
+  background: url("/assets/chat-icon-hov-b0b7f98c0cbab41017a5cb066cf4ded50786c5adcff802f73424165a0518a2a1.png") left center no-repeat;
+}
+
+/* line 772, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-comment {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dce3ee;
+}
+
+/* line 777, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.rejected {
+  float: right;
+  margin-top: 12px;
+  display: none;
+}
+
+/* line 782, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.user-comment:hover .rejected {
+  display: block;
+}
+
+/* line 785, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.rejected a img {
+  border: 0px;
+}
+
+/*..........Bounty2_Answer_bounty...................*/
+/* line 789, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.main-heading {
+  color: #404450;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+  line-height: 43px;
+  margin-bottom: 20px;
+}
+
+/* line 797, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.main-heading span {
+  color: #e0694c;
+  position: relative;
+}
+
+/* line 801, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.main-heading span::after {
+  border-bottom: 5px solid #e0694c;
+  position: absolute;
+  content: '';
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 4px;
+  bottom: -10px;
+}
+
+/* line 811, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.warning-message {
+  background: url("/assets/warning-icon-f979f6ae8b003a058637d406d7fa26600506e375f31c5d594ae07afe7321eba3.png") left top no-repeat;
+  padding-left: 30px;
+  color: #34353f;
+}
+
+/*.............Bounty Looged...........*/
+/* line 817, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-reviwing {
+  float: right;
+  color: #34353f;
+  background: url("/assets/rewing-9fb58afc62664f97ae04dbb64cd67296d173703187a824765ea7633e234b6c81.png") left 2px no-repeat;
+  padding-left: 24px;
+  margin-top: 20px;
+}
+
+/* line 824, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+.bounty-reviwing.bounty-dropped {
+  background: url("/assets/crose-icon-a0c49cf2d083d492b266561e8fd48a127b6b310b43df47bbc20e270e590f4f55.png") left 2px no-repeat;
+}
+
+/*.............Bounty Looged...........*/
+/*.............Start Media Queries...........*/
+/*....Sh Home page..*/
+@media only screen and (max-width: 980px) {
+  /* line 831, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-header .open-bounties-price {
+    float: none;
+    display: block;
+  }
+
+  /* line 835, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-header h3 {
+    padding-left: 0px;
+    margin-bottom: 0px;
+  }
+
+  /* line 839, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-desc {
+    margin-bottom: 20px;
+  }
+
+  /* line 842, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-tags {
+    float: left;
+  }
+
+  /* line 845, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .warning-message {
+    display: block;
+    margin-top: 10px;
+  }
+}
+/*....Sh Home page..*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 852, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .nav.navbar-nav li a {
+    font-size: 13px;
+    padding-left: 14px;
+    padding-right: 15px;
+  }
+
+  /* line 857, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .navbar-form .form-control {
+    max-width: 200px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  /* line 862, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .navbar-default .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* line 866, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .nav.navbar-nav {
+    margin: 0px;
+    width: 100%;
+  }
+
+  /* line 870, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .navbar-form {
+    float: left;
+    width: 100%;
+  }
+
+  /* line 874, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .nav.navbar-nav {
+    width: 100%;
+  }
+
+  /* line 877, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .navbar-form {
+    padding-left: 40px;
+    border-bottom: 0;
+  }
+
+  /* line 881, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  footer .pull-right {
+    float: left !important;
+  }
+
+  /*....Sh Home page..*/
+  /* line 885, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-list {
+    margin: 10px 0px 20px;
+  }
+
+  /* line 888, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .open-bounties-tags a {
+    margin-bottom: 5px;
+    display: inline-block;
+    float: none;
+  }
+
+  /* line 893, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .tab-content {
+    padding: 10px 0;
+  }
+
+  /* line 896, /Users/maorkern/Documents/Development Projects/BountyFiles/bounty/app/assets/stylesheets/style.scss */
+  .comment-nav .nav {
+    float: left !important;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}

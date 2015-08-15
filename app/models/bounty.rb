@@ -16,6 +16,9 @@ class Bounty < ActiveRecord::Base
 	validates :price, :numericality => { :greater_than => 0}
 
 	validate :poster_can_afford
+
+	scope :search, -> (field, text) { where("#{field} LIKE ?", "%#{text}%") }
+
 	private
 		def change_user_balance
 			poster = self.poster

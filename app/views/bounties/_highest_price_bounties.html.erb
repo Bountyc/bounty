@@ -5,7 +5,7 @@
             <ul>
               <% @highest_paying_bounties.each do |b| %>
               <li><%= b.title %><span>$<%= b.price %></span></li>
-              <%= link_to "Bounty",bounty_path(b.id) %>            
+              <%= link_to b.title + "$" + b.price.to_s  ,bounty_path(b.id) %>            
               <% end %>
             </ul>
           </div>

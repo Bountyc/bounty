@@ -50,14 +50,14 @@
     </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Bounties</a></li>
+          <li><%= link_to "Bounties", bounties_path %></li>
           <li><a href="#">Tags</a></li>
           <li><a href="#">Users</a></li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <input type="text" class="form-control" placeholder="search bounties...">
-          <a href="#">advanced search</a>
-        </form>
+        <%= form_tag( bounties_path,:method => "get", :class => 'navbar-form navbar-right') do %>
+          <%= text_field_tag('search_text', params[:search_text], class: 'form-control', placeholder: "search bounties...") %>
+          <!--<a href="#">advanced search</a>-->
+        <% end %>
       </div>
       <!--/.nav-collapse --> 
     </div>
@@ -68,16 +68,16 @@
 <%= yield %>
 
 <!-- /container -->
-<footer>
+<!--<footer>
   <div class="container">
     <div class="row">
       <div class="col-sm-4"> <a class="btn btn-default footer-btn" href="#" role="button">Creat a Bounty</a> </div>
       <div class="col-sm-8">
-        <div class="pull-right mt9"> <a href="#"><img src="images/footer-log.jpg" alt="" ></a> © 2015    -    All rights reserved. </div>
+        <div class="pull-right mt9"> <a href="#"><%= image_tag("footer-log.jpg")%></a> © 2015    -    All rights reserved. </div>
       </div>
     </div>
   </div>
-</footer>  
+</footer>  -->
 <!-- Placed at the end of the document so the pages load faster --> 
 <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
 
