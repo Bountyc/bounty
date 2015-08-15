@@ -56,11 +56,12 @@ end
 
 group :test do
   gem 'simplecov'
-  #gem 'pg'
+  gem 'pg'
 end
 
 group :production do 
-  #gem 'pg'
+  gem 'pg'
+  gem 'rails_12factor', group: :production
 end
 
 group :development do
