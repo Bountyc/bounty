@@ -1,4 +1,4 @@
-<%= form_for(@bounty) do |f| %>
+<!--<%= form_for(@bounty) do |f| %>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -14,4 +14,161 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %>-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="left-side">
+        <%= form_for(@bounty) do |f| %>
+          <div class="form-group">
+            <%= f.label :title, :class => "control-label" %>
+            <%= f.text_field :title, :class => "form-control", :id => "title" %>
+          </div>
+          <div class="form-group">
+            <!--<label class="control-label" for="desc">Description</label>-->
+            <div id="wmd-editor" class="wmd-panel">
+              <div id="wmd-button-bar"></div>
+              <%= f.text_area :description, :id=>"wmd-input" %>
+
+              <div id="wmd-preview" style="border:none">
+                
+              </div>
+              <div id="wmd-output" class="wmd-panel" style="display:none">
+                <h4>Script</h4>
+              </div>
+            </div>
+          </div>
+          <!--<div class="form-group">
+            <label class="control-label" for="title">Attach Files</label>
+            <div class="clearfix"></div>
+            <input type="file" name="file" style="display:none;" id="pdffile" />
+            <div class="input-append"> 
+              <input type="text" id="subfile" class="form-control">
+              <a class="btn btn-file" onclick="$('#pdffile').click();">Browse</a> </div>
+          </div>-->
+          <div class="form-group">
+            <label class="control-label" for="title">Tags</label>
+            <%= f.select(:tags, [['javascript'],
+                                  ['javascript2'],
+                                  ['javascript3'],
+                                  ['javascript4'],
+                                  ['javascript5']
+                                 ],{ :prompt => ""},
+                                   { :multiple => true, :size => 6, :class => "chosen-select-width" }
+                                 ) %>
+            
+          </div>
+          <div class="form-group">
+            <div class="set-deadline">
+              <!--<label class="mb15">
+                <input type="checkbox">
+                Set Deadline copy</label>-->
+              <div class="set-deadline-opt">
+                <!--<input type="text" class="form-control w66 text-center pull-left">
+                <div class="select-option">
+                  <select data-placeholder="Hour"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>-->
+                <div class="clr"></div>
+                <label> Set Bounty Ammount</label>
+                <p>
+                  <%= f.number_field :price, :id => "spinner" %>
+                  <%= f.label :price, "USD" %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr class="line">
+          <%= button_tag("Post Bounty", type: 'submit', class: "btn btn-default custom-btn") %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="video"> <%= image_tag("video-image.jpg", :alt => "Video", :class => "block-img") %></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="custom-list">
+            <h3><span><%= image_tag("dolor-icon.png", :class => "dolor-icon") %>Highest Price Bounties</span></h3>
+            <ul>
+              <li>Apache module request_rec->args can't handle url encoded entiti<span>$59</span></li>
+              <li>cant get a code to work properly python retail item <span>$50 </span></li>
+              <li>asp.net c# Wonderware InTouch scada <span>$45 </span></li>
+              <li>Android Yahoo Aviate Launcher Page Swipe Effects <span>$42 </span></li>
+              <li>InvalidStateError in internet explorer 11 during blob creation <span>$41 </span></li>
+              <li>cannot initialize Grails 3.0.1 app in IntelliJ 14.1 <span>$39 </span></li>
+              <li>The host path of the shared folder is missing: path/to/file Mac <span>$39 </span></li>
+              <li>SQL Performance involving Full Text Index <span>$37 </span></li>
+              <li>Disable browser password save on redirect <span>$36 </span></li>
+              <li>problems with redirection and cookies, scrapy redirect 302 <span>$35 </span></li>
+            </ul>
+          </div>
+          <div class="custom-list most-veiwed">
+            <h3><span><%= image_tag("eye-icon.png", :class => "dolor-icon") %>Most Viewed Bounties</span></h3>
+            <ul>
+              <li>Twig: Slug with Regex in Twig?<span>321</span></li>
+              <li>Mysql can't get data of my parent in a subquery <span>287</span></li>
+              <li>Is it possible to rename a qt sub window? <span>265</span></li>
+              <li>Can't deduce template type <span>261</span></li>
+              <li>Batch File To Dynamically Create New Directory Based on Date <span>257</span></li>
+              <li>Net::SSH::Perl Permission denied <span>232</span></li>
+              <li>MCV Use RenderPartial to access class List <span>231</span></li>
+              <li>Generic extension method refactor <span>229</span></li>
+              <li>Loop within function in a cursor <span>223</span></li>
+              <li>Trying to find a way to secure a client certificate from steali <span>219</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'wmd', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'chosen.jquery', 'data-turbolinks-track' => true %>
+
+<script type="text/javascript">
+
+ var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+  
+$('#pdffile').change(function(){
+     $('#subfile').val($(this).val());
+});
+
+
+</script> 
+<script type="text/javascript"> 
+    var config = {
+      '.chzn-select'           : {},
+      '.chzn-select-deselect'  : {allow_single_deselect:true},
+      '.chzn-select-no-single' : {disable_search_threshold:10},
+      '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chzn-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+
+ $(function() {
+    var spinner = $( "#spinner" ).spinner();
+ });
+  </script>

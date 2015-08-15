@@ -49,6 +49,8 @@ group :development, :test do
 
   gem 'rename'
 
+  gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 end
 
 group :test do
