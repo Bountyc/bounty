@@ -36,9 +36,9 @@ class BountiesController < ApplicationController
   		@user_role = :poster
   	elsif current_user
   		if @bounty.hunters.include? current_user
-  			bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
+  			@bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
 
-  			@user_role = bounty_hunter_relation_object.status.to_sym
+  			@user_role = @bounty_hunter_relation_object.status.to_sym
   		else
   			@user_role = :hunter
   		end
