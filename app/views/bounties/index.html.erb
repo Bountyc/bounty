@@ -1,15 +1,32 @@
-<% @bounties.each do |bounty| %>
-	<p>
-	title: <%= bounty.title %>
-	<br>
-	description: <%= bounty.description %>
-	<br>
-	</p>
-<% end %>
 
 
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="left-side">
 
-<br><br><br>
-Viewer: <% if @signed_in_user %>
-<%= @signed_in_user.email %>
-<% end %>
+				<ul class="nav nav-tabs nav-justified">
+					<li class="active"> <a  href="#tab1" data-toggle="tab">Open Bounties</a> </li>
+					<li><a href="#tab2" data-toggle="tab">Resolved Bounties</a> </li>
+					<li><a href="#tab3" data-toggle="tab">My Bounties</a> </li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active fade in" id="tab1">
+						<%= render "bounties/preview_list",bounty_list: @open_bounties, total_bounty_list_count: @open_bounties_count %>
+					</div>
+
+					<div class="tab-pane fade" id="tab2">
+						<%= render "bounties/preview_list",bounty_list: @resolved_bounties, total_bounty_list_count: @resolved_bounties_count %>
+					</div>
+
+
+					<div class="tab-pane fade" id="tab3">
+						<%= render "bounties/preview_list",bounty_list: @my_bounties, total_bounty_list_count: @my_bounties_count %>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<%= render "bounties/highest_bounties"%>
+	</div>
+</div>

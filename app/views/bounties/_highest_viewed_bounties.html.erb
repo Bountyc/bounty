@@ -3,7 +3,9 @@
             <h3><span><%= image_tag("eye-icon.png", :class => "dolor-icon") %>Most Viewed Bounties</span></h3>
             <ul>
               <% @highest_viewed_bounties.each do |b| %>
-              <li><%= b.title %><span>$<%= b.price %></span></li>
+              <li>
+                <%= b.title %><span>$<%= b.price %></span>
+              </li>
               
               <% end %>
             </ul>

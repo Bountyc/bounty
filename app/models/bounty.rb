@@ -17,6 +17,8 @@ class Bounty < ActiveRecord::Base
 
 	validate :poster_can_afford
 
+	scope :search, -> (field, text) { where("#{field} LIKE ?", "%#{text}%") }
+
 	def working_users
 		return User.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.bounty_id = ?", [self.id])
 	end

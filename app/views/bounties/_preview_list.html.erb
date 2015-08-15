@@ -1,0 +1,7 @@
+<% bounty_list.each do |bounty| %>
+            <%= render "bounties/preview_bounty",bounty: bounty%>
+            <% end %>
+        	
+        	<% if total_bounty_list_count > 10 %>
+            <div class="load-more"> <a href="#">Load More Bounties <span><%= image_tag("load-more-icon.png") %></span> </a> </div>
+            <% end %>
