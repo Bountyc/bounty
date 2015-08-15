@@ -22,6 +22,11 @@
 </head>
 <body>
 <header>
+	<% if !flash[:error].nil? %>
+		<div style="width: 100%; height:50px; background-color:#B00000; text-align:center; line-height: 50px; color:white;font-family: Comic Sans MS;font-size: 17px;">
+			<%= flash[:error] %>
+		</div>
+	<% end %>
   <div class="container">
     <div class="logo"> <a href="#"><%= image_tag("logo.jpg", :alt => "rss feed") %></div>
     <div class="right-content after-sign-in">
@@ -73,8 +78,6 @@
   </div>
 </footer>  
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
-<%= javascript_include_tag 'jquery-ui', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
 
 

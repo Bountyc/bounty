@@ -47,8 +47,7 @@ class BountiesController < ApplicationController
   	if @bounty.save
 		redirect_to @bounty, notice: 'Bounty was successfully created.'
     else
-
-        render plain: @bounty.errors.full_messages.join(", ")
+        render :new
     end
   end
 
