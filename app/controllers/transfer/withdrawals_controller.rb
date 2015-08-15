@@ -4,6 +4,8 @@ module Transfer
 		before_action :define_user
 
 		def create
+			current_user.reload_balance
+
 			withdrawal = Withdrawal.new
 			withdrawal.amount = params[:amount]
 			withdrawal.user = current_user
@@ -14,7 +16,7 @@ module Transfer
 				render :plain => "Don't. Just don't. You seriously thought that would work? Well fuck you cause I'm smarter then you and I fucked your mom so stfu."
 				return
 			end
-			@payout = Payout.new(
+			@payout = PayPal::SDK::REST::Payout.new(
 			  {
 			    :sender_batch_header => {
 			      :sender_batch_id => SecureRandom.hex(8),
@@ -42,10 +44,13 @@ module Transfer
 
 			  current_user.balance -= withdrawal.amount
 			  current_user.save
-			  
+
 			  logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
 			rescue ResourceNotFound => err
 			  logger.error @payout.error.inspect
+			end
+
+			render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
 		end
 
 		

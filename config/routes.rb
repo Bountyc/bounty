@@ -15,6 +15,11 @@ Rails.application.routes.draw do
         get "create"
       end
     end
+    resources :withdrawals do
+      collection do 
+        get "create"
+      end
+    end
   end
   resources :answers
   # The priority is based upon order of creation: first created -> highest priority.

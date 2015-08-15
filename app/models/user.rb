@@ -27,10 +27,19 @@ class User < ActiveRecord::Base
 		end
 
 		total_bounties_won_amount = 0
-		self.hunting_bounties.each do |hunting_bounty|
-			if hunting_bounty.status == :approved
-				
+		self.bounty_hunters.each do |hunting_bounty|
+			if hunting_bounty.approved?
+				total_bounties_won_amount += hunting_bounty.bounty.price
 			end
 		end
+
+		total_bounties_lost_amount = 0
+		self.bounties.each do |bounty|
+			total_bounties_lost_amount += bounty.price
+		end
+
+		self.balance = total_payments + total_bounties_won_amount - total_withdrawals - total_bounties_lost_amount
+		self.save
+		self.balance
 	end
 end
