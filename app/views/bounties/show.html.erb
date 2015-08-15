@@ -49,7 +49,7 @@
 
           <% elsif @bounty.status == "pending" %>
           
-          <%= render 'answers/pending', {text: @bounty.pending_answer, role: @user_role} %>
+          <%= render 'answers/pending_answer', {text: @bounty.pending_answer, role: @user_role} %>
 
           <% elsif @bounty.status == "closed" %>
           <%= render 'answers/solved', {text: @bounty.approved_answer} %>

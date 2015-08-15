@@ -11,7 +11,8 @@ module ApplicationHelper
 	    extensions = {
 	      autolink:           true,
 	      superscript:        true,
-	      disable_indented_code_blocks: true
+	      fenced_code_blocks: true,
+	      quote: true
 	    }
 
 	    renderer = Redcarpet::Render::HTML.new(options)
