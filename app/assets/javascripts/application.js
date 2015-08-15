@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require assets_pipeline
 //= require_tree .
 //= stub bootstrap.min
