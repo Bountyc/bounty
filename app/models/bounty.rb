@@ -27,6 +27,24 @@ class Bounty < ActiveRecord::Base
 		return self.bounty_hunters.where(status: 0)
 	end
 
+	def pending_answer
+		bh = self.bounty_hunters.find_by_status(1)
+		if bh.nil?
+			return nil
+		else
+			return bh.answer
+		end
+	end
+
+	def approved_answer
+		bh = self.bounty_hunters.find_by_status(2)
+		if bh.nil?
+			return nil
+		else
+			return bh.answer
+		end
+	end
+
 	private
 		def change_user_balance
 			poster = self.poster

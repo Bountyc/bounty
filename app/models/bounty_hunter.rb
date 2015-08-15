@@ -5,6 +5,6 @@ class BountyHunter < ActiveRecord::Base
 	belongs_to :bounty
 	belongs_to :answer
 
-	enum status: [:working, :requesting, :denied, :approved]
+	enum status: [:working, :pending, :denied, :approved]
 
 end

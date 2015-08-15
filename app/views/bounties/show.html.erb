@@ -14,9 +14,11 @@
         </div>
         <div class="body-contant">
           <%= render "partials/code_view", text: @bounty.description %>
+          <%= @bounty.status %>
+          <br>
+          <%= @user_role %>
         </div>
         
-        <p class="mb30">Has anyone faced this problem before? How do I fix this?</p>
         <div class="post-header">
           <div class="row">
             <div class="user-info">
@@ -41,47 +43,30 @@
             </div>
           </div>
         </div>
-        <div class="post-body">
-          <h3><%= image_tag "comment-icon.png" %> Resolution is <span>REJECTED</span></h3>
-          <p>Parse has great PHP docs that can help here. Because you are using a custom push notification handler in Android, the default Push code won't likely work for you. </p>
-          <p> One of the things to look at is the Parse Query to the "_Installation" object. </p>
-          <p> Your code would be:</p>
-          <div class="danger-box"> <code> $query = new ParseQuery("_Installation"); // or try ParseInstallation()?</code> <code>$query->equalTo("objectId", $yourObjectId);</code> <code>$result = $query->first();</code> <code>if ($result->get("deviceType") == "android") {</code> <code class="ml8"> // we are Android</code> <code> } else {</code> <code class="ml8"> // we are iOS</code> <code> } </code> </div>
-          <p> It would help to know what other data you have on the Installation prior to the push. If you have objectId, that makes this code work. If you have an array of channels, you'll need to select users in those channels, and then foreach over the array, grab the objectId, and make a query that way. </p>
-          <p> Happy to explain if you leave a comment letting me know one way or the other. </p>
-          <div class="comments-header">
-            <div class="row">
-              <div class="user-info">
-                <div class="col-sm-6">
-                  <div class="user-image"> <a href="#"> <%= image_tag "user-image-2.jpg", alt: "Image" %> by <span>Tom Morgan </span> </a> <span> - </span> <span> 34 mins ago copy</span> </div>
-                </div>
-                <div class="col-sm-6 mt10">
-                  <div class="edit-nav mb0">
-                    <ul class="nav pull-right">
-                      <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+        <% if @bounty.status == "open" and (@user_role == :hunter or @user_role == :working)%>
+          <%= render 'answers/answer', {bounty: @bounty.id} %>
+
+        <% elsif @bounty.status == "pending" %>
+          <%= render 'answers/pending', {text: @bounty.pending_answer, role: @user_role} %>
+
+        <% elsif @bounty.status == "closed" %>
+          <%= render 'answers/solved', {text: @bounty.approved_answer} %>
+        <% end %>
+
+        <% unless @bounty.status == "closed" %>
+          <div class="user-bounty">
+            <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
           </div>
-        </div>
-        <div class="line"></div>
-        <div class="rejection-panel">
-          <h3><%= image_tag "error-icon.png" %> Reason for <span>REJECTION</span></h3>
-          <p>This sulution was tried and it did not worked.  It gave an error that mess up everything else. I don’t think this was the right approach to my problem. Sorry, but I will wait for another solution.</p>
-          <a href="#" class="btn btn-red"> DISPUTE </a> </div>
-        <div class="user-bounty">
-          <h3><%= @working_bounty_hunters.count %> Users working on this bounty</h3>
-        </div>
-        <div class="commtent-panel">
-          <% @working_bounty_hunters.each do |bounty_hunter| %>
-            <div class="user-info user-comment">
-              <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for <%=time_differance_string(Time.now - bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
+          <div class="commtent-panel">
+            <% @working_bounty_hunters.each do |bounty_hunter| %>
+              <div class="user-info user-comment">
+                <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for <%=time_differance_string(Time.now - bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="clr"></div>
     </div>
