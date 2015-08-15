@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
   resources :answers do
     member do
-      put "approve_answer"
-      put "deny_answer"
+      put "approve"
+      put "deny"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
