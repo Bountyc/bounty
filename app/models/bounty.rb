@@ -11,7 +11,9 @@ class Bounty < ActiveRecord::Base
 
 	after_create :change_user_balance
 
-	validates :price, presence: true
+	validates_presence_of [:price, :title, :description]
+	validates :price, :numericality => { :greater_than => 0}
+
 	validate :poster_can_afford
 
 	private

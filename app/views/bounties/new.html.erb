@@ -22,9 +22,21 @@
     <div class="col-sm-8">
       <div class="left-side">
         <%= form_for(@bounty) do |f| %>
+
+        <!-- display errors -->
+        <% if @bounty.errors.any? %>
+          <% @bounty.errors.full_messages.each do |message| %>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <%= message %>
+            </div>
+          <% end %>
+        <% end %>
+
           <div class="form-group">
             <%= f.label :title, :class => "control-label" %>
-            <%= f.text_field :title, :class => "form-control", :id => "title" %>
+            <%= f.text_field :title, :class => "form-control", :id => "title", :required => true%>
           </div>
           <div class="form-group">
             <!--<label class="control-label" for="desc">Description</label>-->
@@ -79,7 +91,7 @@
                 <div class="clr"></div>
                 <label> Set Bounty Ammount</label>
                 <p>
-                  <%= f.number_field :price, :id => "spinner" %>
+                  <%= f.number_field :price, :id => "spinner", :required => true, :min => 0 %>
                   <%= f.label :price, "USD" %>
                 </p>
               </div>
