@@ -1,0 +1,10 @@
+<div class="post-body accepted-bounty-bg">
+  <h3><%= image_tag "comment-icon.png" %>
+  <% if @user_role == :pending %>
+  	You're resolution is
+  <% else %>
+  	Resolution is
+  <% end %>
+  <span>APPROVED</span></h3>
+  <%= markdown(@bounty.approved_answer.description) %>
+</div>

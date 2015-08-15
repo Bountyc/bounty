@@ -37,7 +37,7 @@ class Bounty < ActiveRecord::Base
 	end
 
 	def approved_answer
-		bh = self.bounty_hunters.find_by_status(2)
+		bh = self.bounty_hunters.find_by_status(3)
 		if bh.nil?
 			return nil
 		else
