@@ -21,7 +21,12 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :answers
+  resources :answers do
+    member do
+      put "approve_answer"
+      put "deny_answer"
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

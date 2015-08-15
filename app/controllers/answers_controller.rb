@@ -28,16 +28,16 @@ class AnswersController < ApplicationController
 		redirect_to :back
 	end
 
-	def approve_answer
-		answer = Answer.find params[:answer_id]
+	def approve
+		answer = Answer.find params[:id]
 		
 		#make sure user owns the bounty related to this question
 		if current_user.bounties.include? answer.bounty
 			answer.bounty.closed!
 			answer.bounty_hunter.approved!
 
-			answer.user.reload_balance
-			current_user.reload_balance
+			# answer.user.reload_balance
+			# current_user.reload_balance
 
 			answer.save
 
@@ -48,10 +48,12 @@ class AnswersController < ApplicationController
 			notification.message = "just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
 			notification.save
 		end
+
+		redirect_to :back
 	end
 
-	def deny_answer
-		answer = Answer.find params[:answer_id]
+	def deny
+		answer = Answer.find params[:id]
 		denial_reason = params[:denial_reason]
 
 		#make sure user owns the bounty related to this question
@@ -72,6 +74,8 @@ class AnswersController < ApplicationController
 			notification.save
 
 		end
+
+		redirect_to :back
 	end
 
 	private
