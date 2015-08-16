@@ -64,7 +64,7 @@
           <div class="commtent-panel">
             <% @working_bounty_hunters.each do |bounty_hunter| %>
             <div class="user-info user-comment">
-              <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for <%=time_differance_string(Time.now - bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
+              <div class="user-image"> <a href="#"> <%= image_tag "user-image-3.jpg", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for about <%= time_ago_in_words(bounty_hunter.started_working_at)%></span><a href="#"  class="start-chat"><span>Start a chat</span></a>
               </div>
             </div>
             <% end %>
