@@ -1,3 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class AnswersController < ApplicationController
 	def create
 		@answer = Answer.new(answer_params)
