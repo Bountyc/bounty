@@ -53,6 +53,7 @@ class Bounty < ActiveRecord::Base
 		end
 
 		def poster_can_afford
+			self.poster.reload_balance
 			if self.poster.balance - self.price < 0.0
 				errors.add(:price, "is not affordable")
 			end
