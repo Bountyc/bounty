@@ -176,7 +176,7 @@ header {
 	min-height: 47px;
 }
 .navbar-form .form-control {
-	background: #f1f4f9 url(asset_path('search-icon.png')) 96% 5px no-repeat;
+	background: #f1f4f9 image-url('search-icon.png') 96% 5px no-repeat;
 	border: 1px solid #d5dae2;
 	border-radius: 0;
 	box-shadow: none;
@@ -255,7 +255,7 @@ input, .input-append {
 .chosen-container-multi .chosen-choices li.search-choice {
 	border: none;
 	padding: 8px 25px 6px 13px;
-	background: url(asset_path('tags-bg.png')) left top repeat-x;
+	background: image-url('tags-bg.png') left top repeat-x;
 }
 .chosen-container-multi .chosen-choices li.seaSrch-choice span {
 	color: #686f79;
@@ -289,7 +289,7 @@ input, .input-append {
 	line-height: 34px;
 }
 .chosen-container-single .chosen-single div b {
-	background: url(asset_path('down-arrow.jpg')) left no-repeat;
+	background: image-url('down-arrow.jpg') left no-repeat;
 }
 .chosen-search {
 	display: none;
@@ -312,10 +312,10 @@ input, .input-append {
 	font-weight: 700;
 }
 .ui-icon-triangle-1-n {
-	background: url(asset_path('toparrow.png')) left 5px no-repeat !important;
+	background: image-url('toparrow.png') left 5px no-repeat !important;
 }
 .ui-spinner .ui-icon-triangle-1-s {
-	background: url(asset_path('down-arrow.png')) left top no-repeat;
+	background: image-url('down-arrow.png') left top no-repeat;
 }
 .set-deadline label {
 	margin-bottom: 5px;
@@ -390,7 +390,7 @@ footer .pull-right a {
 }
 /*..........Index.............*/
 .jumbotron {
-	background: url(asset_path('banner.jpg')) left top no-repeat;
+	background: image-url('banner.jpg') left top no-repeat;
 	background-size: cover;
 	text-align: center;
 	color: #fff;
@@ -550,7 +550,7 @@ footer .pull-right a {
 	color: #686f79;
 	margin-right: 5px;
 	font-size: 14px;
-	background: url(asset_path('tags-bg.png')) left top repeat-x;
+	background: ('tags-bg.png') left top repeat-x;
 	float: left;
 }
 .reviewing {
@@ -674,7 +674,7 @@ footer .pull-right a {
 	margin-left: 5px;
 }
 .comment-nav ul li a, .comment-nav ul li a:hover, .comment-nav ul li a:focus {
-	background: url(asset_path('pattren-bg.png')) center top repeat;
+	background: image-url('pattren-bg.png') center top repeat;
 	color: #686f79;
 	outline: none;
 }
@@ -697,7 +697,7 @@ footer .pull-right a {
 
 .post-body {
 	padding: 25px 30px 15px;
-	background: url(asset_path('pattren-bg.png')) left top repeat;
+	background: image-url('pattren-bg.png') left top repeat;
 	width: 100%;
 	float: left;
 }
@@ -747,7 +747,7 @@ footer .pull-right a {
 	width: 100%;
 	margin-bottom: 55px;
 	padding: 25px 30px 15px;
-	background: url(asset_path('radish-pattren-bg.png')) left top repeat;
+	background: image-url('radish-pattren-bg.png') left top repeat;
 }
 .rejection-panel h3 {
 	font-size: 20px;
@@ -772,7 +772,7 @@ footer .pull-right a {
 	padding: 15px;
 	float: left;
 	width: 100%;
-	background: url(asset_path('pattren-bg.png')) left top repeat;
+	background: image-url('pattren-bg.png') left top repeat;
 	margin-bottom: 30px;
 }
 .user-bounty h3 {
@@ -789,13 +789,13 @@ footer .pull-right a {
 	width: 100%;
 }
 .start-chat {
-	background: url(asset_path('chat-icon.png')) left center no-repeat;
+	background: image-url('chat-icon.png') left center no-repeat;
 	padding-left: 25px;
 	margin-left: 10px;
 }
 .start-chat:hover, .start-chat:focus {
 	text-decoration: none;
-	background: url(asset_path('chat-icon-hov.png')) left center no-repeat;
+	background: image-url('chat-icon-hov.png') left center no-repeat;
 }
 .user-comment {
 	margin-top: 10px;
@@ -837,7 +837,7 @@ footer .pull-right a {
 	bottom: -10px;
 }
 .warning-message {
-	background: url(asset_path('warning-icon.png')) left top no-repeat;
+	background: image-url('warning-icon.png') left top no-repeat;
 	padding-left: 30px;
 	color: #34353f;
 }
@@ -845,12 +845,12 @@ footer .pull-right a {
 .bounty-reviwing {
 	float: right;
 	color: #34353f;
-	background: url(asset_path('rewing.png')) left 2px no-repeat;
+	background: image-url('rewing.png') left 2px no-repeat;
 	padding-left: 24px;
 	margin-top: 20px;
 }
 .bounty-reviwing.bounty-dropped {
-	background: url(asset_path('crose-icon.png')) left 2px no-repeat;
+	background: image-url('crose-icon.png') left 2px no-repeat;
 }
 /*.............Bounty Looged...........*/
 .notification-left h3 {
@@ -898,7 +898,6 @@ footer .pull-right a {
 /*.............bounty2_tags_inside_slice...........*/
 .tags-selection {
 	border-bottom: 1px solid #dce3ee;
- border-bottom:
 }
 .tags-selection .chosen-container-multi .chosen-choices {
 	border: none;
@@ -956,7 +955,7 @@ footer .pull-right a {
 .tabs a {
 	text-align: center;
 	text-decoration: none;
-	background: url(asset_path('pattren-bg.png')) left center;
+	background: image-url('pattren-bg.png') left center;
 	font-size: 16px;
 	color: #686f79;
 	padding: 10px 20px;
@@ -964,7 +963,7 @@ footer .pull-right a {
 }
 .tabs span {
 	text-align: center;
-	background: url(asset_path('tags-ul-li.jpg')) left center no-repeat;
+	background: image-url('tags-ul-li.jpg') left center no-repeat;
 	font-size: 14px;
 	color: #ced1d7;
 	padding: 0 30px;
@@ -1087,7 +1086,7 @@ footer .pull-right a {
 	line-height: 26px;
 }
 .tab-content .tab-pane .navbar-form .advance-search-overlay .select-lang .chosen-container-single .chosen-single div b {
-	background: transparent url(asset_path("../images/lang-arrow.png")) no-repeat scroll left center;
+	background: transparent image-url("/lang-arrow.png") no-repeat scroll left center;
 }
 .chosen-container {
 	width: 100% !important;
@@ -1205,7 +1204,7 @@ footer .pull-right a {
 .resolved-panel {
 	float: left;
 	width: 100%;
-	background: url(asset_path('pattren-bg.png')) left top repeat;
+	background: image-url('pattren-bg.png') left top repeat;
 	padding: 25px 15px 15px;
 }
 .resolved-panel ul li {
@@ -1451,10 +1450,10 @@ footer .pull-right a {
 	display: block;
 }
 .accepted-bounty-bg {
-	background: url(asset_path('accepted-bg.jpg')) left top repeat !important;
+	background: image-url('accepted-bg.jpg') left top repeat !important;
 }
 .bounty-nav ul li.bounty-state.open-lock {
-	background: #34353f url(asset_path('lock.jpg')) 10px center no-repeat;
+	background: #34353f image-url('lock.jpg') 10px center no-repeat;
 	padding-left: 25px;
 }
 .edit-nav ul li.accept a {
@@ -1511,7 +1510,7 @@ footer .pull-right a {
 }
 .nav.navbar-nav {
 	margin: 0px;
- width:100%:
+ 	width:100%;
 }
 .navbar-form {
 	float: left;
