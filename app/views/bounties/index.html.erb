@@ -8,7 +8,9 @@
 				<ul class="nav nav-tabs nav-justified">
 					<li class="active"> <a  href="#tab1" data-toggle="tab">Open Bounties</a> </li>
 					<li><a href="#tab2" data-toggle="tab">Resolved Bounties</a> </li>
-					<li><a href="#tab3" data-toggle="tab">My Bounties</a> </li>
+					<% if user_signed_in? %>
+						<li><a href="#tab3" data-toggle="tab">My Bounties</a> </li>
+					<% end %>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="tab1">
