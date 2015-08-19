@@ -12,10 +12,15 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="tab1">
+						<%= render "bounties/advanced_search" %>
 						<%= render "bounties/preview_list",bounty_list: @open_bounties, total_bounty_list_count: @open_bounties_count %>
 					</div>
 
 					<div class="tab-pane fade" id="tab2">
+			            <form class="navbar-form">
+			              <input type="text" class="form-control" placeholder="search bounties...">
+			              <a href="#">advanced search</a>
+			            </form>
 						<%= render "bounties/preview_list",bounty_list: @resolved_bounties, total_bounty_list_count: @resolved_bounties_count %>
 					</div>
 
