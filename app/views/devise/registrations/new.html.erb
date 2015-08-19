@@ -1,29 +1,85 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="container">
+  <div class="signuppanel">
+        
+        <div class="row">
+            
+            <div class="col-md-6">
+                
+                <div class="signup-info">
+                    <!-- logopanel -->
+                
+                    <div class="mb20"></div>
+                
+                    <h4 class="text-success">Easy to Customize</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna odio, varius id eros et, fermentum lobortis orci. Mauris egestas maximus vehicula. Proin ut dictum eros. </p>
+                    <p>Below are some of the benefits you can have when purchasing this template.</p>
+                    <div class="mb20"></div>
+                    
+                    <div class="feat-list">
+                        <h4 class="text-success">Easy to Customize</h4>
+                        <p>Maecenas rhoncus, ipsum non facilisis congue, erat neque porttitor neque, quis semper dui erat non libero. Praesent feugiat velit in risus dictum.</p>
+                    </div>
+                    
+                    
+              <button class="btn-facebook"> Register with Facebook</button>
+              <button class="btn-google-plus"> Register with Google+</button>
+              <br>
+              <p>By registering, you agree to the <a href="#">privacy policy and terms of service.</a></p>
+                
+                </div><!-- signup-info -->
+            
+            </div><!-- col-sm-6 -->
+            
+            <div class="col-md-6">
+                
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    
+                    <h3 class="nomargin">Sign Up</h3>
+                    <p class="mt5 mb20">Already a member? 
+                      <strong>
+                        <%= link_to "Sign In", new_session_path(resource_name) %>
+                      </strong>
+                    </p>
+                
+                    <label class="control-label">Name</label>
+                    <div class="row mb10">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="Firstname" />
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="Lastname" />
+                        </div>
+                    </div>
+                    
+                    <div class="mb10">
+                        <label class="control-label">Email</label>
+                        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                    </div>
+                    
+                    <div class="mb10">
+                        <label class="control-label">Password</label>
+                        <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                        <% end %><br />
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                    </div>
+                    
+                    <div class="mb10">
+                        <label class="control-label">Retype Password</label>
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                    </div>
+                    
+                   
+                    <br />
+                    
+                     <%= f.submit "Register", class: "btn-register" %>   
+                <% end %>
+            </div><!-- col-sm-6 -->
+            
+        </div><!-- row -->
+        
+        
+        
+    </div>
+</div>

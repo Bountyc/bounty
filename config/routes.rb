@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   root "bounties#index"
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   resources :bounties do
     member do
       get "add_working_user"
     end
   end
-  resources :users
   resources :tags
   namespace :transfer do 
     resources :payments do 
@@ -81,4 +83,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end

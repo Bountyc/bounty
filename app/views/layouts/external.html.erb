@@ -21,11 +21,7 @@
   	<%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= render "layouts/logged_in_header" %>
-<% else %>
-  <%= render "layouts/logged_out_header" %>
-<% end %>
+<%= render "layouts/logged_in_header" %>
 <%= yield %>
 
 <!-- /container -->
