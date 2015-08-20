@@ -9,7 +9,11 @@
 	                    <div class="open-bounties-desc"><%= bounty.working_users.count%> users working - by <span><%= bounty.poster.email %></span> - <%= time_ago_in_words(bounty.created_at) %> ago</div>
 	                  </div>
 	                  <div class="col-md-6">
-	                    <div class="open-bounties-tags"> <a href="#">javascript</a> <a href="#">html</a> <a href="#">css</a> <a href="#">html5</a> </div>
+	                    <div class="open-bounties-tags"> 
+	                    <% bounty.tags.each do |tag| %>
+	                    	<a href="#"><%= tag.name %></a>
+	                    <% end %>
+	                     </div>
 	                  </div>
 	                </div>
 	              </div>

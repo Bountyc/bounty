@@ -25,9 +25,9 @@
               <div class="col-sm-6">
                 <div class="comment-nav">
                   <ul class="nav pull-right">
-                    <li><a href="#">javascript </a></li>
-                    <li><a href="#"> css</a></li>
-                    <li><a href="#">html5 </a></li>
+                    <% @bounty.tags.each do |tag|%>
+                      <li><a href="#"> <%= tag.name %> </a></li>
+                    <% end %>
                   </ul>
                 </div>
                   <ul class="nav pull-right">
