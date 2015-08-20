@@ -1,8 +1,7 @@
 class Bounty < ActiveRecord::Base
-	
+	acts_as_taggable
 	has_many :bounty_hunters
 	has_many :hunters, through: :bounty_hunters
-	has_and_belongs_to_many :tags
 	has_many :views
 
 	has_many :answers, through: :bounty_hunters, source: :answer

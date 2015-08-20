@@ -53,7 +53,8 @@
             </div>
           </div>
           <!--<div class="form-group">
-            <label class="control-label" for="title">Attach Files</label>
+            <label class="control-label" 
+for="title">Attach Files</label>
             <div class="clearfix"></div>
             <input type="file" name="file" style="display:none;" id="pdffile" />
             <div class="input-append"> 
@@ -62,15 +63,7 @@
           </div>-->
           <div class="form-group">
             <label class="control-label" for="title">Tags</label>
-            <%= f.select(:tags, [['javascript'],
-                                  ['javascript2'],
-                                  ['javascript3'],
-                                  ['javascript4'],
-                                  ['javascript5']
-                                 ],{ :prompt => ""},
-                                   { :multiple => true, :size => 6, :class => "chosen-select-width" }
-                                 ) %>
-            
+            <%= f.text_field :tag_list, class: "form-control", id: "tagSelect"%>
           </div>
           <div class="form-group">
             <div class="set-deadline">
@@ -110,24 +103,11 @@
 <%= javascript_include_tag 'chosen.jquery', 'data-turbolinks-track' => true %>
 
 <script type="text/javascript">
-
- var config = {
-      '.chosen-select'           : {},
-      '.chosen-select-deselect'  : {allow_single_deselect:true},
-      '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-      '.chosen-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
-  
 $('#pdffile').change(function(){
      $('#subfile').val($(this).val());
 });
+</script>
 
-
-</script> 
 <script type="text/javascript"> 
     var config = {
       '.chzn-select'           : {},
@@ -139,8 +119,37 @@ $('#pdffile').change(function(){
     for (var selector in config) {
       $(selector).chosen(config[selector]);
     }
-
  $(function() {
     var spinner = $( "#spinner" ).spinner();
  });
+</script> 
+<script type="text/javascript"> 
+function format(item) { return item.id;}
+$('#tagSelect').select2({ 
+        tags: true,
+        tokenSeparators: [","," "],
+        createSearchChoice: function(term, data) {
+        if ($(data).filter(function() {
+              return this.id.localeCompare(term) === 0;
+            }).length === 0) {
+              return {
+                id: term,
+                name: term
+              };
+            }
+        },
+        multiple: true,
+        formatSelection: format,
+        formatResult: format,
+        ajax: {
+            dataType: 'json',
+            url: '<%= tags_path %>',
+            data: function (term, page) {
+                return { q: term };
+            },
+            results: function(data, page) {
+                return { results: data };
+            }
+        }
+});
   </script>
