@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="row mt40">
+  <div class="row">
     <div class="col-sm-8">
       <div class="left-body">
-        <h2><span>$<%= @bounty.price %></span> <%= @bounty.title %></h2>
+        <h2 class="mt0"><span>$<%= @bounty.price %></span> <%= @bounty.title %></h2>
         <div class="bounty-nav">
           <ul class="nav">
-            <li class="active"><a href="#"> <%= @bounty.status.upcase %> </a></li>
+            <li class="bounty-state"><%= @bounty.status.upcase %></li>
             <li><a href="#"><%= image_tag "sm-eye-icon.png" %> <%= @bounty.views.count %> views </a></li>
           </ul>
           <% if @user_role == :hunter and @bounty.open? %>
-          <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
+            <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
           <% end %>
         </div>
         <div class="body-contant">
@@ -30,6 +30,7 @@
                     <% end %>
                   </ul>
                 </div>
+                <div class="edit-nav">
                   <ul class="nav pull-right">
                     <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
                     <li><a href="#"><%= image_tag "edit-icon.png" %> edit</a></li>
@@ -39,6 +40,9 @@
             </div>
           </div>
         </div>
+        </div>
+
+
 
         <div>
           <% if @bounty.status == "open" and (@user_role == :hunter or @user_role == :working)%>

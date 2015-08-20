@@ -143,7 +143,7 @@ $('#tagSelect').select2({
         formatResult: format,
         ajax: {
             dataType: 'json',
-            url: '<%= tags_path %>',
+            url: '<%= tags_path(:format => :json) %>',
             data: function (term, page) {
                 return { q: term };
             },
