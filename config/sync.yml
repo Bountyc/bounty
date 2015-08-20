@@ -27,7 +27,7 @@ test:
   async: false
 
 production:
-  server: "http://example.com/faye"
+  server: "http://bountyapp.herokuapp.com/faye"
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   adapter: "Faye"
   auth_token: "431449fd77aa0a1c753b88e4bc4882a472d1289ee10595da18ef8686d4768b6e"
