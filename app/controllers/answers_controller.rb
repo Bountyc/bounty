@@ -23,7 +23,7 @@ class AnswersController < ApplicationController
 		notification.new_answer!
 		notification.message = current_user.email + " proposed a resolution to your bounty!"
 		notification.save
-
+		sync_update notification.user
 		redirect_to :back
 	end
 
@@ -46,6 +46,7 @@ class AnswersController < ApplicationController
 			notification.answer_accepted!
 			notification.message = "just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
 			notification.save
+			sync_update notification.user
 		end
 
 		redirect_to :back
@@ -71,6 +72,7 @@ class AnswersController < ApplicationController
 			notification.answer_denied!
 			notification.message = "denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
 			notification.save
+			sync_update notification.user
 
 		end
 
