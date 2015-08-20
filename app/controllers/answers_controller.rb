@@ -24,7 +24,6 @@ class AnswersController < ApplicationController
 		notification.message = current_user.email + " proposed a resolution to your bounty!"
 		notification.save
 
-		sync_update @answer.bounty.poster
 		redirect_to :back
 	end
 
