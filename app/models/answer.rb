@@ -7,6 +7,8 @@ class Answer < ActiveRecord::Base
 	validate :bounty_answer_available
 
 	after_create :change_bounty_status
+	
+	sync :all
 
 	scope :pending_answer, -> (id) {find_by_sql(["SELECT * from Answers a JOIN bounty_hunters b ON a.id=b.answer_id WHERE b.status=1 AND b.bounty_id=?", [id]]).first}
 	def bounty_answer_available

@@ -11,14 +11,16 @@
   	<title>Bounty</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 	<%= javascript_include_tag 'application', 'showdown' => true, 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag Sync.adapter_javascript_url %>
   	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   	<%= csrf_meta_tags %>
 </head>
 <body>
 <% if user_signed_in? %>
-  <%= render "layouts/header" %>
+  <%= sync partial: "header", resource: current_user%>
 <% else %>
-  <%= render "layouts/logged_out_main_header" %>
+  <%= render "external/logged_out_main_header" %>
 <% end %>
 <%= yield %>
 

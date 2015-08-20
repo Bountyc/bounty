@@ -1,17 +1,38 @@
+
+
 <header>
-	<% if !flash[:error].nil? %>
-		<div style="width: 100%; height:50px; background-color:#B00000; text-align:center; line-height: 50px; color:white;font-family: Comic Sans MS;font-size: 17px;">
-			<%= flash[:error] %>
-		</div>
-	<% end %>
+  <% if !flash[:error].nil? %>
+    <div style="width: 100%; height:50px; background-color:#B00000; text-align:center; line-height: 50px; color:white;font-family: Comic Sans MS;font-size: 17px;">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <div class="container">
     <div class="logo"> <%= link_to image_tag("logo.jpg", :alt => "rss feed"), root_url %></div>
     <div class="right-content after-sign-in">
       <ul>
         <li><a href="#">Help</a></li>
         <li>
-          <% if @signed_in_user %>
-          <%= render "notifications/preview_list" %>
+            <div class="dropdown"> 
+            <a id="dLabel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <%= image_tag("alert.jpg") %><span class="alert-count"><%=user.notifications.count%></span></a>
+            <% if user.notifications.count != 0 %>
+              <ul class="dropdown-menu" aria-labelledby="dLabel">
+                <% user.notifications.each do |n| %>
+                
+                  <li>
+                      <a href="#"> 
+
+                        <span>
+                          <%=n.message%>
+                        </span>
+                        
+                        <h5>- <%=time_ago_in_words(n.created_at)%> ago</h5>
+                      </a>
+                  </li>
+                <% end %>
+                
+                <li><a class="btn btn-default custom-btn" href="#" role="button">View All</a></li>
+              </ul>
+            </div>
           <% end %>
         </li>
         <li><a href="#">Profile</a></li>
@@ -22,9 +43,7 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <% if user_signed_in? %>
           <%= link_to "Create A Bounty", new_bounty_path, class: "navbar-brand" %>
-        <% end %>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">

@@ -33,6 +33,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'devise'
 
 gem 'redcarpet'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -54,6 +55,8 @@ group :development, :test do
 
   gem 'sqlite3'
 
+  gem 'pusher'
+  gem 'sync'
 end
 
 group :test do
@@ -62,4 +65,6 @@ end
 
 group :production do 
   gem 'pg'
+  gem 'pusher'
+  gem 'sync'
 end

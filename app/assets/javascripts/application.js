@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require select2
+//= require sync
 //= require_tree .
 //= stub bootstrap.min
