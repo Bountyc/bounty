@@ -34,6 +34,10 @@ gem 'devise'
 
 gem 'redcarpet'
 
+gem 'faye'
+gem 'thin', require: false
+gem 'sync'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -54,9 +58,6 @@ group :development, :test do
   gem 'rename'
 
   gem 'sqlite3'
-
-  gem 'pusher'
-  gem 'sync'
 end
 
 group :test do
@@ -65,6 +66,4 @@ end
 
 group :production do 
   gem 'pg'
-  gem 'pusher'
-  gem 'sync'
 end

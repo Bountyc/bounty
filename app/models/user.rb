@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
 	has_many :withdrawals
 
 	has_many :views
-
-	sync :create
+	
 	def reload_balance
 		total_payments = 0
 		self.payments.each do |payment|

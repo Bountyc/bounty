@@ -30,5 +30,5 @@ production:
   server: "http://example.com/faye"
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   adapter: "Faye"
-  auth_token: "d0b1cc3b2184b58d262fb7f08b45d2010657ee09dd126fe6e57f6b5fd6617fbb"
+  auth_token: "431449fd77aa0a1c753b88e4bc4882a472d1289ee10595da18ef8686d4768b6e"
   async: true

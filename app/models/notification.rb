@@ -1,10 +1,9 @@
 class Notification < ActiveRecord::Base
+	include Sync::Actions
 	belongs_to :bounty_hunter
 	belongs_to :user
 	enum notification_type: [:answer_denied, :answer_accepted, :new_answer]
-	after_save :notify
 
-	def notify
-		sync_update self.user
-	end
+	sync_touch :user
+	sync :all
 end
