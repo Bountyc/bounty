@@ -40,22 +40,20 @@
             <div class="line mtb20"> </div>
             <div class="josilber-list">
               <ul class="nav">
-                <li>working on 2 bounties <span> - </span> </li>
-                <li> 6 resolutions <span> - </span> </li>
-                <li>6 bounties posted</li>
+                <li>working on <%= @working_on_bounties_count %> bounties <span> - </span> </li>
+                <li> <%= @resolutions_count %> resolutions <span> - </span> </li>
+                <li><%= @user.bounties.count %> bounties posted</li>
               </ul>
             </div>
             <div class="resolved-panel">
               <ul class="nav">
-                <li><span>$31</span>How to send an E-mail with AWK using the SYSTEM command </li>
-                <li><span>$22 </span>How to use Rcpp to speed up a for loop? </li>
-                <li><span>$37 </span>Calculate cumsum() while ignoring NA values </li>
-                <li><span>$14 </span>Reproducing R rep with the times argument in C++ and Rcpp </li>
-                <li><span>$25 </span>Adding two variables with missing data </li>
-                <li><span>$9 </span>Simple approach to assigning clusters for new data after
-                  k-means clustering </li>
+              <% total_earned = 0 %>
+              <% @solved_bounties.each do |bounty| %>
+                <li><span>$<%= bounty.price %></span><%= bounty.title %></li>
+                <% total_earned += bounty.price %>
+              <% end %>
                 <li>
-                  <h3>$138 total earned</h3>
+                  <h3>$<%= total_earned %> total earned</h3>
                 </li>
               </ul>
             </div>
@@ -65,5 +63,79 @@
       </div>
     </div>
     <%= render 'bounties/highest_bounties' %>
+  </div>
+</div>
+
+<!-- boostraps model fade - money exchange -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">
+        <span>$</span> add money to your account
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <p>Set Amount</p>
+          <input class="spinner">
+          <label for="spinner">USD</label>
+          <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
+          <div class="line"></div>
+          <h4>Add Funds With</h4>
+          <ul class="nav">
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "pay-pal.png" %></label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "add-to-card.png" %></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal" >ADD MONEY</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal1" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">
+        Withdraw money from your account
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <p>Set Amount</p>
+          <input class="spinner">
+          <label for="spinner">USD</label>
+          <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
+          <div class="line"></div>
+          <h4>Add Funds With</h4>
+          <ul class="nav">
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "pay-pal.png" %></label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "add-to-card.png" %></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal">Withdraw MONEY</button>
+      </div>
+    </div>
   </div>
 </div>

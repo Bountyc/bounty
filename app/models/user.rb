@@ -22,6 +22,13 @@ class User < ActiveRecord::Base
 
 	has_many :views
 
+	def solved_bounties
+		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 3").where("bounty_hunters.user_id = ?", [self.id])
+	end
+
+	def working_on_bounties
+		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.user_id = ?", [self.id])
+	end
 	def reload_balance
 		total_payments = 0
 		self.payments.each do |payment|

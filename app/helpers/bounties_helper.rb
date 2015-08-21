@@ -1,10 +1,12 @@
 module BountiesHelper
 	def load_highest_paying_bounties
-		@highest_paying_bounties = Bounty.limit(10).order("price desc")
+		# Using reorder because in model defined default scope to order by updated_at
+		@highest_paying_bounties = Bounty.limit(10).reorder("price DESC")
 	end
 
 	def load_highest_viewed_bounties
-		@highest_viewed_bounties = Bounty.select("bounties.*, COUNT(views.id) view_count").joins(:views).group("bounties.id").limit(10).order("view_count DESC")
+		# Using reorder because in model defined default scope to order by updated_at
+		@highest_viewed_bounties = Bounty.limit(10).select("bounties.*, COUNT(views.id) view_count").joins(:views).group("bounties.id").reorder("view_count DESC")
 	end
 
 end
