@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
   root "bounties#index"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -29,6 +33,8 @@ Rails.application.routes.draw do
       put "deny"
     end
   end
+
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

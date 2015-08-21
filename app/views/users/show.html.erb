@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="left-side">
+        <div class="row mb55">
+          <div class="col-sm-12 col-md-4 pr0">
+            <ul class="nav nav-tabs nav-justified navbar-left">
+              <li class="active"> <a  href="#tab1" data-toggle="tab">Profile</a> </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-8 pl0">
+            <ul class="nav nav-justified custom-breadcrumb">
+              <li>
+                <p class="balance">Balance: <span><%= @user.balance %></span></p>
+              </li>
+              <li> <a href="#myModal" role="button" class="btn" data-toggle="modal"><%= image_tag "upload-icon.png" %> add money </a> </li>
+              <li> <a href="#myModal1" role="button" class="btn" data-toggle="modal"> <%= image_tag "download-icon.png" %>withdraw money </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"> <a href="#"><%= image_tag "image.png", class: "img-responsive" %> </a>
+            <div class="info-list-nav">
+              <ul class="nav">
+                <li><%= image_tag "area-icon.png" %> Baltimore, MD, United States </li>
+                <li><a href="#"><%= image_tag "attached-icon.png" %>josilber.scripts.mit.edu </a></li>
+                <li><%= image_tag "user-icon.png" %>Member for 1 year, 4 months </li>
+                <li><%= image_tag "view-icon.png" %>677 profile views </li>
+                <li><%= image_tag "time-icon.png" %>Last seen 7 hours ago </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="josilber-panel">
+              <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+              <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <p>I'm a PhD student at MIT in the Operations Research Center.<br>
+                I'm a co-developer of the massive open online course (MOOC)</p>
+            </div>
+            <div class="line mtb20"> </div>
+            <div class="josilber-list">
+              <ul class="nav">
+                <li>working on 2 bounties <span> - </span> </li>
+                <li> 6 resolutions <span> - </span> </li>
+                <li>6 bounties posted</li>
+              </ul>
+            </div>
+            <div class="resolved-panel">
+              <ul class="nav">
+                <li><span>$31</span>How to send an E-mail with AWK using the SYSTEM command </li>
+                <li><span>$22 </span>How to use Rcpp to speed up a for loop? </li>
+                <li><span>$37 </span>Calculate cumsum() while ignoring NA values </li>
+                <li><span>$14 </span>Reproducing R rep with the times argument in C++ and Rcpp </li>
+                <li><span>$25 </span>Adding two variables with missing data </li>
+                <li><span>$9 </span>Simple approach to assigning clusters for new data after
+                  k-means clustering </li>
+                <li>
+                  <h3>$138 total earned</h3>
+                </li>
+              </ul>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'bounties/highest_bounties' %>
+  </div>
+</div>

@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+    validates_presence_of [:first_name, :last_name, :email]
+
 	has_many :bounty_hunters
 
 	has_many :payments

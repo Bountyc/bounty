@@ -45,16 +45,16 @@
                     <label class="control-label">Name</label>
                     <div class="row mb10">
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Firstname" />
+                        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Firstname" %>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Lastname" />
+                        <%= f.text_field :last_name, class: "form-control", placeholder: "Lastname" %>
                         </div>
                     </div>
                     
                     <div class="mb10">
                         <label class="control-label">Email</label>
-                        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                        <%= f.email_field :email, class: "form-control" %>
                     </div>
                     
                     <div class="mb10">
