@@ -69,20 +69,19 @@
                         <label class="control-label">Retype Password</label>
                         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
                     </div>
-                    
-                   
-                    <br />
-                            <!-- display errors -->
+    
+                    <!-- display errors -->
                     <% if @user.errors.any? %>
                       <% @user.errors.full_messages.each do |message| %>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger mtb20" role="alert">
                           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                           <span class="sr-only">Error:</span>
                           <%= message %>
                         </div>
                       <% end %>
                     <% end %>
-                     <%= f.submit "Register", class: "btn-register" %>   
+
+                    <%= f.submit "Register", class: "btn-register" %>   
                 <% end %>
             </div><!-- col-sm-6 -->
             
