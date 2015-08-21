@@ -9,7 +9,7 @@
             <li><a href="#"><%= image_tag "sm-eye-icon.png" %> <%= @bounty.views.count %> views </a></li>
           </ul>
           <% if @user_role == :hunter and @bounty.open? %>
-            <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right"%>
+            <%= link_to "Work on this Bounty", add_working_user_bounty_path(@bounty.id), :class => "btn btn-simple pull-right", id: "work_on_bounty", remote: true%>
           <% end %>
         </div>
         <div class="body-contant">
@@ -81,3 +81,10 @@
     <%= render 'bounties/highest_bounties' %>
   </div>
 </div>
+
+<!-- TODO put on js file? -->
+<script type="text/javascript">
+$("#work_on_bounty").click(function() {
+  $(this).remove();
+});
+</script>
