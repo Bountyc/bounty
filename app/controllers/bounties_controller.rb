@@ -53,7 +53,7 @@ class BountiesController < ApplicationController
   	end
 
     if current_user
-      if !current_user.views.any?{|v| v.bounty == @bounty}
+      if !current_user.views.exists?(bounty_id: @bounty.id)
         view = View.new
         view.user = current_user
         view.bounty = @bounty
