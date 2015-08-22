@@ -11,11 +11,22 @@
   	<title>Bounty</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 	<%= javascript_include_tag 'application', 'showdown' => true, 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js" %>
   	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   	<%= csrf_meta_tags %>
 </head>
 <body>
 <% if user_signed_in? %>
+  <script type="text/javascript">
+    var pusher = new Pusher("<%= PUSHER_KEY %>");
+    var userChannel = pusher.subscribe("private-user-<%= current_user.id %>");
+    userChannel.bind('new-notification', function(message) {
+    var count_notifications = parseInt($("#notifications-count").text())+1;
+      $("#notifications-count").html(count_notifications);
+
+    });
+    </script>
+
   <%= render "layouts/header" %>
 <% else %>
   <%= render "layouts/logged_out_main_header" %>
@@ -35,6 +46,5 @@
 </footer>  -->
 <!-- Placed at the end of the document so the pages load faster --> 
 <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
-
 </body>
 </html>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
+  post "pusher/auth"
+
   root "bounties#index"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
