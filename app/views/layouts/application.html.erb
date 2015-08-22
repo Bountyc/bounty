@@ -21,9 +21,9 @@
     var pusher = new Pusher("<%= PUSHER_KEY %>");
     var userChannel = pusher.subscribe("private-user-<%= current_user.id %>");
     userChannel.bind('new-notification', function(message) {
-    var count_notifications = parseInt($("#notifications-count").text())+1;
+      var count_notifications = parseInt($("#notifications-count").text())+1;
       $("#notifications-count").html(count_notifications);
-
+      $("#notifications").prepend(message);
     });
     </script>
 

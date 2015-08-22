@@ -4,7 +4,7 @@
   <% if @total_notification_count != 0 %>
             <ul class="dropdown-menu" aria-labelledby="dLabel" id="notifications">
               <% @notifications.each do |n| %>
-                <%= render "notifications/notification_view", n: n %>
+                <%= notification_html(n.message, n.created_at) %>
               <% end %>
               
               <li><a class="btn btn-default custom-btn" href="#" role="button">View All</a></li>
