@@ -6,7 +6,8 @@ class Notification < ActiveRecord::Base
 
 	validates_presence_of [:message]
 
-	enum notification_type: [:answer_denied, :answer_accepted, :new_answer]
+	enum notification_type: [:answer_denied, :answer_accepted, :new_answer, :started_working]
+	default_scope {order('updated_at DESC')}
 
 	def push_notification
 		Pusher.app_id = PUSHER_APP_ID
