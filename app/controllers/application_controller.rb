@@ -5,7 +5,5 @@ class ApplicationController < ActionController::Base
 
   def define_user
   	@signed_in_user = current_user
-  end
-
-  
+  end 
 end
