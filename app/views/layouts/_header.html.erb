@@ -14,7 +14,7 @@
           <%= render "notifications/preview_list" %>
           <% end %>
         </li>
-        <li><a href="#">Profile</a></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
       </ul>
     </div>
   </div>
