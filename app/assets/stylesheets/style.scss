@@ -119,6 +119,7 @@ header {
 	top: 14px;
 	line-height: normal;
 	text-align: center;
+	display: inline;
 }
 .right-content ul li .dropup, .right-content ul li .dropdown {
 	height: 82px;
@@ -1843,4 +1844,9 @@ footer .pull-right {
 	margin-top: 6px;
 	margin-bottom: 3px;
 }
+}
+
+.unseen-notification
+{
+	font-weight: bold;
 }
