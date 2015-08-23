@@ -23,7 +23,27 @@
     userChannel.bind('new-notification', function(message) {
       var count_notifications = parseInt($("#notifications-count").text())+1;
       $("#notifications-count").html(count_notifications);
+      if (!$("#notifications-count").is(":visible"))
+      {
+        $("#notifications-count").show("slow")
+      }
       $("#notifications").prepend(message);
+    });
+    $(document).ready(function() {
+      $( "#dLabel" ).click(function() {
+        // make ajax request to server to notify that notifications where viewed
+        $.ajax({
+          type: "POST",
+          url: '<%= see_notifications_path %>',
+          data: { _method:'PUT' },
+          success: function(msg) {
+            $( "#notifications-count" ).hide();
+            // reset notifications count
+            $("#notifications-count").html("0")
+          }
+        });
+
+      });
     });
     </script>
 

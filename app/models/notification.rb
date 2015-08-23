@@ -7,6 +7,8 @@ class Notification < ActiveRecord::Base
 	validates_presence_of [:message]
 
 	enum notification_type: [:answer_denied, :answer_accepted, :new_answer, :started_working]
+
+	scope :unseen, -> { where(seen: false) }
 	default_scope {order('updated_at DESC')}
 
 	def push_notification
@@ -14,6 +16,6 @@ class Notification < ActiveRecord::Base
 		Pusher.key = PUSHER_KEY
 		Pusher.secret = PUSHER_SECRET
 
-		Pusher["private-user-#{self.user_id}"].trigger('new-notification', notification_html(self.message, Time.now))
+		Pusher["private-user-#{self.user_id}"].trigger('new-notification', notification_html(self.message, Time.now, false))
 	end
 end

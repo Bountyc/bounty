@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       get "add_working_user"
     end
   end
+  resources :notifications do
+    collection do
+      put "see"
+    end
+  end
   resources :tags
   namespace :transfer do 
     resources :payments do 
