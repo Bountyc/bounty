@@ -1,29 +1,45 @@
 # bounty
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the github repo of the mighty bounty website
 
-Things you may want to cover:
+## installetion
 
-* Ruby version
+* Ubuntu - https://gorails.com/setup/ubuntu/14.10
+* Mac - https://gorails.com/setup/osx/10.11-el-capitan
 
-* System dependencies
+run
+```sh
+bundle install
+```
+```sh
+rake db:migrate
+rake db:seed
+```
 
-* Configuration
+## Running localy
+### Before run:
+```sh
+bundle install
+```
+### staring the server
+```sh
+rails s
+```
 
-* Database creation
+## Heroku
 
-* Database initialization
+### Deploy (after logged in to heroku):
 
-* How to run the test suite
+If heroku is not set up with bounty
+```sh
+heroku git:remote -a bountyapp
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+git push heroku master
+```
+### acces to heroku command line
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```sh
+heroku run YOUR_CODE_HERE
+```
