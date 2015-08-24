@@ -1,0 +1,257 @@
+<form class="navbar-form dropdown">
+            <input type="text" class="form-control" placeholder="search bounties...">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">advanced search</a>
+            <div class="dropdown-menu advance-search-overlay">
+            <div class="advance-search-overlay-arrow"><%= image_tag "advance-arrow-top.png", alt: "" %></div>
+            <!-- Centered Tabs -->
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a data-toggle="tab" href="#menuBounties">Bounties</a></li>
+              <li><a data-toggle="tab" href="#menuUsers">Users</a></li>
+            </ul>
+            <div class="tab-content">
+            <div id="menuBounties" class="tab-pane fade in active">
+            <div class="row">
+            <div class="col-sm-4">
+            <h4>Filter bounties by:</h4>
+            <form role="form" class="form">
+              <div class="form-group">
+                <input type="keyword" class="form-control form-control-custom" value="Keyword..." id="keyword">
+              </div>
+              <div class="form-group">
+                <div class="select-lang">
+                  <select data-placeholder="Language"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>Language</option>
+                    <option>English</option>
+                    <option>English</option>
+                    <option>English</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group mb0">
+                <div class="set-deadline time-left">
+                  <label class="mb15 control-label">Time Left</label>
+                  <div class="set-deadline-opt">
+                    <input type="text" class="form-control w66 text-center pull-left">
+                    <div class="select-option">
+                      <select data-placeholder="Hour"  class="chzn-select"  tabindex="2">
+                        <option value=""></option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <div class="clr"></div>
+                    <label class="control-label"> Price</label>
+                    <p>
+                      <input id="spinner">
+                      <label for="spinner">USD</label>
+                    </p>
+                    <div class="clr"></div>
+                    <label class="control-label"> People Working</label>
+                    <p>
+                      <input id="spinner2">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Popularity</label>
+                <div class="select-lang">
+                  <select data-placeholder="Ascending"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Status</label>
+                <div class="select-lang">
+                  <select data-placeholder="OPEN"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <h4>Choose from the list of tags:</h4>
+            <form role="form" class="form">
+              <div class="form-group">
+                <div class="select-lang">
+                  <select class="form-control form-control-multiple form-control-custom" style="height:300px;" multiple tabindex="2">
+                    <option value=""></option>
+                    <option>python</option>
+                    <option>multithreading</option>
+                    <option>unit-testing</option>
+                    <option>types</option>
+                    <option>attributeerror</option>
+                    <option>html</option>
+                    <option>css</option>
+                    <option>internet-explorer</option>
+                    <option>font-face</option>
+                    <option>webfonts</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <h4>Save this search</h4>
+            <form role="form" class="form">
+              <div class="form-group mb0">
+                <input type="keyword" class="form-control form-control-custom" placeholder="Set name of the search..." id="keyword">
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Request alerts:</label>
+                <div class="request-alerts">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      once an hour</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      once a day</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      every time</label>
+                  </div>
+                </div>
+                <div class="request-btns">
+                  <button class="btn btn-save">Save</button>
+                  <button class="btn btn-search">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="menuUsers" class="tab-pane fade">
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>Filter bounties by:</h4>
+            <form role="form" class="form">
+              <div class="form-group">
+                <input type="keyword" class="form-control form-control-custom" value="Keyword..." id="keyword">
+              </div>
+              <div class="form-group">
+                <div class="select-lang">
+                  <select data-placeholder="Language"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>Language</option>
+                    <option>English</option>
+                    <option>English</option>
+                    <option>English</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group mb0">
+                <div class="set-deadline time-left">
+                  <label class="mb15 control-label">Time Left</label>
+                  <div class="set-deadline-opt">
+                    <input type="text" class="form-control w66 text-center pull-left">
+                    <div class="select-option">
+                      <select data-placeholder="Hour"  class="chzn-select"  tabindex="2">
+                        <option value=""></option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <div class="clr"></div>
+                    <label class="control-label"> Price</label>
+                    <p>
+                      <input id="spinner">
+                      <label for="spinner">USD</label>
+                    </p>
+                    <div class="clr"></div>
+                    <label class="control-label"> People Working</label>
+                    <p>
+                      <input id="spinner2">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Popularity</label>
+                <div class="select-lang">
+                  <select data-placeholder="Ascending"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                    <option>Ascending</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Status</label>
+                <div class="select-lang">
+                  <select data-placeholder="OPEN"  class="chzn-select"  tabindex="2">
+                    <option value=""></option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                    <option>OPEN</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <h4>Save this search</h4>
+            <form role="form" class="form">
+              <div class="form-group mb0">
+                <input type="keyword" class="form-control form-control-custom" placeholder="Set name of the search..." id="keyword">
+              </div>
+              <div class="form-group time-left">
+                <label class=" control-label">Request alerts:</label>
+                <div class="request-alerts">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      once an hour</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      once a day</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">
+                      every time</label>
+                  </div>
+                </div>
+                <div class="request-btns">
+                  <button class="btn btn-save">Save</button>
+                  <button class="btn btn-search">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+
+<script type="text/javascript"> 
+  $(".dropdown-toggle").click(function(){
+              $(".advance-search-overlay").toggle();
+          });
+  </script>

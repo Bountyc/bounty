@@ -2,9 +2,14 @@
 	padding: 0px;
 	margin: 0px;
 }
+html{
+	position: relative;
+    min-height: 100%;
+	}
 body {
-	font-size: 14px;
+	font-size: 12px;
 	color: #000;
+	margin-bottom: 72px;
 	font-family: 'Open Sans', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -36,9 +41,9 @@ a {
 .mb0 {
 	margin-bottom: 0 !important;
 }
-.mt0{
-	margin-top:0px;
-	}
+.mt0 {
+	margin-top: 0px;
+}
 /*..........Main Style..............*/
 /*..........Header Style..............*/
 header {
@@ -64,6 +69,37 @@ header {
 	height: 82px;
 	line-height: 80px;
 	color: #b9bdc6;
+	padding: 0px 15px;
+}
+.right-content ul li:hover a {
+	color: #E0694C;
+	text-decoration: none;
+}
+.right-content ul li .btn {
+	float: left;
+	height: 82px;
+	line-height: 80px;
+	color: #b9bdc6;
+	background: none;
+	border: none;
+	padding: 0px;
+	border-radius: 0;
+	padding: 0px 15px;
+}
+.right-content ul li:hover .btn {
+	color: #E0694C;
+}
+.right-content ul li:focus .btn {
+	box-shadow: none;
+}
+.right-content ul li.open button.btn {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+.right-content ul li:last-child .btn {
+	background: #F1F4F9 none repeat scroll 0% 0%;
+	color: #E0694C;
+	padding: 0px 30px;
 }
 .right-content ul li:last-child {
 	margin-right: 0px;
@@ -88,17 +124,41 @@ header {
 	height: 82px;
 }
 .right-content ul li .dropdown-menu {
-	left: -110px !important;
-	width: 270px;
-	background: #f1f4f9;
+	right: -23px !important;
+	left: auto;
+	width: 260px;
+	background:#f1f4f9;
 	border-radius: 0px;
+	border: none;
+	border-top: solid 4px #34353f;
 	box-shadow: none;
 	margin-top: 0px;
+	padding: 14px 18px 20px 18px;
+}
+.right-content ul li .dropdown-menu .control-label {
+	font-weight: normal;
+	margin-bottom: 3px;
+	color: #515057;
+	font-size: 14px;
+}
+.right-content ul li .dropdown-menu .form-control {
+	height: 29px;
+	background: #FFF;
+}
+.right-content ul li .dropdown-menu::before {
+	background: image-url('advance-arrow-top.png') right top no-repeat;
+	content: '';
+	position: absolute;
+	right: 40px;
+	top: -13px;
+	height: 9px;
+	width: 19px;
 }
 .right-content ul li .dropdown-menu li {
 	width: 100%;
 	margin-left: 0px;
-	padding: 0px 27px;
+	margin-right:0px;
+	padding: 0px 0px;
 }
 .right-content ul li .dropdown-menu li a {
 	border-bottom: 1px solid #dae1ec;
@@ -148,13 +208,14 @@ header {
 }
 .nav.navbar-nav {
 	float: right;
+	padding-right:10px;
 }
 .navbar-default .navbar-brand {
 	height: 45px;
 	line-height: 17px;
 	background: #e0694c;
 	color: #fff;
-	font-size: 16px;
+	font-size: 13px;
 	font-weight: 700;
 	text-shadow: 0px 0px 1px #d06247;
 }
@@ -194,7 +255,8 @@ header {
 .control-label {
 	color: #34353f;
 	font-size: 15px;
-	margin-bottom: 10px;
+	margin-bottom: 7px;
+	font-weight: normal;
 }
 .form-control {
 	background: #fafcfe;
@@ -257,7 +319,7 @@ input, .input-append {
 	padding: 8px 25px 6px 13px;
 	background: image-url('tags-bg.png') left top repeat-x;
 }
-.chosen-container-multi .chosen-choices li.seaSrch-choice span {
+.chosen-container-multi .chosen-choices li.search-choice span {
 	color: #686f79;
 	font-size: 14px;
 }
@@ -320,6 +382,7 @@ input, .input-append {
 .set-deadline label {
 	margin-bottom: 5px;
 	margin-top: 15px;
+	font-weight: normal;
 }
 .wmd-panel {
 	min-width: 100%;
@@ -342,7 +405,7 @@ input, .input-append {
 	border-bottom: 1px solid #e7eaed;
 	display: block;
 	padding-bottom: 10px;
-	font-size: 18px;
+	font-size: 16px;
 }
 .dolor-icon {
 	margin-right: 5px;
@@ -350,9 +413,9 @@ input, .input-append {
 }
 .custom-list ul li {
 	padding-right: 30px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	color: #7c7a87;
-	font-size: 14px;
+	font-size: 12px;
 	position: relative;
 }
 .custom-list ul li span {
@@ -362,6 +425,9 @@ input, .input-append {
 	color: #d1593b;
 	font-weight: bold;
 }
+.most-veiwed{
+	margin-bottom:50px;
+	}
 .custom-list.most-veiwed ul li span {
 	color: #7c7a87;
 }
@@ -370,6 +436,10 @@ footer {
 	padding: 10px 0px;
 	color: #adb2bc;
 	font-size: 12px;
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
 }
 .btn.footer-btn {
 	background-color: transparent;
@@ -484,11 +554,12 @@ footer .pull-right a {
 	outline: none;
 }
 .tab-content {
-	padding: 40px 0;
+	padding: 30px 0;
 }
 .tab-content .tab-pane .navbar-form {
 	padding-left: 0px;
 	margin: 0;
+	margin-bottom:15px;
 }
 .tab-content .tab-pane .navbar-form .form-control {
 	width: 255px;
@@ -498,7 +569,7 @@ footer .pull-right a {
 	font-size: 14px;
 }
 .open-bounties-list {
-	margin: 25px 0 30px 0;
+	/*margin: 25px 0 30px 0;*/
 }
 .open-bounties-list:last-child {
 	margin-bottom: 10px;
@@ -507,33 +578,35 @@ footer .pull-right a {
 }
 .open-bounties-header .open-bounties-price {
 	color: #e0694c;
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: bold;
+	margin-top: 0px;
 	float: left;
 }
 .open-bounties-header h3 {
 	margin-top: 12px;
 	color: #404450;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: bold;
-	padding-left: 30px;
+	margin-top:6px;
+	padding-left: 15px;
 	display: inline-block;
 }
 .open-bounties-header .open-bounties-views {
 	float: right;
 	color: #c5cdd9;
 	font-size: 14px;
-	margin-top: 12px;
+	margin-top:6px;
 }
 .open-bounties-header .open-bounties-views i {
 	margin-right: 2px;
 }
 .open-bounties-list-desc {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .open-bounties-desc {
 	color: #adb2bc;
-	font-size: 13px;
+	font-size: 12px;
 	font-style: italic;
 }
 .open-bounties-desc span {
@@ -546,22 +619,23 @@ footer .pull-right a {
 	float: right;
 }
 .open-bounties-tags a {
-	padding: 5px 18px;
+	padding: 2px 18px;
 	color: #686f79;
 	margin-right: 5px;
 	font-size: 14px;
-	background: ('tags-bg.png') left top repeat-x;
+	background: image-url('pattren-bg.png') repeat;
 	float: left;
 }
 .reviewing {
 	font-style: italic;
+	margin-top:10px;
 }
 .load-more {
 	text-align: center;
 }
 .load-more a {
 	color: #404450;
-	font-size: 24px;
+	font-size: 16px;
 }
 .load-more a:hover {
 	text-decoration: none;
@@ -572,17 +646,18 @@ footer .pull-right a {
 .left-body {
 	float: left;
 	width: 100%;
+	margin-bottom:50px;
 }
 .left-body h2 {
 	font-weight: 700;
-	font-size: 24px;
+	font-size: 16px;
 	color: #404450;
 	border-bottom: 1px solid #dce3ee;
-	padding-bottom: 35px;
+	padding-bottom:15px;
 	margin-bottom: 15px;
 }
 .left-body h2 span {
-	font-size: 30px;
+	font-size: 16px;
 	color: #e0694c;
 	display: inline-block;
 	margin-right: 5px;
@@ -590,7 +665,7 @@ footer .pull-right a {
 .bounty-nav {
 	float: left;
 	width: 100%;
-	margin-bottom: 35px;
+	margin-bottom: 15px;
 }
 .bounty-nav ul {
 	float: left;
@@ -629,11 +704,11 @@ footer .pull-right a {
 .body-contant {
 	float: left;
 	width: 100%;
-	margin-bottom: 35px;
+	margin-bottom: 15px;
 }
 .body-contant p {
-	margin-bottom: 33px;
-	line-height: 25px;
+	margin-bottom: 15px;
+	line-height: 18px;
 }
 /***** Comment Header *******/
 
@@ -667,7 +742,7 @@ footer .pull-right a {
 .comment-nav {
 	float: left;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom:5px;
 }
 .comment-nav ul li {
 	float: left;
@@ -677,9 +752,10 @@ footer .pull-right a {
 	background: image-url('pattren-bg.png') center top repeat;
 	color: #686f79;
 	outline: none;
+	padding:5px 15px;
 }
 .edit-nav {
-	margin-bottom: 35px;
+	margin-bottom: 10px;
 	float: left;
 	width: 100%;
 }
@@ -696,23 +772,24 @@ footer .pull-right a {
 /******** post body *********/
 
 .post-body {
-	padding: 25px 30px 15px;
+	padding: 15px 20px 15px;
 	background: image-url('pattren-bg.png') left top repeat;
 	width: 100%;
 	float: left;
 }
 .post-body h3 {
-	font-size: 20px;
+	font-size:16px;
 	color: #404450;
-	margin-bottom: 30px;
+	margin-bottom:10px;
+	margin-top:0px;
 }
 .post-body h3 span {
 	color: #e0694c;
 }
 .post-body p {
 	color: #34353f;
-	margin-bottom: 30px;
-	line-height: 25px;
+	margin-bottom:15px;
+	line-height: 18px;
 }
 /****** danger box *******/
 
@@ -721,8 +798,8 @@ footer .pull-right a {
 	border: 1px solid #e7ddd9;
 	float: left;
 	width: 100%;
-	margin-bottom: 35px;
-	padding: 45px;
+	margin-bottom: 15px;
+	padding:15px;
 }
 .danger-box code {
 	display: block;
@@ -745,14 +822,15 @@ footer .pull-right a {
 .rejection-panel {
 	float: left;
 	width: 100%;
-	margin-bottom: 55px;
-	padding: 25px 30px 15px;
+	margin-bottom:15px;
+	padding:15px;
 	background: image-url('radish-pattren-bg.png') left top repeat;
 }
 .rejection-panel h3 {
-	font-size: 20px;
+	font-size: 16px;
 	color: #404450;
-	margin-bottom: 30px;
+	margin-top:0px;
+	margin-bottom:15px;
 }
 .rejection-panel h3 span {
 	color: #e0694c;
@@ -762,21 +840,21 @@ footer .pull-right a {
 	border: 0px;
 	background: #e3785e;
 	font-weight: 700;
-	font-size: 18px;
-	padding: 10px 13px;
+	font-size:14px;
+	padding: 5px 13px;
 	border-radius: 0px;
 }
 /******* user working bounty ********/
 
 .user-bounty {
-	padding: 15px;
+	padding: 10px;
 	float: left;
 	width: 100%;
 	background: image-url('pattren-bg.png') left top repeat;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 .user-bounty h3 {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #404450;
 	margin: 0px;
@@ -816,15 +894,18 @@ footer .pull-right a {
 /*..........Bounty2_Answer_bounty...................*/
 .main-heading {
 	color: #404450;
-	font-size: 20px;
+	font-size:16px;
 	border-bottom: 1px solid #ccc;
 	font-weight: 700;
 	line-height: 43px;
+	margin-top:0px;
 	margin-bottom: 20px;
 }
 .main-heading span {
 	color: #e0694c;
-	position: relative
+	margin-right:15px;
+	position: relative;
+	font-size:20px;
 }
 .main-heading span::after {
 	border-bottom: 5px solid #e0694c;
@@ -837,8 +918,10 @@ footer .pull-right a {
 	bottom: -10px;
 }
 .warning-message {
-	background: image-url('warning-icon.png') left top no-repeat;
-	padding-left: 30px;
+	background: image-url('warning-icon.png') left -1px no-repeat;
+	padding-left: 23px;
+	margin-top:20px;
+	display:block;
 	color: #34353f;
 }
 /*.............Bounty Looged...........*/
@@ -847,7 +930,7 @@ footer .pull-right a {
 	color: #34353f;
 	background: image-url('rewing.png') left 2px no-repeat;
 	padding-left: 24px;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .bounty-reviwing.bounty-dropped {
 	background: image-url('crose-icon.png') left 2px no-repeat;
@@ -855,7 +938,8 @@ footer .pull-right a {
 /*.............Bounty Looged...........*/
 .notification-left h3 {
 	color: #34353f;
-	font-size: 20px;
+	font-size: 16px;
+	margin-top:0px;
 	font-weight: 700;
 }
 .notification-list li {
@@ -873,8 +957,8 @@ footer .pull-right a {
 	white-space: normal;
 	word-break: break-all;
 	text-decoration: none;
-	font-size: 16px;
-	padding: 20px;
+	font-size: 13px;
+	padding: 10px;
 }
 .notification-list li a span {
 	color: #34353f;
@@ -903,6 +987,7 @@ footer .pull-right a {
 	border: none;
 	border-bottom: none;
 	background: none;
+	padding-left:0px;
 }
 .tags-selection .chosen-container {
 	float: left;
@@ -913,6 +998,7 @@ footer .pull-right a {
 	width: 7%;
 	border-bottom: none;
 	height: 40px;
+	font-size:14px;
 	line-height: 40px;
 }
 /*.............Bounty2_Users_slice...........*/
@@ -933,14 +1019,22 @@ footer .pull-right a {
 }
 .user-detail span {
 	margin: 0px;
-	font-size: 14px;
+	font-size: 12px;
 	color: #c5cdd9;
 	font-style: italic;
 }
 .user-more-detail {
-	margin-top: 15px;
-	margin-bottom: 50px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
+.bounty-user .col-sm-3{
+	padding-left:10px;
+	padding-right:10px;
+	}
+.bounty-user .col-sm-9{
+	padding-left:0px;
+	padding-right:10px;
+	}	
 .user-more-detail p {
 	color: #686f79;
 	font-size: 12px;
@@ -950,15 +1044,14 @@ footer .pull-right a {
 .tabs {
 	width: 100%;
 	float: left;
-	margin-bottom: 20px;
 }
 .tabs a {
 	text-align: center;
 	text-decoration: none;
 	background: image-url('pattren-bg.png') left center;
-	font-size: 16px;
+	font-size: 14px;
 	color: #686f79;
-	padding: 10px 20px;
+	padding: 2px 12px;
 	float: left;
 }
 .tabs span {
@@ -967,22 +1060,22 @@ footer .pull-right a {
 	font-size: 14px;
 	color: #ced1d7;
 	padding: 0 30px;
-	padding-right: 0px;
-	margin-left: 20px;
+	padding: 0px 0px 0px 13px;
+	margin-left: 11px;
 	float: left;
-	margin-top: 12px;
+	margin-top: 3px;
 }
 .tabs-inn {
 	float: left;
 	width: 100%;
 	margin-top: 10px;
-	margin-bottom: 30px;
+	margin-bottom:20px;
 }
 .tabs-inn p {
 	color: #adb2bc;
-	font-size: 14px;
+	font-size: 12px;
 	border-bottom: 1px #adb2bc solid;
-	padding-bottom: 22px;
+	padding-bottom:12px;
 }
 .tabs-inn span {
 	color: #686f79;
@@ -990,7 +1083,7 @@ footer .pull-right a {
 	display: block;
 }
 .mt40 {
-	margin-top: 80px;
+	margin-top: 40px;
 }
 .tab-content .tab-pane .navbar-form .advance-search-overlay .nav-tabs.nav-justified {
 	border-bottom: solid 1px #dce3ee;
@@ -999,7 +1092,7 @@ footer .pull-right a {
 	color: #34353f;
 	font-size: 14px;
 	border: none;
-	padding: 12px 20px;
+	padding: 9px 20px;
 }
 .tab-content .tab-pane .navbar-form .advance-search-overlay .nav-tabs.nav-justified > .active > a, .tab-content .tab-pane .navbar-form .advance-search-overlay .nav-tabs.nav-justified > .active > a:hover, .tab-content .tab-pane .navbar-form .advance-search-overlay .nav-tabs.nav-justified > .active > a:focus {
 	color: #ffffff;
@@ -1036,7 +1129,7 @@ footer .pull-right a {
 	height: 9px;
 }
 .advance-search-overlay .tab-content {
-	padding: 27px 17px;
+	padding: 15px 17px;
 }
 .advance-search-overlay .tab-content h4 {
 	color: #515057;
@@ -1086,7 +1179,7 @@ footer .pull-right a {
 	line-height: 26px;
 }
 .tab-content .tab-pane .navbar-form .advance-search-overlay .select-lang .chosen-container-single .chosen-single div b {
-	background: transparent image-url("/lang-arrow.png") no-repeat scroll left center;
+	background: transparent image-url('lang-arrow.png') no-repeat scroll left center;
 }
 .chosen-container {
 	width: 100% !important;
@@ -1140,11 +1233,11 @@ footer .pull-right a {
 	color: #7c7a87;
 	text-decoration: none;
 	outline: none;
-	font-size: 14px;
+	font-size: 12px;
 }
 .info-list-nav {
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 .info-list-nav ul li {
 	margin-bottom: 10px;
@@ -1163,12 +1256,12 @@ footer .pull-right a {
 .josilber-panel {
 	float: left;
 	width: 100%;
-	padding-bottom: 20px;
+	padding-bottom:0px;
 }
 .josilber-panel h3 {
 	color: #e0694c;
 	display: inline-block;
-	font-size: 30px;
+	font-size: 16px;
 	font-weight: 700;
 	margin-bottom: 15px;
 	display: inline-block;
@@ -1178,22 +1271,22 @@ footer .pull-right a {
 .josilber-panel a {
 	color: #adb2bc;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 12px;
 	margin-top: 10px;
 }
 .josilber-panel p {
 	color: #adb2bc;
-	font-size: 14px;
+	font-size: 12px;
 }
 .josilber-list {
 	float: left;
 	width: 100%;
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 }
 .josilber-list ul li {
 	float: left;
 	color: #adb2bc;
-	font-size: 14px;
+	font-size: 12px;
 	margin-right: 10px;
 }
 .josilber-list ul li span {
@@ -1205,20 +1298,20 @@ footer .pull-right a {
 	float: left;
 	width: 100%;
 	background: image-url('pattren-bg.png') left top repeat;
-	padding: 25px 15px 15px;
+	padding:15px;
 }
 .resolved-panel ul li {
 	color: #7c7a87;
-	font-size: 14px;
+	font-size: 12px;
 	border-bottom: 1px solid #dce3ee;
-	padding-bottom: 23PX;
-	margin-bottom: 25px;
-	padding-left: 45px;
+	padding-bottom:15px;
+	margin-bottom: 15px;
+	padding-left: 40px;
 }
 .resolved-panel ul li span {
 	color: #d1593b;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1231,7 +1324,7 @@ footer .pull-right a {
 	color: #d1593b;
 	margin: 0px;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1350,14 +1443,14 @@ footer .pull-right a {
 	padding-left: 0px !important
 }
 .mtb20 {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .mt40 {
-	margin-top: 80px;
+	margin-top: 40px;
 }
 .mb55 {
-	margin-bottom: 55px;
+	margin-bottom:20px;
 }
 .mt10 {
 	margin-top: 10px;
@@ -1372,7 +1465,7 @@ footer .pull-right a {
 	margin-right: 13px;
 }
 .mb30 {
-	margin-bottom: 30px;
+	margin-bottom:20px;
 }
 .ml8 {
 	margin-left: 8px;
@@ -1467,6 +1560,190 @@ footer .pull-right a {
 .edit-nav {
 	margin-top: 9px;
 }
+/*.............profile...........*/
+.custom-breadcrumb li a, .custom-breadcrumb li a:active, .custom-breadcrumb li a:hover, .custom-breadcrumb li a:focus {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 18px 5px 19px;
+}
+.custom-breadcrumb .balance {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 18px 5px 19px;
+	background-color: transparent;
+	border-bottom: 1px solid #dce3ee;
+	box-shadow: none;
+	color: #34353f;
+	padding-left: 20px;
+	text-align: center;
+}
+.custom-breadcrumb .balance span {
+	color: #e0694c;
+}
+.btn-register {
+	color: #ffffff;
+	background: #34353f;
+	border:none;
+	padding: 8px 12px 9px 12px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.btn-facebook {
+	color: #ffffff;
+	background: #44619d ;
+	padding: 8px 12px 9px 12px;
+	display: block;
+	width: 100%;
+	border:none;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.btn-google-plus {
+	color: #ffffff;
+	background: #de4c33 ;
+	padding: 8px 12px 9px 12px;
+	display: block;
+	border:none;
+	text-align: center;
+	width: 100%;
+}
+
+/***** 10.12 SIGN IN *****/
+
+
+.signinpanel {
+    width: 780px;
+    margin: 0% auto 0 auto;
+	margin-bottom:40px;
+	min-height:380px;
+}
+
+.signinpanel .logopanel {
+    float: none;
+    width: auto;
+    padding: 0;
+    background: none;
+}
+
+.signinpanel .signin-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.signinpanel .form-control {
+    display: block;
+	margin-bottom:10px;
+}
+
+.signinpanel .btn {
+    margin-top: 15px;
+}
+
+.signinpanel form {
+   background: transparent image-url('signup-bg.png') repeat scroll center top;
+    padding:25px;
+	padding-top:5px;
+}
+
+.signinpanel form a {
+    color: #666;
+}
+/***** 10.13 SIGN UP *****/
+
+
+.signuppanel {
+    margin: 0% auto 0 auto;
+    width: 780px;
+	margin-bottom:40px;
+}
+
+.signuppanel .row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.signuppanel .logopanel {
+    float: none;
+    width: auto;
+    padding: 0;
+    background: none;
+}
+
+.signuppanel .col-sm-6,
+.signuppanel .col-sm-5,
+.signuppanel .col-sm-3,
+.signuppanel .col-sm-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.signuppanel .signup-info {
+    padding-right: 20px;
+}
+
+.signuppanel form {
+    background: transparent image-url('signup-bg.png') repeat scroll center top;
+    padding:25px;
+	padding-top:5px;
+}
+.signuppanel form  .form-control{
+	margin-bottom:10px;
+	}
+.feat-list {
+    margin-top: 20px;
+}
+
+.feat-list .fa {
+    font-size: 20px;
+    border: 2px solid #636e7b;
+    padding: 4px 5px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    float: left;
+}
+
+.feat-list h4 {
+    margin-left:0px;
+    padding-top: 3px;
+}
+
+.feat-list p {
+    margin-left: 0px;
+}
+
+.signup-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+
+.sign-up{
+	max-width:300px;
+	margin-bottom:40px;
+	}
+.sign-up .form-group{
+	margin-bottom:10px;
+	}
+.sign-up p {
+	color: #adb2bc;
+	font-size: 12px;
+	display: inline-block !important;
+	margin-top: 10px;
+}
+.sign-up a {
+	color: #d1664f !important;
+	padding: 0px !important;
+	height: auto !important;
+	line-height: normal !important;
+	background:none !important;	
+	display: inline-block !important;
+}
 
 /*.............Start Media Queries...........*/
 /*....Sh Home page..*/
@@ -1558,5 +1835,12 @@ footer .pull-right {
 }
 .dropdown-menu.advance-search-overlay {
 	display: none;
+}
+.right-content ul li {
+	margin: 0px;
+}
+.navbar-toggle {
+	margin-top: 6px;
+	margin-bottom: 3px;
 }
 }

@@ -28,7 +28,7 @@
 	</div>
   </div>
 </div>
-
+<% if @user_role == :poster %>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -41,11 +41,16 @@
         
          
       </div>
-      <div class="modal-body"><div class="model-body-inn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae scelerisque nunc. Maecenas bibendum vehicula urna quis elementum. Aenean scelerisque enim tellus, non auctor ex sagittis sit amet. Donec fringilla diam ut purus ultrices, et elementum magna posuere </div></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal">REJECT</button>
-      
+      <%= form_tag(deny_answer_path(@bounty.pending_answer), method: "put") do %>
+      <div class="modal-body">
+        <%= text_area_tag(:denial_reason, "", style: "width:100%;height:100px;") %>
+        <%= hidden_field(:id, @bounty.pending_answer) %>
       </div>
+      <div class="modal-footer">
+        <%= submit_tag("REJECT", class: "btn btn-default pull-left rejection") %>
+      </div>
+      <% end %>
+
       
       
       
@@ -53,3 +58,4 @@
     </div>
   </div>
 </div>
+<% end %>
