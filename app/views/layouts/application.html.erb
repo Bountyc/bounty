@@ -17,7 +17,9 @@
 </head>
 <body>
 <% if user_signed_in? %>
-  <script type="text/javascript">
+  <%= render "layouts/header" %>
+  
+    <script type="text/javascript">
     var pusher = new Pusher("<%= PUSHER_KEY %>");
     var userChannel = pusher.subscribe("private-user-<%= current_user.id %>");
     userChannel.bind('new-notification', function(message) {
@@ -46,8 +48,6 @@
       });
     });
     </script>
-
-  <%= render "layouts/header" %>
 <% else %>
   <%= render "layouts/logged_out_main_header" %>
 <% end %>

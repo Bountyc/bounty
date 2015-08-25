@@ -6,6 +6,7 @@ This is the github repo of the mighty bounty website
 
 * Ubuntu - https://gorails.com/setup/ubuntu/14.10
 * Mac - https://gorails.com/setup/osx/10.11-el-capitan
+* Windows - Don't even fucking try
 
 run
 ```sh
