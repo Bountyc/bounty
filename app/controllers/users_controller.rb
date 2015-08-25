@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @new_users = User.order("created_at DESC").limit(16)
-    @by_name_users = User.order("first_name DESC").limit(16)
+    @by_name_users = User.order("lower(first_name) ASC").limit(16)
     @popular_users = User.order("reputation DESC").limit(16)
   end
 
