@@ -9,7 +9,7 @@
     <div class="right-content after-sign-in">
       <ul>
         <li><a href="#">Help</a></li>
-        <% if @signed_in_user %>
+        <% if user_signed_in? %>
         <li>
           <%= render "notifications/preview_list" %>
         </li>
