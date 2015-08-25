@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+	before_action :authenticate_user!
 	def create
 		@answer = Answer.new(answer_params)
 		bounty = Bounty.find params[:bounty_id]
@@ -20,8 +21,8 @@ class AnswersController < ApplicationController
 		notification = Notification.new
 		notification.bounty_hunter = @answer.bounty_hunter
 		notification.user = bounty.poster
-		notification.new_answer!
 		notification.message = current_user.email + " proposed a resolution to your bounty!"
+		notification.new_answer!		
 		notification.save
 
 
@@ -44,8 +45,8 @@ class AnswersController < ApplicationController
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
 			notification.user = current_user
-			notification.answer_accepted!
 			notification.message = "just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
+			notification.answer_accepted!
 			notification.save
 		end
 
@@ -69,8 +70,8 @@ class AnswersController < ApplicationController
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
 			notification.user = current_user
-			notification.answer_denied!
 			notification.message = "denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
+			notification.answer_denied!
 			notification.save
 
 		end

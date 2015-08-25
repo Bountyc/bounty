@@ -9,12 +9,12 @@
     <div class="right-content after-sign-in">
       <ul>
         <li><a href="#">Help</a></li>
+        <% if @signed_in_user %>
         <li>
-          <% if @signed_in_user %>
           <%= render "notifications/preview_list" %>
-          <% end %>
         </li>
-        <li><a href="#">Profile</a></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <% end %>
       </ul>
     </div>
   </div>

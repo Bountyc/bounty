@@ -22,6 +22,8 @@ module Bountyapp
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.autoload_paths += %W(#{config.root}/lib)
+    
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       "<div class=\"has-error\">#{html_tag}</div>".html_safe
     }

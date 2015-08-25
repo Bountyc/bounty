@@ -1,0 +1,141 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="left-side">
+        <div class="row mb55">
+          <div class="col-sm-12 col-md-4 pr0">
+            <ul class="nav nav-tabs nav-justified navbar-left">
+              <li class="active"> <a  href="#tab1" data-toggle="tab">Profile</a> </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-8 pl0">
+            <ul class="nav nav-justified custom-breadcrumb">
+              <li>
+                <p class="balance">Balance: <span><%= @user.balance %></span></p>
+              </li>
+              <li> <a href="#myModal" role="button" class="btn" data-toggle="modal"><%= image_tag "upload-icon.png" %> add money </a> </li>
+              <li> <a href="#myModal1" role="button" class="btn" data-toggle="modal"> <%= image_tag "download-icon.png" %>withdraw money </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"> <a href="#"><%= image_tag "image.png", class: "img-responsive" %> </a>
+            <div class="info-list-nav">
+              <ul class="nav">
+                <li><%= image_tag "area-icon.png" %> Baltimore, MD, United States </li>
+                <li><a href="#"><%= image_tag "attached-icon.png" %>josilber.scripts.mit.edu </a></li>
+                <li><%= image_tag "user-icon.png" %>Member for 1 year, 4 months </li>
+                <li><%= image_tag "view-icon.png" %>677 profile views </li>
+                <li><%= image_tag "time-icon.png" %>Last seen 7 hours ago </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="josilber-panel">
+              <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+              <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <p>I'm a PhD student at MIT in the Operations Research Center.<br>
+                I'm a co-developer of the massive open online course (MOOC)</p>
+            </div>
+            <div class="line mtb20"> </div>
+            <div class="josilber-list">
+              <ul class="nav">
+                <li>working on <%= @working_on_bounties_count %> bounties <span> - </span> </li>
+                <li> <%= @resolutions_count %> resolutions <span> - </span> </li>
+                <li><%= @user.bounties.count %> bounties posted</li>
+              </ul>
+            </div>
+            <div class="resolved-panel">
+              <ul class="nav">
+              <% total_earned = 0 %>
+              <% @solved_bounties.each do |bounty| %>
+                <li><span>$<%= bounty.price %></span><%= bounty.title %></li>
+                <% total_earned += bounty.price %>
+              <% end %>
+                <li>
+                  <h3>$<%= total_earned %> total earned</h3>
+                </li>
+              </ul>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'bounties/highest_bounties' %>
+  </div>
+</div>
+
+<!-- boostraps model fade - money exchange -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">
+        <span>$</span> add money to your account
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <p>Set Amount</p>
+          <input class="spinner">
+          <label for="spinner">USD</label>
+          <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
+          <div class="line"></div>
+          <h4>Add Funds With</h4>
+          <ul class="nav">
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "pay-pal.png" %></label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "add-to-card.png" %></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal" >ADD MONEY</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal1" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">
+        Withdraw money from your account
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <p>Set Amount</p>
+          <input class="spinner">
+          <label for="spinner">USD</label>
+          <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
+          <div class="line"></div>
+          <h4>Add Funds With</h4>
+          <ul class="nav">
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "pay-pal.png" %></label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "add-to-card.png" %></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left rejection" data-dismiss="modal">Withdraw MONEY</button>
+      </div>
+    </div>
+  </div>
+</div>

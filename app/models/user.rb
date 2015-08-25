@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+    validates_presence_of [:first_name, :last_name, :email]
+
 	has_many :bounty_hunters
 
 	has_many :payments
@@ -19,6 +22,13 @@ class User < ActiveRecord::Base
 
 	has_many :views
 
+	def solved_bounties
+		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 3").where("bounty_hunters.user_id = ?", [self.id])
+	end
+
+	def working_on_bounties
+		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.user_id = ?", [self.id])
+	end
 	def reload_balance
 		total_payments = 0
 		self.payments.each do |payment|

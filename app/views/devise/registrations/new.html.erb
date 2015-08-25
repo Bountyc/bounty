@@ -45,16 +45,16 @@
                     <label class="control-label">Name</label>
                     <div class="row mb10">
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Firstname" />
+                        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Firstname" %>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Lastname" />
+                        <%= f.text_field :last_name, class: "form-control", placeholder: "Lastname" %>
                         </div>
                     </div>
                     
                     <div class="mb10">
                         <label class="control-label">Email</label>
-                        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                        <%= f.email_field :email, class: "form-control" %>
                     </div>
                     
                     <div class="mb10">
@@ -69,11 +69,19 @@
                         <label class="control-label">Retype Password</label>
                         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
                     </div>
-                    
-                   
-                    <br />
-                    
-                     <%= f.submit "Register", class: "btn-register" %>   
+    
+                    <!-- display errors -->
+                    <% if @user.errors.any? %>
+                      <% @user.errors.full_messages.each do |message| %>
+                        <div class="alert alert-danger mtb20" role="alert">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                          <%= message %>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                    <%= f.submit "Register", class: "btn-register" %>   
                 <% end %>
             </div><!-- col-sm-6 -->
             

@@ -11,12 +11,14 @@ class Bounty < ActiveRecord::Base
 
 	after_create :change_user_balance
 
-	validates_presence_of [:price, :title, :description]
+	validates_presence_of [:price, :title, :description, :poster_id]
 	validates :price, :numericality => { :greater_than => 0}
 
 	validate :poster_can_afford
 
 	scope :search, -> (field, text) { where("#{field} LIKE ?", "%#{text}%") }
+	scope :open_bounties, -> { where(status: 0) }
+
 	default_scope {order('updated_at DESC')}
 	def working_users
 		return User.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.bounty_id = ?", [self.id])
@@ -52,9 +54,11 @@ class Bounty < ActiveRecord::Base
 		end
 
 		def poster_can_afford
-			self.poster.reload_balance
-			if self.poster.balance - self.price < 0.0
-				errors.add(:price, "is not affordable")
+			if errors.blank? # If other validations didn't pass, this function will break code
+				self.poster.reload_balance
+				if self.poster.balance - self.price < 0.0
+					errors.add(:price, "is not affordable")
+				end
 			end
 		end
 end

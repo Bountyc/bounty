@@ -32,6 +32,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'devise'
 
+gem 'pusher'
+
 gem 'redcarpet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
