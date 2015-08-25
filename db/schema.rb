@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821180622) do
+ActiveRecord::Schema.define(version: 20150824005305) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -59,7 +59,11 @@ ActiveRecord::Schema.define(version: 20150821180622) do
     t.boolean  "seen",              default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+<<<<<<< HEAD
     t.string   "action_link"
+=======
+    t.boolean  "clicked",           default: false
+>>>>>>> c964dcb80e39a67826f80e08b0bd7d86396cfd00
   end
 
   create_table "payments", force: :cascade do |t|
