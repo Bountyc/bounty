@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
   def index
+    @new_users = User.order("created_at DESC").limit(16)
+    @by_name_users = User.order("lower(first_name) ASC").limit(16)
+    @popular_users = User.order("reputation DESC").limit(16)
   end
 
   def show
+
   	@user = User.find(params[:id])
   	@solved_bounties = @user.solved_bounties
 

@@ -86,6 +86,7 @@ class BountiesController < ApplicationController
     bh.bounty = @bounty
     bh.started_working_at = Time.now
     if bh.save
+
       notification = Notification.new
       notification.bounty_hunter = bh
       notification.user = @bounty.poster
