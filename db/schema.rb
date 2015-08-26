@@ -59,11 +59,8 @@ ActiveRecord::Schema.define(version: 20150824005305) do
     t.boolean  "seen",              default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-<<<<<<< HEAD
     t.string   "action_link"
-=======
     t.boolean  "clicked",           default: false
->>>>>>> c964dcb80e39a67826f80e08b0bd7d86396cfd00
   end
 
   create_table "payments", force: :cascade do |t|

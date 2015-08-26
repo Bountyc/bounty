@@ -3,8 +3,8 @@ module Transfer
 		before_action :authenticate_user!, except: [:index, :show]
 		before_action :define_user
 
-		def new
-			price = params[:price]
+		def start_payment
+			@payment = Payment.new(payment_params)
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
 	  			:intent => "sale",
 	  			:payer => {
@@ -14,11 +14,11 @@ module Transfer
 	    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
 	  			:transactions => [ {
 	    			:amount => {
-	     			:total => price,
-	      			:currency => "USD" },
+	     			:total => sprintf('%.2f', @payment.amount),
+	      			:currency => "USD" 
+	      			},
 	    			:description => "Bounty Balance" 
-	    			} ] 
-	    			 
+	    			} ]    			 
 	    		})
 			@paypal_payment.create
 			
@@ -43,11 +43,18 @@ module Transfer
 			end
 			payment.amount = @paypal_payment_execute.transactions[0].amount.total
 			payment.save
-			current_user.balance += payment.amount 
-			current_user.save
-			render :plain => "successfully added " + payment.amount.to_s + " to "+current_user.id.to_s + "'s account"
+			current_user.reload_balance
+			redirect_to user_path(current_user.id)
 		end
 
 
-	end
+		  private
+
+
+			  # Never trust parameters from the scary internet, only allow the white list through.
+			  def payment_params
+				 params.require(:payment).permit(:amount)
+			  end
+
+			end
 end

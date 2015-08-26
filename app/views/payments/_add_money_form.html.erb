@@ -1,0 +1,40 @@
+<!-- boostraps model fade - money exchange -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">
+        <span>$</span> add money to your account
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <% @payment = Payment.new %>
+      <%= form_for @payment, :url =>{:action=>'start_payment', :controller=>"transfer/payments"} do |p| %>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <p>Set Amount</p>
+          <%= p.text_field :amount, :class => "spinner", :id => "amount", :required => true%>
+          <label for="spinner">USD</label>
+          <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
+          <div class="line"></div>
+          <h4>Add Funds With</h4>
+          <ul class="nav">
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "pay-pal.png" %></label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="select-one">
+                <%= image_tag "add-to-card.png" %></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+         <%= button_tag("ADD MONEY", type: 'submit', class: "btn btn-default pull-left rejection") %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

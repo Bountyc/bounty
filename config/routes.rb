@@ -26,11 +26,12 @@ Rails.application.routes.draw do
       collection do 
         get "custom_action"
         get "create"
+        post "start_payment"
       end
     end
     resources :withdrawals do
       collection do 
-        get "create"
+        post "create"
       end
     end
   end
