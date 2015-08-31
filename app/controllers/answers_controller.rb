@@ -22,8 +22,8 @@ class AnswersController < ApplicationController
 		notification.bounty_hunter = @answer.bounty_hunter
 		notification.user = bounty.poster
 		notification.message = current_user.email + " proposed a resolution to your bounty!"
-		notification.action_link = bounty_path(bounty.id)
-		notification.new_answer!		
+		notification.new_answer!	
+		notification.action_link = bounty_path(bounty.id)	
 		notification.save
 
 
@@ -48,6 +48,7 @@ class AnswersController < ApplicationController
 			notification.user = current_user
 			notification.message = "just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
 			notification.answer_accepted!
+			notification.action_link = bounty_path(answer.bounty.id)
 			notification.save
 		end
 
@@ -73,6 +74,7 @@ class AnswersController < ApplicationController
 			notification.user = current_user
 			notification.message = "denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
 			notification.answer_denied!
+			notification.action_link = bounty_path(bounty.id)
 			notification.save
 
 		end
