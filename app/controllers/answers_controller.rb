@@ -22,6 +22,7 @@ class AnswersController < ApplicationController
 		notification.bounty_hunter = @answer.bounty_hunter
 		notification.user = bounty.poster
 		notification.message = current_user.email + " proposed a resolution to your bounty!"
+		notification.action_link = bounty_path(bounty.id)
 		notification.new_answer!		
 		notification.save
 

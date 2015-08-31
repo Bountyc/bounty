@@ -5,9 +5,11 @@ module HtmlGenerator
 
 	include ActionView::Context
 
-	def notification_html(message, created_at, clicked)
+	include Rails.application.routes.url_helpers
+
+	def notification_html(id, message, created_at, clicked)
 		content_tag :li, class: "strong" do
-			content_tag :a, href: "#" do
+			content_tag :a, href: Rails.application.routes.url_helpers.notification_path(id) do
 				if clicked
 					concat content_tag :span, message
 				else

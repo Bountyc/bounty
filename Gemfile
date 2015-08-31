@@ -35,6 +35,8 @@ gem 'devise'
 gem 'pusher'
 
 gem 'redcarpet'
+
+gem 'font-awesome-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

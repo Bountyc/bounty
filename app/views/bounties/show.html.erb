@@ -33,9 +33,44 @@
                 <div class="edit-nav">
                   <ul class="nav pull-right">
                     <li>
-                    <a data-toggle="modal" href="#share">
-                        <%= image_tag "share-icon.png" %> share
-                    </a>
+                        <a href="#" data-toggle="dropdown">
+                          <%= image_tag "share-icon.png" %> share
+                        </a>
+                        <ul class="dropdown-menu share-button">
+                            <li>
+                              <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                          </li>
+                          <li>
+                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                          </li>         
+                          <li>
+                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                            <i class="fa fa-google-plus"></i>
+                          </a>
+                          </li>
+                            <li>
+                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                            <i class="fa fa-linkedin"></i>
+                          </a>
+                          </li>
+                          <li>
+                            <a data-original-title="Pinterest" rel="tooltip"  class="btn btn-pinterest" data-placement="left">
+                            <i class="fa fa-pinterest"></i>
+                          </a>
+                          </li>
+                                    <li>
+                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                            <i class="fa fa-envelope"></i>
+                          </a>
+                          </li>
+                                </ul>
+
+
+
                     </li>
                       
                     <li><a href="#"><%= image_tag "edit-icon.png" %> edit</a></li>
