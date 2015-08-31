@@ -11,4 +11,11 @@ class NotificationsController < ApplicationController
 			format.js {render plain: ""}
 		end
 	end
+
+	def show
+		notification = Notification.find(params[:id])
+		notification.clicked = true
+		notification.save
+		redirect_to notification.action_link
+	end
 end

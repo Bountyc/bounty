@@ -16,6 +16,6 @@ class Notification < ActiveRecord::Base
 		Pusher.key = PUSHER_KEY
 		Pusher.secret = PUSHER_SECRET
 
-		Pusher["private-user-#{self.user_id}"].trigger('new-notification', notification_html(self.message, Time.now, false))
+		Pusher["private-user-#{self.user_id}"].trigger('new-notification', notification_html(self.id, self.message, Time.now, false))
 	end
 end
