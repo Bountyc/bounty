@@ -92,7 +92,7 @@ class BountiesController < ApplicationController
       notification.user = @bounty.poster
       notification.message = current_user.email + " started working on your bounty!"
       notification.started_working!
-      notification.save
+      notification.action_link = bounty_path(@bounty.id)
     end
 
   	redirect_to @bounty
