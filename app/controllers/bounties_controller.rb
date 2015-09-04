@@ -86,13 +86,13 @@ class BountiesController < ApplicationController
     bh.bounty = @bounty
     bh.started_working_at = Time.now
     if bh.save
-
       notification = Notification.new
       notification.bounty_hunter = bh
       notification.user = @bounty.poster
       notification.message = current_user.email + " started working on your bounty!"
-      notification.started_working!
       notification.action_link = bounty_path(@bounty.id)
+      notification.started_working!
+      notification.save
     end
 
   	redirect_to @bounty

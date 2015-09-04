@@ -4,7 +4,7 @@ class Notification < ActiveRecord::Base
 	belongs_to :user
 	after_create :push_notification
 
-	validates_presence_of [:message]
+	validates_presence_of [:message, :action_link]
 
 	enum notification_type: [:answer_denied, :answer_accepted, :new_answer, :started_working]
 
