@@ -2,7 +2,6 @@ class BountiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :define_user
 
-
   def index
 
     if params[:search_text]
