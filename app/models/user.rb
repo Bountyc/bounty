@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	has_many :payments
 
 	has_many :answers, through: :bounty_hunters, source: :answer
-	
+
 	has_many :bounties, :foreign_key => "poster_id"
 
 	# TODO think of a better name instead of hunting bounties
@@ -32,6 +32,11 @@ class User < ActiveRecord::Base
 	def working_on_bounties
 		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 0").where("bounty_hunters.user_id = ?", [self.id])
 	end
+
+	def bounties_with_rejected_answer
+		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 2").where("bounty_hunters.user_id = ?", [self.id])
+	end
+
 	def reload_balance
 		total_payments = 0
 		self.payments.each do |payment|
@@ -58,5 +63,80 @@ class User < ActiveRecord::Base
 		self.balance = total_payments + total_bounties_won_amount - total_withdrawals - total_bounties_lost_amount
 		self.save
 		self.balance
+	end
+
+	def reload_reputation
+
+		tags_reputation = {} # Hash with format {tag_string: score}
+
+		# -----------  Reload reputation by rejected bounties ------------
+		# Need to call first because returns array with one object
+		rejected_score = ActionReputationScore.answer_rejected.first.score
+		self.bounties_with_rejected_answer.each do |bounty|
+			bounty.tags.each do |tag|
+				if tags_reputation.has_key?(tag.id)
+					tags_reputation[tag.id] += rejected_score
+				else
+					# if tag is not in hash += will raise an error
+					tags_reputation[tag.id] = rejected_score
+				end
+			end
+		end
+		# ----------------------------------------------------------------
+
+
+		# -----------  Reload reputation by resolved bounties ------------
+		# Need to call first because returns array with one object
+		rejected_score = ActionReputationScore.resolve_bounty.first.score
+		self.solved_bounties.each do |bounty|
+			bounty.tags.each do |tag|
+				if tags_reputation.has_key?(tag.id)
+					tags_reputation[tag.id] += rejected_score
+				else
+					# if tag is not in hash += will raise an error
+					tags_reputation[tag.id] = rejected_score
+				end
+			end
+		end
+		# ----------------------------------------------------------------
+
+
+		# -----------  Reload reputation by posted bounties ------------
+		# Need to call first because returns array with one object
+		rejected_score = ActionReputationScore.post_bounty.first.score
+		self.bounties.each do |bounty|
+			bounty.tags.each do |tag|
+				if tags_reputation.has_key?(tag.id)
+					tags_reputation[tag.id] += rejected_score
+				else
+					# if tag is not in hash += will raise an error
+					tags_reputation[tag.id] = rejected_score
+				end
+			end
+		end
+		# ----------------------------------------------------------------
+
+
+		# Make sure all reputation tags score not in array deleted
+		self.tag_reputations.where.not(tag: tags_reputation.keys).destroy_all
+
+		# Update all reputation tags score of tags in array
+		tags_reputation.each do |tag_id, score|
+			# TODO handle errors
+
+			tag_reputation = self.tag_reputations.find_by_tag_id(tag_id)
+
+			if tag_reputation.nil?
+				# If counln't find, create a new tag_reputation
+				tag_reputation = UserTagReputation.new
+				tag_reputation.user = self
+				tag_reputation.tag_id = tag_id
+				tag_reputation.score = score
+				tag_reputation.save
+			else
+				tag_reputation.update(score: score)
+
+			end
+		end
 	end
 end

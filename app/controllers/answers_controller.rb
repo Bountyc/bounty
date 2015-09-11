@@ -62,9 +62,9 @@ class AnswersController < ApplicationController
 			#TODO add notification to denied user
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
-			notification.user = current_user
+			notification.user = answer.hunter
 			notification.message = "denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
-			notification.action_link = bounty_path(bounty.id)			
+			notification.action_link = bounty_path(answer.bounty.id)			
 			notification.answer_denied!
 			notification.save
 

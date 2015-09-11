@@ -13,7 +13,6 @@ class Answer < ActiveRecord::Base
 	after_create :change_bounty_status
 	after_create :create_notification
 
-	after_update :send_email, :if => :column_name_changed?
 	scope :pending_answer, -> (id) {find_by_sql(["SELECT * from Answers a JOIN bounty_hunters b ON a.id=b.answer_id WHERE b.status=1 AND b.bounty_id=?", [id]]).first}
 	
 	def bounty_answer_available

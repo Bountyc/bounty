@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911124505) do
+ActiveRecord::Schema.define(version: 20150911152148) do
+
+  create_table "action_reputation_scores", force: :cascade do |t|
+    t.integer  "action"
+    t.integer  "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "action_reputation_scores", ["action"], name: "index_action_reputation_scores_on_action", unique: true
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -97,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150911124505) do
   create_table "user_tag_reputations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tag_id"
+    t.integer "score",   default: 0
   end
 
   add_index "user_tag_reputations", ["user_id", "tag_id"], name: "index_user_tag_reputations_on_user_id_and_tag_id"
