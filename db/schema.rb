@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825190855) do
+ActiveRecord::Schema.define(version: 20150911124505) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(version: 20150825190855) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "user_tag_reputations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
+  end
+
+  add_index "user_tag_reputations", ["user_id", "tag_id"], name: "index_user_tag_reputations_on_user_id_and_tag_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",  null: false

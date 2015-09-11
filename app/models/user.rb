@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	has_many :payments
 
 	has_many :answers, through: :bounty_hunters, source: :answer
+	
 	has_many :bounties, :foreign_key => "poster_id"
 
 	# TODO think of a better name instead of hunting bounties
@@ -21,6 +22,8 @@ class User < ActiveRecord::Base
 	has_many :withdrawals
 
 	has_many :views
+
+	has_many :tag_reputations, foreign_key: "user_id", class_name: "UserTagReputation"
 
 	def solved_bounties
 		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 3").where("bounty_hunters.user_id = ?", [self.id])
