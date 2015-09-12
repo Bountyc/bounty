@@ -78,4 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'https://young-shore-8277.herokuapp.com/' }
+  
+  config.force_ssl = true
 end
