@@ -50,7 +50,6 @@ class User < ActiveRecord::Base
 	    user.password = Devise.friendly_token[0,20]
 	    user.first_name = auth.info.name.split()[0]
 	    user.last_name = auth.info.name.split()[1..-1].join(" ")
-	    byebug
 	  end
 	end
 
