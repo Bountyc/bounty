@@ -43,6 +43,13 @@ class User < ActiveRecord::Base
 		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 2").where("bounty_hunters.user_id = ?", [self.id])
 	end
 
+	def self.from_omniauth(auth)
+	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+	    user.email = auth.info.email
+	    user.password = Devise.friendly_token[0,20]
+	  end
+	end
+
 	def reload_balance
 		total_payments = 0
 		self.payments.each do |payment|
