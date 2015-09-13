@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
 
 	has_many :bounties, :foreign_key => "poster_id"
 
+	has_many :disputes_won, :class_name => "Dispute", :foreign_key => "winner_user_id"
+
+	has_many :disputes_moderated, :class_name => "Dispute", :foreign_key => "moderator_id"
+
 	# TODO think of a better name instead of hunting bounties
 	has_many :hunting_bounties, through: :bounty_hunters, source: :bounty
 	

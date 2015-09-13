@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911152148) do
+ActiveRecord::Schema.define(version: 20150913004139) do
 
   create_table "action_reputation_scores", force: :cascade do |t|
     t.integer  "action"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20150911152148) do
 
   add_index "bounty_hunters", ["answer_id"], name: "index_bounty_hunters_on_answer_id"
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"
+
+  create_table "disputes", force: :cascade do |t|
+    t.integer  "bounty_id"
+    t.integer  "winner_user_id"
+    t.integer  "moderator_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "bounty_hunter_id"
