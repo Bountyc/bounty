@@ -20,13 +20,13 @@
           <div class="row">
             <div class="user-info">
               <div class="col-sm-6">
-                <div class="user-image"> <a href="#"> <%= image_tag "user-image.jpg", alt: "Image" %> by <span> Hank </span> </a> <span> - </span> <span> 1 hour ago</span> </div>
+                <div class="user-image"> <a href="<%=user_path(@bounty.poster)%>"> <%= image_tag "user-image.jpg", alt: "Image" %> by <span> <%= @bounty.poster.first_name + " " + @bounty.poster.last_name %> </span> </a> <span> - </span> <span> 1 hour ago</span> </div>
               </div>
               <div class="col-sm-6">
                 <div class="comment-nav">
                   <ul class="nav pull-right">
                     <% @bounty.tags.each do |tag|%>
-                      <li><a href="#"> <%= tag.name %> </a></li>
+                      <li> <%= tag.name %> </li>
                     <% end %>
                   </ul>
                 </div>
