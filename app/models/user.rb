@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
 	devise :omniauthable, :omniauth_providers => [:facebook]
 	
-    validates_presence_of [:first_name, :last_name, :email]
+    validates_presence_of [:first_name, :last_name]
 
 	has_many :bounty_hunters
 
@@ -45,11 +45,12 @@ class User < ActiveRecord::Base
 
 	def self.from_omniauth(auth)
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+
 	    user.email = auth.info.email
 	    user.password = Devise.friendly_token[0,20]
-	    user.first_name = "X"
-	    user.last_name = "X"
-	    user.save
+	    user.first_name = auth.info.name.split()[0]
+	    user.last_name = auth.info.name.split()[1..-1].join(" ")
+	    byebug
 	  end
 	end
 
