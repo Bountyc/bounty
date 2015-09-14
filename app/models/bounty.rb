@@ -14,7 +14,7 @@ class Bounty < ActiveRecord::Base
 	validates_presence_of [:price, :title, :description, :poster_id]
 	validates :price, :numericality => { :greater_than => 0}
 
-	validate :poster_can_afford, :on => :create
+	validate :poster_can_afford
 
 	scope :search, -> (field, text) { where("#{field} LIKE ?", "%#{text}%") }
 	scope :open_bounties, -> { where(status: 0) }

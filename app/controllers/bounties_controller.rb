@@ -2,8 +2,8 @@ class BountiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :define_user
 
-  def index
 
+  def index
     if params[:search_text]
       @open_bounties = Bounty.search("title",params[:search_text]).where(:status => 0).limit(10)
       @open_bounties_count =Bounty.search("title",params[:search_text]).where(:status => 0).count
@@ -91,8 +91,7 @@ class BountiesController < ApplicationController
       notification.user = @bounty.poster
       notification.message = current_user.email + " started working on your bounty!"
       notification.action_link = bounty_path(@bounty.id)
-      notification.started_working!
-      notification.save
+      notification.started_working! # No need for save because this saves already
     end
 
   	redirect_to @bounty
