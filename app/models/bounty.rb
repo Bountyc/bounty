@@ -3,6 +3,7 @@ class Bounty < ActiveRecord::Base
 	has_many :bounty_hunters
 	has_many :hunters, through: :bounty_hunters
 	has_many :views
+	has_many :disputes
 
 	has_many :answers, through: :bounty_hunters, source: :answer
 	belongs_to :poster, :class_name => "User", :foreign_key => "poster_id"

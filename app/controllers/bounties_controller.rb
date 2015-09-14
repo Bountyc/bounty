@@ -78,6 +78,21 @@ class BountiesController < ApplicationController
     end
   end
 
+  def edit
+    @bounty = Bounty.find params[:id]
+  end
+
+  def update
+    @bounty = Bounty.find params[:id]
+    
+    if @bounty.update_attributes(bounty_params)
+      redirect_to @bounty
+    else
+      render 'edit';
+    end
+
+  end
+
   def add_working_user
   	@bounty = Bounty.find(params[:id])
 

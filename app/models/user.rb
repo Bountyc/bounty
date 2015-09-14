@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+	devise :omniauthable, :omniauth_providers => [:facebook]
+	
     validates_presence_of [:first_name, :last_name, :email]
 
 	has_many :bounty_hunters
@@ -13,6 +15,10 @@ class User < ActiveRecord::Base
 	has_many :answers, through: :bounty_hunters, source: :answer
 
 	has_many :bounties, :foreign_key => "poster_id"
+
+	has_many :disputes_won, :class_name => "Dispute", :foreign_key => "winner_user_id"
+
+	has_many :disputes_moderated, :class_name => "Dispute", :foreign_key => "moderator_id"
 
 	# TODO think of a better name instead of hunting bounties
 	has_many :hunting_bounties, through: :bounty_hunters, source: :bounty
@@ -35,6 +41,16 @@ class User < ActiveRecord::Base
 
 	def bounties_with_rejected_answer
 		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 2").where("bounty_hunters.user_id = ?", [self.id])
+	end
+
+	def self.from_omniauth(auth)
+	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+	    user.email = auth.info.email
+	    user.password = Devise.friendly_token[0,20]
+	    user.first_name = "X"
+	    user.last_name = "X"
+	    user.save
+	  end
 	end
 
 	def reload_balance
