@@ -85,6 +85,14 @@
                       <% end %>
                     <% end %>
 
+                    <% if flash[:alert] %>
+                        <div class="alert alert-danger mtb20" role="alert">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                          <%= flash[:alert] %>
+                        </div>
+                    <% end %>
+
                     <%= f.submit "Register", class: "btn-register" %>   
                 <% end %>
             </div><!-- col-sm-6 -->

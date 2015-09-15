@@ -19,3 +19,7 @@
 function fadeError(timeout) {
     $("#flash-error").delay(timeout).animate({ height: 0, opacity: 0 }, 1000);
 }
+
+function fadeAlert(timeout) {
+    $(".alert").delay(timeout).fadeOut(1000);
+}

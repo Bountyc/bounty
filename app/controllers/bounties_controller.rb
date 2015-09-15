@@ -4,6 +4,7 @@ class BountiesController < ApplicationController
 
 
   def index
+    flash[:alert] = "Facebook email has already been taken"
     if params[:search_text]
       @open_bounties = Bounty.search("title",params[:search_text]).where(:status => 0).limit(10)
       @open_bounties_count =Bounty.search("title",params[:search_text]).where(:status => 0).count
