@@ -36,7 +36,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       if @user.errors.any?
-        flash[:notice] = "Facebook " + @user.errors.full_messages.join(', ').downcase
+        flash[:alert] = "Facebook " + @user.errors.full_messages.join(', ').downcase
       end
       redirect_to new_user_registration_url
     end
