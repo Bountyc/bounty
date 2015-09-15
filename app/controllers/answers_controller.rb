@@ -36,11 +36,14 @@ class AnswersController < ApplicationController
 
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
-			notification.user = current_user
+			notification.user = answer.hunter
 			notification.message = "just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
 			notification.action_link = bounty_path(answer.bounty.id)
 			notification.answer_accepted!
 			notification.save
+		else
+			flash[:error] = "You are not allowed to deny!"
+			redirect_to root_url
 		end
 
 		redirect_to :back
@@ -67,7 +70,9 @@ class AnswersController < ApplicationController
 			notification.action_link = bounty_path(answer.bounty.id)			
 			notification.answer_denied!
 			notification.save
-
+		else
+			flash[:error] = "You are not allowed to deny!"
+			redirect_to root_url
 		end
 
 		redirect_to :back

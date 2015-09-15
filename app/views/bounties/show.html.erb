@@ -72,8 +72,9 @@
 
 
                     </li>
-                      
-                    <li><a href="<%= edit_bounty_path(@bounty) %>"><%= image_tag "edit-icon.png" %> edit</a></li>
+                    <% if current_user == @bounty.poster %>
+                      <li><a href="<%= edit_bounty_path(@bounty) %>"><%= image_tag "edit-icon.png" %> edit</a></li>
+                    <% end %>
                   </ul>
                 </div>
               </div>

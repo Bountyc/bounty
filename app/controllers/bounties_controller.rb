@@ -32,36 +32,41 @@ class BountiesController < ApplicationController
 
   def show
   	set_bounty
-  	if @bounty.poster == current_user
-  		@user_role = :poster
-  	elsif current_user
-  		if @bounty.hunters.include? current_user
-  			@bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
+    if @bounty.nil?
+      flash[:error] = "Sorry, something went wrong"
+      redirect_to root_url
+    else
+    	if @bounty.poster == current_user
+    		@user_role = :poster
+    	elsif user_signed_in?
+    		if @bounty.hunters.include? current_user
+    			@bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
 
-  			@user_role = @bounty_hunter_relation_object.status.to_sym
-  		else
-  			@user_role = :hunter
-  		end
-  	else
-  		@user_role = :guest
-  	end
+    			@user_role = @bounty_hunter_relation_object.status.to_sym
+    		else
+    			@user_role = :hunter
+    		end
+    	else
+    		@user_role = :guest
+    	end
 
-  	@answer = Answer.new
+    	@answer = Answer.new
 
-  	if @bounty.pending?
-  		@suggested_answer = Answer.pending_answer(@bounty.id)
-  	end
+    	if @bounty.pending?
+    		@suggested_answer = Answer.pending_answer(@bounty.id)
+    	end
 
-    if current_user
-      if !current_user.views.exists?(bounty_id: @bounty.id)
-        view = View.new
-        view.user = current_user
-        view.bounty = @bounty
-        view.save
+      if user_signed_in?
+        if !current_user.views.exists?(bounty_id: @bounty.id)
+          view = View.new
+          view.user = current_user
+          view.bounty = @bounty
+          view.save
+        end
       end
-    end
 
-    @working_bounty_hunters = @bounty.working_bounty_hunters
+      @working_bounty_hunters = @bounty.working_bounty_hunters
+    end
   end
 
   def new
@@ -80,10 +85,10 @@ class BountiesController < ApplicationController
 
   def edit
     if user_signed_in?
-      @bounty = Bounty.find params[:id]
-      if current_user != @bounty.poster
-        flash[:error] = "Don't mess with us! You can't edit this!" 
-        redirect_to root_url       
+      set_bounty
+      if @bounty.nil? or current_user != @bounty.poster
+        flash[:error] = "Sorry, something went wrong"
+        redirect_to root_url
       end
     else
       redirect_to new_user_session_path
@@ -91,12 +96,16 @@ class BountiesController < ApplicationController
   end
 
   def update
-    @bounty = Bounty.find params[:id]
-    
-    if @bounty.update_attributes(bounty_params)
-      redirect_to @bounty
-    else
-      render 'edit';
+    set_bounty
+    if @bounty.nil?
+      flash[:error] = "Sorry, something went wrong"
+      redirect_to root_url
+    else    
+      if @bounty.update_attributes(bounty_params)
+        redirect_to @bounty
+      else
+        render 'edit';
+      end
     end
 
   end
@@ -125,7 +134,7 @@ class BountiesController < ApplicationController
 
 	  # Use callbacks to share common setup or constraints between actions.
 	  def set_bounty
-	    @bounty = Bounty.find(params[:id])
+	    @bounty = Bounty.find_by(id: params[:id])
 	  end
 
 	  # Never trust parameters from the scary internet, only allow the white list through.
