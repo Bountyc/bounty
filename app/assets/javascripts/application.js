@@ -15,3 +15,7 @@
 //= require select2
 //= require_tree .
 //= stub bootstrap.min
+
+function fadeError(timeout) {
+    $("#flash-error").delay(timeout).animate({ height: 0, opacity: 0 }, 1000);
+}

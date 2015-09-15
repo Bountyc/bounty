@@ -9,13 +9,23 @@
             </ul>
           </div>
           <div class="col-sm-12 col-md-8 pl0">
+          <% if current_user == @user %>
             <ul class="nav nav-justified custom-breadcrumb">
-              <li>
-                <p class="balance">Balance: <span><%= @user.balance %></span></p>
-              </li>
-              <li> <a href="#myModal" role="button" class="btn" data-toggle="modal"><%= image_tag "upload-icon.png" %> add money </a> </li>
-              <li> <a href="#myModal1" role="button" class="btn" data-toggle="modal"> <%= image_tag "download-icon.png" %>withdraw money </a> </li>
+                <li>
+                  <p class="balance">Balance: <span><%= @user.balance %></span></p>
+                </li>
+                <li>
+                  <a href="#myModal" role="button" class="btn" data-toggle="modal">
+                    <%= image_tag "upload-icon.png" %> add money 
+                  </a> 
+                </li>
+                <li> 
+                  <a href="#myModal1" role="button" class="btn" data-toggle="modal"> 
+                    <%= image_tag "download-icon.png" %>withdraw money 
+                  </a> 
+                </li>
             </ul>
+            <% end %>
           </div>
         </div>
         <div class="row">
@@ -33,7 +43,9 @@
           <div class="col-sm-8">
             <div class="josilber-panel">
               <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
-              <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <% if current_user == @user %>
+                <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <% end %>
               <p>I'm a PhD student at MIT in the Operations Research Center.<br>
                 I'm a co-developer of the massive open online course (MOOC)</p>
             </div>
@@ -65,6 +77,10 @@
     <%= render 'bounties/highest_bounties' %>
   </div>
 </div>
-
-<%= render 'payments/add_money_form' %>
-<%= render 'payments/withdraw_money_form' %>
+<% if current_user == @user %>
+  <script>
+  alert('<%= @user.email %>');
+  </script>
+  <%= render 'payments/add_money_form' %>
+  <%= render 'payments/withdraw_money_form' %>
+<% end %>

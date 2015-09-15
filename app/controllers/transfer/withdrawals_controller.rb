@@ -13,7 +13,8 @@ module Transfer
 			#Check that user has enough money in his account to make this withdrawal
 			if (current_user.balance - withdrawal.amount) < 0
 				logger.info "User tried to withdraw more then he has in his balance"
-				render :plain => "Don't. Just don't. You seriously thought that would work? Well fuck you cause I'm smarter then you and I fucked your mom so stfu. You have been charged a $12 penalty for being a penis."
+				flash[:error] = "Don't. Just don't. You seriously thought that would work? Well fuck you cause I'm smarter then you and I fucked your mom so stfu. You have been charged a $12 penalty for being a penis."
+				redirect_to root_url
 				return
 			end
 

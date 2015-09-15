@@ -79,7 +79,15 @@ class BountiesController < ApplicationController
   end
 
   def edit
-    @bounty = Bounty.find params[:id]
+    if user_signed_in?
+      @bounty = Bounty.find params[:id]
+      if current_user != @bounty.poster
+        flash[:error] = "Don't mess with us! You can't edit this!" 
+        redirect_to root_url       
+      end
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def update
