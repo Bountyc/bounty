@@ -78,9 +78,6 @@
   </div>
 </div>
 <% if current_user == @user %>
-  <script>
-  alert('<%= @user.email %>');
-  </script>
   <%= render 'payments/add_money_form' %>
   <%= render 'payments/withdraw_money_form' %>
 <% end %>
