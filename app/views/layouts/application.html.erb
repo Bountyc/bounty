@@ -15,12 +15,7 @@
   	<%= csrf_meta_tags %>
 </head>
 <body>
-    <% if flash[:notice] %>
-    <div class="alert alert-danger fade in" style="position: fixed;text-align: center;left: 0;right: 0;margin-left: auto;margin-right: auto;width: 650px;z-index: 100;margin-top: 10px;">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <%= flash[:notice] %>
-    </div>
-    <% end %>
+  <%= render "layouts/notice" %>
 <% if user_signed_in? %>
   <%= render "layouts/header" %>
     <script type="text/javascript">
