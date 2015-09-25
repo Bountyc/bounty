@@ -4,6 +4,6 @@
         <%= flash[:notice] %>
     </div>
     <script type="text/javascript">
-    	fadeAlert(5000);
+    	fadeAlert(2000);
     </script>
 <% end %>
