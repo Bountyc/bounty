@@ -20,7 +20,7 @@ module BountiesHelper
 		when :linkedin
 			return 'https://www.linkedin.com/shareArticle?mini=true&url=' + Rack::Utils.escape(url) + '&title=&summary=&source='
 		when :email
-			return 'mailto:?&subject=A interesting bounty&body=Hey!%0ACome%20look%20at%20this%20awesome%20bounty%3A%0A\n' + Rack::Utils.escape(url)
+			return 'mailto:?&subject=A interesting bounty&body=Hey!%0ACome%20look%20at%20this%20awesome%20bounty%3A%0A' + Rack::Utils.escape(url)
 		end
 	end
 

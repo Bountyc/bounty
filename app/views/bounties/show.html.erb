@@ -53,9 +53,6 @@
                             <%= link_to('<i class="fa fa-envelope"></i>'.html_safe, share_link(:email, request.original_url), rel:"tooltip", class: "btn btn-mail",dataPlacement:"left", :target => "_blank") %>
                           </li>
                     </ul>
-
-
-
                     </li>
                     <% if current_user == @bounty.poster %>
                       <li><a href="<%= edit_bounty_path(@bounty) %>"><%= image_tag "edit-icon.png" %> edit</a></li>
