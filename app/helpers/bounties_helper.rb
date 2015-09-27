@@ -15,6 +15,12 @@ module BountiesHelper
 			return 'https://www.facebook.com/sharer/sharer.php?u=' + Rack::Utils.escape(url)
 		when :twitter
 			return 'https://twitter.com/home?status=' + Rack::Utils.escape(url)
+		when :google_plus
+			return 'https://plus.google.com/share?url=' + Rack::Utils.escape(url)
+		when :linkedin
+			return 'https://www.linkedin.com/shareArticle?mini=true&url=' + Rack::Utils.escape(url) + '&title=&summary=&source='
+		when :email
+			return 'mailto:?&subject=A interesting bounty&body=Hey!%0ACome%20look%20at%20this%20awesome%20bounty%3A%0A\n' + Rack::Utils.escape(url)
 		end
 	end
 

@@ -42,29 +42,17 @@
                           </li>
                           <li>
                               <%= link_to('<i class="fa fa-facebook"></i>'.html_safe, share_link(:facebook, request.original_url), rel:"tooltip", class: "btn btn-facebook",dataPlacement:"left", :target => "_blank") %>
-                          </a>
                           </li>         
                           <li>
-                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                            <i class="fa fa-google-plus"></i>
-                          </a>
-                          </li>
-                            <li>
-                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                            <i class="fa fa-linkedin"></i>
-                          </a>
+                            <%= link_to('<i class="fa fa-google-plus"></i>'.html_safe, share_link(:google_plus, request.original_url), rel:"tooltip", class: "btn btn-google",dataPlacement:"left", :target => "_blank") %>
                           </li>
                           <li>
-                            <a data-original-title="Pinterest" rel="tooltip"  class="btn btn-pinterest" data-placement="left">
-                            <i class="fa fa-pinterest"></i>
-                          </a>
+                            <%= link_to('<i class="fa fa-linkedin"></i>'.html_safe, share_link(:linkedin, request.original_url), rel:"tooltip", class: "btn btn-linkedin",dataPlacement:"left", :target => "_blank") %>
                           </li>
-                                    <li>
-                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                            <i class="fa fa-envelope"></i>
-                          </a>
+                          <li>
+                            <%= link_to('<i class="fa fa-envelope"></i>'.html_safe, share_link(:email, request.original_url), rel:"tooltip", class: "btn btn-mail",dataPlacement:"left", :target => "_blank") %>
                           </li>
-                                </ul>
+                    </ul>
 
 
 
