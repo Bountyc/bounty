@@ -38,13 +38,10 @@
                         </a>
                         <ul class="dropdown-menu share-button">
                             <li>
-                              <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                            <i class="fa fa-twitter"></i>
-                          </a>
+                              <%= link_to('<i class="fa fa-twitter"></i>'.html_safe, share_link(:twitter, request.original_url), rel:"tooltip", class: "btn btn-twitter",dataPlacement:"left", :target => "_blank") %>
                           </li>
                           <li>
-                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                            <i class="fa fa-facebook"></i>
+                              <%= link_to('<i class="fa fa-facebook"></i>'.html_safe, share_link(:facebook, request.original_url), rel:"tooltip", class: "btn btn-facebook",dataPlacement:"left", :target => "_blank") %>
                           </a>
                           </li>         
                           <li>

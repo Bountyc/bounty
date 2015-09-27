@@ -26,6 +26,7 @@ class BountiesController < ApplicationController
         @my_bounties = current_user.bounties.limit(10)
         @my_bounties_count = current_user.bounties.count
       end
+      render layout: "homepage"
     end
 
   end

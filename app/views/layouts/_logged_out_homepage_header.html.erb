@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <div class="logo"> <a href="#"><%= image_tag "logo.jpg", alt: "" %></a> </div>
+    <div class="logo"> <a href="<%= root_url %>"><%= image_tag "logo.jpg", alt: "" %></a> </div>
     <div class="right-content after-sign-in">
       <ul>
         
@@ -74,9 +74,9 @@
       </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Bounties</a></li>
+        <li><%= link_to "Bounties", bounties_path %></li>
         <li><a href="#">Tags</a></li>
-        <li><a href="#">Users</a></li>
+        <li><%= link_to "Users", users_path %></li>
       </ul>
     </div>
     <!--/.nav-collapse --> 
