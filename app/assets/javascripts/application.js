@@ -16,10 +16,8 @@
 //= require_tree .
 //= stub bootstrap.min
 
-function fadeError(timeout) {
-    $("#flash-error").delay(timeout).animate({ height: 0, opacity: 0 }, 1000);
-}
-
-function fadeAlert(timeout) {
-    $(".alert").delay(timeout).fadeOut(1000);
-}
+$( document ).ready(function() {
+	$("#close-error").click(function() {
+	  $("#flash-error").animate({ height: 0, opacity: 0 }, 1000);
+	});
+});
