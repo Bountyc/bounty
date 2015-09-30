@@ -1,36 +1,21 @@
 class BountiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :define_user
-
+  include Bounties
 
   def index
-      @open_bounties = Bounty.where(:status => 0).limit(10)
-      @open_bounties_count =Bounty.where(:status => 0).count
+    @open_bounties = get_bounties({status: 0, search: params[:search_text]})
+    @open_bounties_count = count_bounties({status: 0, search: params[:search_text]})
 
-      @resolved_bounties = Bounty.where(:status => 2).limit(10)
-      @resolved_bounties_count = Bounty.where(:status => 2).count
+    @resolved_bounties = get_bounties({status: 2, search: params[:search_text]})
+    @resolved_bounties_count = count_bounties({status: 2, search: params[:search_text]})
 
-      if current_user
-        @my_bounties = current_user.bounties.limit(10)
-        @my_bounties_count = current_user.bounties.count
-      end
-
-    if params[:search_text]
-      @open_bounties = @open_bounties.search("title",params[:search_text])
-      @open_bounties_count =@open_bounties.search("title",params[:search_text])
-
-      @resolved_bounties = @resolved_bounties.search("title",params[:search_text])
-      @resolved_bounties_count = @resolved_bounties_count.search("title",params[:search_text])
-
-      if current_user
-        @my_bounties = @my_bounties.search("title",params[:search_text])
-        @my_bounties_count = @my_bounties_count.search("title",params[:search_text])
-      end
-    elsif params[:from] or params[:to]
-      x = 0
+    if current_user
+      @my_bounties = get_bounties({user_id: current_user.id, search: params[:search_text]})
+      @my_bounties_count = count_bounties({user_id: current_user.id, search: params[:search_text]})
     end
-    render layout: "homepage"
 
+    render layout: 'homepage'
   end
 
   def show
