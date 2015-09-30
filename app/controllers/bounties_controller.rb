@@ -10,11 +10,12 @@ class BountiesController < ApplicationController
     @resolved_bounties = get_bounties({status: 2, search: params[:search_text]})
     @resolved_bounties_count = count_bounties({status: 2, search: params[:search_text]})
 
-    if current_user
+    if user_signed_in?
       @my_bounties = get_bounties({user_id: current_user.id, search: params[:search_text]})
       @my_bounties_count = count_bounties({user_id: current_user.id, search: params[:search_text]})
+      gon.user_id = current_user.id
     end
-    gon.user_id = current_user.id
+
     render layout: 'homepage'
   end
 
