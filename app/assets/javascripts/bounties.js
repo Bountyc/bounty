@@ -3,7 +3,9 @@ $( document ).ready(function() {
     $(this).remove();
   });
   	$(".load-more").click(function() {
-  		$(this).html('loading...')
+  		$(this).html('<span class="loading">loading...</span>')
+  		$.ajax({url: "demo_test.txt", success: function(result){
+        	$("#div1").html(result);
+    	}});
 	});
-
 });
