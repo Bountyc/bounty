@@ -39,6 +39,8 @@ gem 'pusher'
 gem 'redcarpet'
 
 gem "font-awesome-rails"
+
+gem 'gon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
