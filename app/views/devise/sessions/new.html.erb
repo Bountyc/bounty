@@ -15,7 +15,7 @@
                     <div class="mb20"></div>
                     
               <a href="<%= user_omniauth_authorize_path(:facebook) %>"><button class="btn-facebook"> Sign In with Facebook</button></a>
-              <button class="btn-google-plus"> Sign In with Google+</button>
+              <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>"><button class="btn-google-plus"> Sign In with Google+</button></a>
               <br>
              <div class="mb20"></div>
                     <strong>Not a member? <%= link_to "Sign up", new_registration_path(resource_name) %></strong>

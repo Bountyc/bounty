@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-	devise :omniauthable, :omniauth_providers => [:facebook]
+	devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 	
     validates_presence_of [:first_name, :last_name]
 
