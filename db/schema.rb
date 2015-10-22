@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913050708) do
+ActiveRecord::Schema.define(version: 20151022182729) do
 
   create_table "action_reputation_scores", force: :cascade do |t|
     t.integer  "action"
@@ -61,11 +61,29 @@ ActiveRecord::Schema.define(version: 20150913050708) do
   add_index "bounty_hunters", ["user_id", "bounty_id"], name: "index_bounty_hunters_on_user_id_and_bounty_id"
 
   create_table "disputes", force: :cascade do |t|
-    t.integer  "bounty_id"
     t.integer  "winner_user_id"
     t.integer  "moderator_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "status",           default: 0
+    t.text     "reason"
+    t.integer  "bounty_hunter_id"
+  end
+
+  create_table "disputes_tags", id: false, force: :cascade do |t|
+    t.integer "disputes_id"
+    t.integer "tags_id"
+  end
+
+  add_index "disputes_tags", ["disputes_id"], name: "index_disputes_tags_on_disputes_id"
+  add_index "disputes_tags", ["tags_id"], name: "index_disputes_tags_on_tags_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "dispute_id"
+    t.integer  "user_id"
+    t.text     "contents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|

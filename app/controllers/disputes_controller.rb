@@ -1,28 +1,14 @@
 class DisputesController < ApplicationController
-	def index
+    before_action :define_user
 
-	    if params[:search_text]
-	      @open_bounties = Bounty.search("title",params[:search_text]).where(:status => 0).limit(10)
-	      @open_bounties_count =Bounty.search("title",params[:search_text]).where(:status => 0).count
+    def index
 
-	      @resolved_bounties = Bounty.search("title",params[:search_text]).where(:status => 2).limit(10)
-	      @resolved_bounties_count = Bounty.search("title",params[:search_text]).where(:status => 2).count
+	   @disputes = Dispute.where(:moderator_id => nil).limit(10)
 
-	      if current_user
-	        @my_bounties = Bounty.search("title",params[:search_text]).where("poster_id = " + current_user.id.to_s).limit(10)
-	        @my_bounties_count = Bounty.search("title",params[:search_text]).where("poster_id = " + current_user.id.to_s).count
-	      end
-	    else
-	      @open_bounties = Bounty.where(:status => 0).limit(10)
-	      @open_bounties_count =Bounty.where(:status => 0).count
+        if params[:search_text]
+            @disputes = Dispute.joins(:bounties).search("bounties.title", params[:search_text]) .where(:status => :open).limit(10) 
+        end
 
-	      @resolved_bounties = Bounty.where(:status => 2).limit(10)
-	      @resolved_bounties_count = Bounty.where(:status => 2).count
-	      
-	      if current_user
-	        @my_bounties = current_user.bounties.limit(10)
-	        @my_bounties_count = current_user.bounties.count
-	      end
     end
 
     def new
@@ -30,13 +16,25 @@ class DisputesController < ApplicationController
     end
 
     def create
-    	disputed_bounty = Bounty.find params[:bounty_id]
-    	@dispute.bounty = disputed_bounty
-    	@dispute.save
+        @dispute = Dispute.new(bounty_params)
+    	disputed_bounty_hunter = BountyHunter.find params[:bounty_hunter_id]
+    	@dispute.bounty_hunter = disputed_bounty_hunter        
+        @dispute.bounty_hunter.status = :disputed 
+        @dispute.save
     end
 
-   
+    def moderate
+        dispute = Dispute.find params[:id]
+        byebug
+        #are we doing some sort of check to make sure he's allowed to moderate this dispute?
+        dispute.moderator = current_user
+        dispute.save
 
+        #todo render show_dispute page
+    end
 
-  end
+    private
+        def bounty_params
+            params.require(:dispute).permit(:reason)
+        end
 end

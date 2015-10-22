@@ -33,6 +33,10 @@ class BountiesController < ApplicationController
 
   def show
   	set_bounty
+
+    @dispute = Dispute.new
+    @answer = Answer.new
+
     if @bounty.nil?
       flash[:error] = "Sorry, something went wrong"
       redirect_to root_url
@@ -42,16 +46,20 @@ class BountiesController < ApplicationController
     	elsif user_signed_in?
     		if @bounty.hunters.include? current_user
     			@bounty_hunter_relation_object = @bounty.bounty_hunters.find_by_user_id(current_user)
+          @user_role = @bounty_hunter_relation_object.status.to_sym
 
-    			@user_role = @bounty_hunter_relation_object.status.to_sym
+          #Check for dispute
+          byebug
+          if @bounty_hunter_relation_object.disputed?
+            @dispute = @bounty_hunter_relation_object.dispute
+          end
     		else
     			@user_role = :hunter
     		end
     	else
     		@user_role = :guest
     	end
-
-    	@answer = Answer.new
+      
 
     	if @bounty.pending?
     		@suggested_answer = Answer.pending_answer(@bounty.id)

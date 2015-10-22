@@ -36,6 +36,7 @@
           <li><%= link_to "Bounties", bounties_path %></li>
           <li><a href="#">Tags</a></li>
           <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Disputes", disputes_path %></li>
         </ul>
         <%= form_tag( bounties_path,:method => "get", :class => 'navbar-form navbar-right') do %>
           <%= text_field_tag('search_text', params[:search_text], class: 'form-control', placeholder: "search bounties...") %>

@@ -83,12 +83,14 @@ class User < ActiveRecord::Base
 
 	def reload_reputation
 
-		tags_reputation = {} # Hash with format {tag_string: score}
-
+		tags_reputation = {} # Hash with format {tag_string: score} 
+		reputation = 0
 		# -----------  Reload reputation by rejected bounties ------------
 		# Need to call first because returns array with one object
 		rejected_score = ActionReputationScore.answer_rejected.first.score
 		self.bounties_with_rejected_answer.each do |bounty|
+			tags_count = 0
+			tags_reputation_for_bounty = 0
 			bounty.tags.each do |tag|
 				if tags_reputation.has_key?(tag.id)
 					tags_reputation[tag.id] += rejected_score
@@ -96,15 +98,20 @@ class User < ActiveRecord::Base
 					# if tag is not in hash += will raise an error
 					tags_reputation[tag.id] = rejected_score
 				end
+
+				tags_reputation_for_bounty += rejected_score
+				tags_count+=1
 			end
+			
+			reputation += (tags_reputation_for_bounty/tags_count) unless 0 == tags_count
 		end
 		# ----------------------------------------------------------------
-
-
 		# -----------  Reload reputation by resolved bounties ------------
 		# Need to call first because returns array with one object
 		rejected_score = ActionReputationScore.resolve_bounty.first.score
 		self.solved_bounties.each do |bounty|
+			tags_count = 0
+			tags_reputation_for_bounty = 0
 			bounty.tags.each do |tag|
 				if tags_reputation.has_key?(tag.id)
 					tags_reputation[tag.id] += rejected_score
@@ -112,7 +119,10 @@ class User < ActiveRecord::Base
 					# if tag is not in hash += will raise an error
 					tags_reputation[tag.id] = rejected_score
 				end
+				tags_reputation_for_bounty += rejected_score
+				tags_count+=1
 			end
+			reputation += (tags_reputation_for_bounty/tags_count) unless 0 == tags_count
 		end
 		# ----------------------------------------------------------------
 
@@ -121,6 +131,8 @@ class User < ActiveRecord::Base
 		# Need to call first because returns array with one object
 		rejected_score = ActionReputationScore.post_bounty.first.score
 		self.bounties.each do |bounty|
+			tags_count = 0
+			tags_reputation_for_bounty = 0
 			bounty.tags.each do |tag|
 				if tags_reputation.has_key?(tag.id)
 					tags_reputation[tag.id] += rejected_score
@@ -128,7 +140,11 @@ class User < ActiveRecord::Base
 					# if tag is not in hash += will raise an error
 					tags_reputation[tag.id] = rejected_score
 				end
+
+				tags_reputation_for_bounty += rejected_score
+				tags_count+=1
 			end
+			reputation += (tags_reputation_for_bounty/tags_count) unless 0 == tags_count
 		end
 		# ----------------------------------------------------------------
 
@@ -154,5 +170,8 @@ class User < ActiveRecord::Base
 
 			end
 		end
+
+		self.reputation = reputation
+		self.save
 	end
 end

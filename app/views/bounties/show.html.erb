@@ -78,9 +78,14 @@
           <% elsif @bounty.status == "closed" %>
           <%= render 'answers/approved_answer', {text: @bounty.approved_answer} %>
 
-          <% elsif  @user_role == :denied %>
-            <%= render 'answers/denied_answer', {bounty_id: @bounty.id, bounty_hunter: @bounty_hunter_relation_object } %>
+          <% elsif  @user_role == :denied and nil == @dispute.reason %>
+            <%= render 'disputes/new_dispute', {bounty_id: @bounty.id, bounty_hunter: @bounty_hunter_relation_object } %>
+
+          <% elsif  @user_role == :denied and nil != @dispute.reason %>
+            <%= render 'disputes/show_dispute', {bounty_id: @bounty.id, bounty_hunter: @bounty_hunter_relation_object } %>
           <% end %> 
+
+
 
 
           <% unless @bounty.status == "closed" %>
