@@ -35,7 +35,9 @@
               <% if current_user == @user %>
                 <a href="<%= edit_user_path(@user) %>" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
               <% end %>
-              <p><%= @user.description %></p>
+              <div style="height:200px">
+                <%= simple_format(@user.description) %>
+              </div>
             </div>
             <div class="line mtb20"> </div>
             <div class="josilber-list">
