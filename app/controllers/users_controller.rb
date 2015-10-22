@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
 
-  	@user = User.find(params[:id])
+  	set_user
   	@solved_bounties = @user.solved_bounties
 
   	# Because it's just counting, no need to actualy get bounties objects, thats why not using 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    set_user
     @solved_bounties = @user.solved_bounties
 
     # Because it's just counting, no need to actualy get bounties objects, thats why not using 
@@ -32,4 +32,30 @@ class UsersController < ApplicationController
     @resolutions_count = @user.answers.count
 
   end
+
+  def update
+    set_user
+    if current_user == @user
+      if @user.update_attributes(user_params)
+          redirect_to @user
+      else
+          render 'edit';
+      end
+    else
+      flash[:error] = "Sorry, something went wrong"
+      redirect_to root_url
+    end
+  end
+
+  private
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find_by(id: params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+     params.require(:user).permit(:first_name, :last_name, :description)
+    end
 end
