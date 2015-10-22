@@ -41,6 +41,8 @@ class AnswersController < ApplicationController
 			notification.action_link = bounty_path(answer.bounty.id)
 			notification.answer_accepted!
 			notification.save
+
+			answer.hunter.reload_balance
 		else
 			flash[:error] = "You are not allowed to deny!"
 			redirect_to root_url

@@ -38,7 +38,7 @@ module Transfer
 
 			@paypal_payment_execute.execute( :payer_id => payment.payer_id  )
 			if @paypal_payment_execute.transactions[0].amount.total == nil
-				render :plain => "dont fuck with da system"
+				render :plain => "Sorry, something went wrong"
 				return
 			end
 			payment.amount = @paypal_payment_execute.transactions[0].amount.total

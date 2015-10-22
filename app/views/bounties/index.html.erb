@@ -6,19 +6,19 @@
 			<div class="left-side">
 
 				<ul class="nav nav-tabs nav-justified">
-					<li class="active"> <a  href="#tab1" data-toggle="tab">Open Bounties</a> </li>
-					<li><a href="#tab2" data-toggle="tab">Resolved Bounties</a> </li>
+					<li class="active"> <a  href="#open" data-toggle="tab">Open Bounties</a> </li>
+					<li><a href="#resolved" data-toggle="tab">Resolved Bounties</a> </li>
 					<% if user_signed_in? %>
-						<li><a href="#tab3" data-toggle="tab">My Bounties</a> </li>
+						<li><a href="#my" data-toggle="tab">My Bounties</a> </li>
 					<% end %>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active fade in" id="tab1">
+					<div class="tab-pane active fade in" id="open">
 						<%= render "bounties/advanced_search" %>
 						<%= render "bounties/preview_list",bounty_list: @open_bounties, total_bounty_list_count: @open_bounties_count %>
 					</div>
 
-					<div class="tab-pane fade" id="tab2">
+					<div class="tab-pane fade" id="resolved">
 			            <form class="navbar-form">
 			              <input type="text" class="form-control" placeholder="search bounties...">
 			              <a href="#">advanced search</a>
@@ -27,7 +27,7 @@
 					</div>
 
 					<% if @signed_in_user %>
-					<div class="tab-pane fade" id="tab3">
+					<div class="tab-pane fade" id="my">
 						<%= render "bounties/preview_list",bounty_list: @my_bounties, total_bounty_list_count: @my_bounties_count %>
 					</div>
 					<% end %>

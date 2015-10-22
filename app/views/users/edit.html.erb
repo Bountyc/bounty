@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="left-side">
+        <div class="row mb55">
+          <div class="col-sm-12 col-md-4 pr0">
+            <ul class="nav nav-tabs nav-justified navbar-left">
+              <li class="active"> <a  href="#tab1" data-toggle="tab">Profile</a> </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-8 pl0">
+          <% if current_user == @user %>
+            <ul class="nav nav-justified custom-breadcrumb">
+                <li>
+                  <p class="balance">Balance: <span><%= @user.balance %></span></p>
+                </li>
+                <li>
+                  <a href="#myModal" role="button" class="btn" data-toggle="modal">
+                    <%= image_tag "upload-icon.png" %> add money 
+                  </a> 
+                </li>
+                <li> 
+                  <a href="#myModal1" role="button" class="btn" data-toggle="modal"> 
+                    <%= image_tag "download-icon.png" %>withdraw money 
+                  </a> 
+                </li>
+            </ul>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <%= form_for(@user) do |f| %>
+          <div class="col-sm-4"> <a href="#"><%= image_tag "sean_better.jpg",size: "200x171", class: "img-responsive" %> </a>
+            <div class="info-list-nav">
+              <ul class="nav">
+                <li><%= image_tag "area-icon.png" %> Baltimore, MD, United States </li>
+                <li><a href="#"><%= image_tag "attached-icon.png" %>josilber.scripts.mit.edu </a></li>
+                <li><%= image_tag "user-icon.png" %>Member for 1 year, 4 months </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="josilber-panel">
+              <h3>
+                <%= f.text_field :first_name, class: "col-md-4" %>
+                <%= f.text_field :last_name, class: "col-md-4" %>
+              </h3>
+              <% if current_user == @user %>
+                <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <% end %>
+              <p>I'm a PhD student at MIT in the Operations Research Center.<br>
+                I'm a co-developer of the massive open online course (MOOC)</p>
+            </div>
+            <div class="line mtb20"> </div>
+            <div class="josilber-list">
+              <ul class="nav">
+                <li>working on <%= @working_on_bounties_count %> bounties <span> - </span> </li>
+                <li> <%= @resolutions_count %> resolutions <span> - </span> </li>
+                <li><%= @user.bounties.count %> bounties posted</li>
+              </ul>
+            </div>
+            <div class="resolved-panel">
+              <ul class="nav">
+              <% total_earned = 0 %>
+              <% @solved_bounties.each do |bounty| %>
+                <li><span>$<%= bounty.price %></span><%= bounty.title %></li>
+                <% total_earned += bounty.price %>
+              <% end %>
+                <li>
+                  <h3>$<%= total_earned %> total earned</h3>
+                </li>
+              </ul>
+            </div>
+            <div class="line"></div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= render 'bounties/highest_bounties' %>
+  </div>
+</div>
+<% if current_user == @user %>
+  <%= render 'payments/add_money_form' %>
+  <%= render 'payments/withdraw_money_form' %>
+<% end %>

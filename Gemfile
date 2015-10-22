@@ -33,12 +33,15 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
 
 gem 'pusher'
 
 gem 'redcarpet'
 
 gem "font-awesome-rails"
+
+gem 'gon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
