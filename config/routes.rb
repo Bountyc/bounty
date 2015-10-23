@@ -55,7 +55,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :bounties, defaults: {format: :json}
+    resources :messages, defaults: {format: :json}
+    resources :disputes, defaults: {format: :json} do
+      put "resolve"
+    end
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

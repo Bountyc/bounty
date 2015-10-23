@@ -30,26 +30,16 @@
         </div>
         <div class="row">
           <%= form_for(@user) do |f| %>
-          <div class="col-sm-4"> <a href="#"><%= image_tag "sean_better.jpg",size: "200x171", class: "img-responsive" %> </a>
-            <div class="info-list-nav">
-              <ul class="nav">
-                <li><%= image_tag "area-icon.png" %> Baltimore, MD, United States </li>
-                <li><a href="#"><%= image_tag "attached-icon.png" %>josilber.scripts.mit.edu </a></li>
-                <li><%= image_tag "user-icon.png" %>Member for 1 year, 4 months </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             <div class="josilber-panel">
               <h3>
                 <%= f.text_field :first_name, class: "col-md-4" %>
                 <%= f.text_field :last_name, class: "col-md-4" %>
               </h3>
-              <% if current_user == @user %>
-                <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <%= f.text_area :description, class: "col-md-12", placeholder: "Type your description here", style: "height:200px;" %>
+              <%= f.button(type: 'submit', class: "pull-right", style: "background: none;border: none;color: #adb2bc;margin-top:10px;") do %>
+               <span class='glyphicon glyphicon-floppy-disk'></span> save
               <% end %>
-              <p>I'm a PhD student at MIT in the Operations Research Center.<br>
-                I'm a co-developer of the massive open online course (MOOC)</p>
             </div>
             <div class="line mtb20"> </div>
             <div class="josilber-list">

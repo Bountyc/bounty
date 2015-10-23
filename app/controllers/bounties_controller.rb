@@ -37,7 +37,6 @@ class BountiesController < ApplicationController
           @user_role = @bounty_hunter_relation_object.status.to_sym
 
           #Check for dispute
-          byebug
           if @bounty_hunter_relation_object.disputed?
             @dispute = @bounty_hunter_relation_object.dispute
           end

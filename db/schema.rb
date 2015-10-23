@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022182729) do
+ActiveRecord::Schema.define(version: 20151022220611) do
 
   create_table "action_reputation_scores", force: :cascade do |t|
     t.integer  "action"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20151022182729) do
     t.integer  "reputation",             default: 0
     t.string   "provider"
     t.string   "uid"
+    t.string   "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

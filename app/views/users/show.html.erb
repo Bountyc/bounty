@@ -29,25 +29,15 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4"> <a href="#"><%= image_tag "sean_better.jpg",size: "200x171", class: "img-responsive" %> </a>
-            <div class="info-list-nav">
-              <ul class="nav">
-                <li><%= image_tag "area-icon.png" %> Baltimore, MD, United States </li>
-                <li><a href="#"><%= image_tag "attached-icon.png" %>josilber.scripts.mit.edu </a></li>
-                <li><%= image_tag "user-icon.png" %>Member for 1 year, 4 months </li>
-                <li><%= image_tag "view-icon.png" %>677 profile views </li>
-                <li><%= image_tag "time-icon.png" %>Last seen 7 hours ago </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             <div class="josilber-panel">
               <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
               <% if current_user == @user %>
-                <a href="#" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+                <a href="<%= edit_user_path(@user) %>" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
               <% end %>
-              <p>I'm a PhD student at MIT in the Operations Research Center.<br>
-                I'm a co-developer of the massive open online course (MOOC)</p>
+              <div style="height:200px">
+                <%= simple_format(@user.description) %>
+              </div>
             </div>
             <div class="line mtb20"> </div>
             <div class="josilber-list">

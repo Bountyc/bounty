@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require select2
-//= require_tree .
+//= require_tree ./common
 //= stub bootstrap.min
 
 $( document ).ready(function() {
