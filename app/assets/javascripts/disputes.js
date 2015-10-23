@@ -106,37 +106,15 @@ setTimeout(getMessages, 500);
       }
       
     },
-    /*
+    
 
  addMessage: function() {
       message = {user_id: current_user_id, contents: this.$textarea.val(), dispute_id: dispute_id };
-      $.ajax({
-                url: "/api/messages",
-                data: {
-                    message
-                },
-                type: "POST",
-                dataType: "text",
-                success: function(count) {
-                    console.log("success");
-
-                },
-                error: function(xhr, status, errorThrown) {
-                    alert("Sorry, there was a problem!");
-                    alert("Error: " + errorThrown);
-                    alert("Status: " + status);
-                    alert(JSON.stringify( xhr));
-                },
-                // code to run regardless of success or failure
-                complete: function(xhr, status) {
-                  console.log("complete");
-                }
-            });
-
+      
 
       this.messageToSend = this.$textarea.val();
       this.render();         
-    },*/
+    },
     addMessageEnter: function(event) {
         // enter was pressed
         if (event.keyCode === 13) {
