@@ -110,7 +110,26 @@ setTimeout(getMessages, 500);
 
  addMessage: function() {
       message = {user_id: current_user_id, contents: this.$textarea.val(), dispute_id: dispute_id };
-      
+      $.ajax({
+                url: "/api/messages",
+                
+                type: "POST",
+                dataType: "text",
+                success: function(count) {
+                    console.log("success");
+
+                },
+                error: function(xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                    alert("Error: " + errorThrown);
+                    alert("Status: " + status);
+                    alert(JSON.stringify( xhr));
+                },
+                complete: function(xhr, status) {
+                  console.log("complete");
+                }
+            });
+
 
       this.messageToSend = this.$textarea.val();
       this.render();         
