@@ -34,6 +34,8 @@
               <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
               <% if current_user == @user %>
                 <a href="<%= edit_user_path(@user) %>" class="pull-right"><%= image_tag "edit-icon.png" %> edit</a>
+              <% else %>
+                <a href="<%= chat_index_path(user: @user.id) %>"  class="start-chat pull-right"><span>Chat with <%= @user.first_name %></span></a>
               <% end %>
               <div style="height:200px">
                 <%= simple_format(@user.description) %>
