@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :chat
+  resources :chat do
+    collection do 
+      post "send_message"
+    end
+  end
 
   get 'users/index'
 

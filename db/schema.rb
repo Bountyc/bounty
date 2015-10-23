@@ -78,14 +78,6 @@ ActiveRecord::Schema.define(version: 20151023012800) do
     t.integer  "bounty_hunter_id"
   end
 
-  create_table "disputes_tags", id: false, force: :cascade do |t|
-    t.integer "disputes_id"
-    t.integer "tags_id"
-  end
-
-  add_index "disputes_tags", ["disputes_id"], name: "index_disputes_tags_on_disputes_id"
-  add_index "disputes_tags", ["tags_id"], name: "index_disputes_tags_on_tags_id"
-
   create_table "messages", force: :cascade do |t|
     t.integer  "dispute_id"
     t.integer  "user_id"

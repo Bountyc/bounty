@@ -3,29 +3,47 @@ var Chat = React.createClass({
 
         // This is called before our render function. The object that is 
         // returned is assigned to this.state, so we can use it later.
-        return { messages: this.props.messages };
+        return { messages: this.props.messages, messagesCount: 0};
     },
 
- //    loadEmailsFromServer: function() {
- //    	$.get("/emails.json", function(result) {
- //    		this.setState({emails: result});
- //  		}.bind(this));
- //    },
+    loadMessagesFromServer: function() {
+    	$.get(this.props.loadUrl, function(result) {
+    		this.setState({messages: result});
 
- //    componentDidMount: function(){
+        if (result.length != this.state.messagesCount)
+        {
+          $('.chat-history')[0].scrollTop = $('.chat-history')[0].scrollHeight;
+          this.state.messagesCount = result.length
+        }
+  		}.bind(this));
+    },
 
- //        // componentDidMount is called by react when the component 
- //        // has been rendered on the page. We can set the interval here:
- //        this.loadEmailsFromServer();
- //    	setInterval(this.loadEmailsFromServer, this.props.pollInterval);
-	// },
+    componentDidMount: function(){
+        // componentDidMount is called by react when the component 
+        // has been rendered on the page. We can set the interval here:
+        this.loadMessagesFromServer();
+    	setInterval(this.loadMessagesFromServer, this.props.pollInterval);
+	  },
+
     render: function() {
-
-    	alert(this.state.messages[0].message)
 	    var messageNodes = this.state.messages.map(function (message) {
-	      return(<p>{message.message}</p>);
-	    });
-	    return(messageNodes);
+        if (this.props.user_id == message.sender_id)
+        {
+	       return(<Message data={message} id={message.id} sentByUser={true} sender={this.props.user}/>);
+        }
+        else
+        {
+          return(<Message data={message} id={message.id} sentByUser={false} sender={this.props.chatWithUser}/>);
+        }
+	    }.bind(this));
+
+	    return(
+        <div className="chat-history">
+          <ul>
+          {messageNodes}
+          </ul>
+        </div>
+      );
 	}
 
 });
