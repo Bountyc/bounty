@@ -1,0 +1,27 @@
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="left-side">
+				<ul class="nav nav-tabs nav-justified">
+					<li class="active"> <a  href="#open-disputes" data-toggle="tab">Open Disputes</a> </li>
+					<% if user_signed_in? %>
+						<li><a href="#my-disputes" data-toggle="tab">My Disputes</a> </li>
+					<% end %>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active fade in" id="open-disputes">
+						<%= render "disputes/preview_list",dispute_list: @disputes %>
+					</div>
+
+					<% if @signed_in_user %>
+					<div class="tab-pane fade" id="my-disputes">
+						<%= render "disputes/preview_list",dispute_list: @my_disputes %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

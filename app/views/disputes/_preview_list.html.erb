@@ -1,0 +1,54 @@
+<div >
+					<% dispute_list.each do |dispute| %>
+					<div class="open-bounties-list">
+						<div class="open-bounties-header"> <%= link_to dispute_path(dispute.id) do%>
+							<div class="row">
+								<div class="col-md-6">
+									<span class="open-bounties-price">$<%= dispute.bounty.price.floor %></span>
+									<h3><%= dispute.bounty.title %></h3><% end %>
+								</div>
+								<div class="col-md-6">
+									<span class="reputation" style="font-size:30pt; display:block; text-align:right; width: 100% margin-right: 6px; color:green;"><%= '%.0f' % (0.5*dispute.bounty.price) %> rep</span>
+
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="open-bounties-list-desc">
+							<div class="row">
+								<div class="col-md-6">
+									<% unless current_user == dispute.hunter || current_user == dispute.poster || dispute.moderator != nil%>
+									<%= link_to "Moderate", moderate_dispute_path(dispute), method: :put, style: "height: 45px;
+line-height: 17px;
+background: #E0694C none repeat scroll 0% 0%;
+color: #FFF;
+font-size: 13px;
+font-weight: 700;
+text-shadow: 0px 0px 1px #D06247; padding: 10px; margin-bottom: 40px;" %>
+
+<%else%>
+<span style= "height: 45px;
+line-height: 17px;
+font-size: 20px;
+font-weight: 700;
+font-style:italic;
+margin-bottom: 40px;">Moderated</span>
+<% end %>
+								</div>
+								<div class="col-md-6">
+									<div class="open-bounties-tags"> 
+										<% dispute.bounty.tags.each do |tag| %>
+										<a href="#"><%= tag.name %></a>
+										<% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<% end %>
+
+					<% if 32 > 10 %>
+					<div class="load-more"> <a>Load More Disputes <span><%= image_tag("load-more-icon.png") %></span> </a> </div>
+					<% end %>
+				</div>

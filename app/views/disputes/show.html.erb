@@ -1,0 +1,28 @@
+<% unless @dispute.bounty_hunter.dispute_denied? || @dispute.bounty_hunter.approved? %>
+<div class="row chat">
+<div class="col-md-8">
+	<%= render "messages/index" %>
+</div>
+<% if :moderator == @user_role  %>
+	<div class="col-md-4" style="height:100%">
+		<div style="margin-top: 100px;">
+			<h2>Award resolution to:</h2>
+			<button class="btn btn-primary" style="float left; font-size:15pt" onclick="awardresolution(<%= @dispute.poster.id %>)">Poster</button>
+			<button class="btn btn-primary" style="float right; font-size:15pt" onclick="awardresolution(<%= @dispute.hunter.id %>)">Hunter</button>
+			<h4>Warning: there are severe consequences for not taking this process seriously; please take your time to be sure of a resolution.</h4>
+		</div>
+	</div>
+<% elsif :hunter == @user_role || :poster == @user_role %>
+<div class="col-md-4" style="height:100%">
+		<div style="margin-top: 100px;">
+			<h3>Please be cordial in the dispute chat. You will autimatically lose the dispute if you behave in an unruly manner</h3>
+			<h4>If you feel there is anything unfair, please feel free to contact us! </h4>
+		</div>
+	</div>
+	
+<% end %>
+</div> 
+
+<%else%>
+<h2 class="col-md-4">This dispute has been closed.</h2>
+<%end%>
