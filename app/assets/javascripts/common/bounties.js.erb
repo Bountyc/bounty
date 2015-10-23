@@ -31,7 +31,9 @@ $( document ).ready(function() {
 		        break;
 		}
 
-  		$.ajax({url: "/api/bounties?offset=" + page*10 + params, success: function(response){
+  		$.ajax({
+  			url: "/api/bounties?offset=" + page*10 + params, 
+  			success: function(response){
   			bounties = response.items
   			for (i = 0; i < bounties.length; i++) { 
 	  			preview_bounty_string = '<div class="open-bounties-list"> \

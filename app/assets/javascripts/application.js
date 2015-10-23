@@ -16,7 +16,7 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree .
+//= require_tree ./common
 //= stub bootstrap.min
 
 $( document ).ready(function() {

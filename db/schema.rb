@@ -69,11 +69,29 @@ ActiveRecord::Schema.define(version: 20151023012800) do
   end
 
   create_table "disputes", force: :cascade do |t|
-    t.integer  "bounty_id"
     t.integer  "winner_user_id"
     t.integer  "moderator_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "status",           default: 0
+    t.text     "reason"
+    t.integer  "bounty_hunter_id"
+  end
+
+  create_table "disputes_tags", id: false, force: :cascade do |t|
+    t.integer "disputes_id"
+    t.integer "tags_id"
+  end
+
+  add_index "disputes_tags", ["disputes_id"], name: "index_disputes_tags_on_disputes_id"
+  add_index "disputes_tags", ["tags_id"], name: "index_disputes_tags_on_tags_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "dispute_id"
+    t.integer  "user_id"
+    t.text     "contents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
