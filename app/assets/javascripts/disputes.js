@@ -112,7 +112,9 @@ setTimeout(getMessages, 500);
       message = {user_id: current_user_id, contents: this.$textarea.val(), dispute_id: dispute_id };
       $.ajax({
                 url: "/api/messages",
-                
+                data: {
+                    message: message
+                },
                 type: "POST",
                 dataType: "text",
                 success: function(count) {
@@ -125,6 +127,7 @@ setTimeout(getMessages, 500);
                     alert("Status: " + status);
                     alert(JSON.stringify( xhr));
                 },
+                // code to run regardless of success or failure
                 complete: function(xhr, status) {
                   console.log("complete");
                 }
