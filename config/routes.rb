@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :chat
+
   get 'users/index'
 
   get 'users/show'

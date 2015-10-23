@@ -42,6 +42,8 @@ gem 'redcarpet'
 gem "font-awesome-rails"
 
 gem 'gon'
+
+gem 'react-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require select2
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 //= stub bootstrap.min
 

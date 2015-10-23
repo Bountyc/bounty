@@ -31,6 +31,18 @@ class User < ActiveRecord::Base
 
 	has_many :tag_reputations, foreign_key: "user_id", class_name: "UserTagReputation"
 
+	has_many :bounty_sent_messages, foreign_key: "sender_id", class_name: "BountyMessage"
+
+	has_many :bounty_received_messages, foreign_key: "receiver_id", class_name: "BountyMessage"
+
+	def messages
+		BountyMessage.where("sender_id=? OR receiver_id=?", self.id, self.id) 
+	end
+
+	def messages_with_user(user_id)
+		self.messages.where("sender_id=? OR receiver_id=?", user_id, user_id)
+	end
+
 	def solved_bounties
 		Bounty.joins(:bounty_hunters).where("bounty_hunters.status = 3").where("bounty_hunters.user_id = ?", [self.id])
 	end
