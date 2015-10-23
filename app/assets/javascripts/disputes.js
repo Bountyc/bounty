@@ -106,6 +106,7 @@ setTimeout(getMessages, 500);
       }
       
     },
+    /*
 
  addMessage: function() {
       message = {user_id: current_user_id, contents: this.$textarea.val(), dispute_id: dispute_id };
@@ -135,7 +136,7 @@ setTimeout(getMessages, 500);
 
       this.messageToSend = this.$textarea.val();
       this.render();         
-    },
+    },*/
     addMessageEnter: function(event) {
         // enter was pressed
         if (event.keyCode === 13) {
