@@ -1,7 +1,7 @@
 
 
 
-function awardresolution(user_id){
+/*function awardresolution(user_id){
   $.ajax({
           url: "/api/disputes/"+dispute_id+"/resolve",
           type: "PUT",
@@ -173,4 +173,4 @@ setTimeout(getMessages, 500);
   
   searchFilter.init();
   
-})();
+})();*/
