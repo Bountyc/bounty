@@ -106,14 +106,14 @@ setTimeout(getMessages, 500);
       }
       
     },
-
     
-    addMessage: function() {
+
+ addMessage: function() {
       message = {user_id: current_user_id, contents: this.$textarea.val(), dispute_id: dispute_id };
       $.ajax({
                 url: "/api/messages",
                 data: {
-                    message
+                    message: message
                 },
                 type: "POST",
                 dataType: "text",
@@ -134,7 +134,7 @@ setTimeout(getMessages, 500);
             });
 
 
-      this.messageToSend = this.$textarea.val()
+      this.messageToSend = this.$textarea.val();
       this.render();         
     },
     addMessageEnter: function(event) {
