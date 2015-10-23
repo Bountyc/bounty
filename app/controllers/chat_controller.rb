@@ -1,7 +1,7 @@
 class ChatController < ApplicationController
   before_action :authenticate_user!
   def index
-  	if params[:user].nil?
+  	if params[:user].nil? or params[:user] == current_user.id.to_s
   		flash[:notice] = "Sorry, something went wrong!"
   		redirect_to root_url
   	else
