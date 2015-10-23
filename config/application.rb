@@ -27,7 +27,5 @@ module Bountyapp
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       "<div class=\"has-error\">#{html_tag}</div>".html_safe
     }
-
-    config.assets.initialize_on_precompile = false
   end
 end
