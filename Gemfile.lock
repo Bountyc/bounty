@@ -143,6 +143,7 @@ GEM
       multi_json (~> 1.0)
       signature (~> 0.1.8)
     rack (1.6.4)
+    rack-noie (1.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.3)
@@ -275,6 +276,7 @@ DEPENDENCIES
   pg
   pry
   pusher
+  rack-noie
   rails (= 4.2.3)
   rails_12factor
   react-rails
@@ -292,3 +294,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6

@@ -28,5 +28,7 @@ module Bountyapp
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       "<div class=\"has-error\">#{html_tag}</div>".html_safe
     }
+
+    config.middleware.use Rack::NoIE, {:redirect => "/why-i-dont-support-ie.html", :minimum => 29}
   end
 end
