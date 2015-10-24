@@ -7,6 +7,11 @@ class ChatController < ApplicationController
   	else
   		@messages = current_user.messages_with_user(params[:user])
   		@chat_partner = User.find(params[:user])
+      @react_form = {
+        :action => send_message_chat_index_path(user: @chat_partner.id),
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token
+      }
   		respond_to do |format|
 		    format.html
 			  format.json { render json: @messages }

@@ -6,6 +6,18 @@ var Chat = React.createClass({
         return { messages: this.props.messages, messagesCount: 0};
     },
 
+    handleMessageSubmit: function ( formData, action ) {
+      $.ajax({
+        data: formData,
+        url: action,
+        type: "POST",
+        dataType: "json",
+        success: function ( data ) {
+          this.loadMessagesFromServer;
+        }.bind(this)
+      });
+    },
+
     loadMessagesFromServer: function() {
     	$.get(this.props.loadUrl, function(result) {
     		this.setState({messages: result});
@@ -38,11 +50,32 @@ var Chat = React.createClass({
 	    }.bind(this));
 
 	    return(
+  <div className="container clearfix chat">
+    
+    <div className="chat">
+      <div className="chat-header clearfix">
+        
+        <div className="chat-about">
+          <div className="chat-with">Chat with {this.props.user}</div>
+        </div>
+      </div>
+
         <div className="chat-history">
           <ul>
           {messageNodes}
           </ul>
         </div>
+
+        <div className="chat-message clearfix">
+
+        <ChatForm form={this.props.form} onMessageSubmit={ this.handleMessageSubmit }/>
+
+      </div>
+      
+    </div>
+    
+  </div>
+
       );
 	}
 
