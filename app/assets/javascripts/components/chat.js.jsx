@@ -11,9 +11,8 @@ var Chat = React.createClass({
         data: formData,
         url: action,
         type: "POST",
-        dataType: "json",
-        success: function ( data ) {
-          this.loadMessagesFromServer;
+        complete: function(){
+          this.loadMessagesFromServer();
         }.bind(this)
       });
     },
