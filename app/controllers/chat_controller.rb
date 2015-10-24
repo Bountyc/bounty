@@ -5,7 +5,7 @@ class ChatController < ApplicationController
   		flash[:notice] = "Sorry, something went wrong!"
   		redirect_to root_url
   	else
-  		@messages = current_user.messages_with_user(params[:user])
+  		@messages = current_user.messages_with_user(params[:user]).last(25)
   		@chat_partner = User.find(params[:user])
       @react_form = {
         :action => send_message_chat_index_path(user: @chat_partner.id),
@@ -14,7 +14,7 @@ class ChatController < ApplicationController
       }
   		respond_to do |format|
 		    format.html
-			  format.json { render json: @messages }
+			  format.json { render json: @messages.to_json }
 		  end
   	end
   end
