@@ -55,7 +55,7 @@ var Chat = React.createClass({
       <div className="chat-header clearfix">
         
         <div className="chat-about">
-          <div className="chat-with">Chat with {this.props.user}</div>
+          <div className="chat-with">Chat with {this.props.chatWithUser}</div>
         </div>
       </div>
 
