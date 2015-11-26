@@ -177,7 +177,7 @@ class User < ActiveRecord::Base
 					tags_reputation[tag.id] = disputes_score*(bounty.price/2)
 				end
 
-				tags_reputation_for_bounty += disputes_score*(bounty.price/2aa)
+				tags_reputation_for_bounty += disputes_score*(bounty.price/2)
 				tags_count+=1
 			end
 			reputation += (tags_reputation_for_bounty/tags_count) unless 0 == tags_count
