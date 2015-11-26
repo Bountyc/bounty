@@ -20,10 +20,7 @@
           <div class="row">
             <div class="user-info">
               <div class="col-sm-6">
-                <div class="user-image"> <a href="<%=user_path(@bounty.poster)%>"> <%= image_tag "sean.jpg", size: "44x44", alt: "Image" %> by <span> <%= @bounty.poster.first_name + " " + @bounty.poster.last_name %> </span> </a> <span> - </span> <span> 1 hour ago</span> 
-                  <% if current_user != @bounty.poster %>
-                    <a href="<%= chat_index_path(user: @bounty.poster.id) %>"  class="start-chat"><span>Start a chat</span></a>
-                  <% end %>
+                <div class="user-image"> <a href="<%=user_path(@bounty.poster)%>"> <%= image_tag "bounty_logo.png", size: "44x44", alt: "Image", style: "border: 0;"%> by <span> <%= @bounty.poster.first_name + " " + @bounty.poster.last_name %> </span> </a> <span> - </span> <span> 1 hour ago</span> 
                   </div>
               </div>
               <div class="col-sm-6">
@@ -100,11 +97,7 @@
           <div class="commtent-panel">
             <% @working_bounty_hunters.each do |bounty_hunter| %>
             <div class="user-info user-comment">
-              <div class="user-image"> <a href="#"> <%= image_tag "sean.jpg", size: "44x44", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for about <%= time_ago_in_words(bounty_hunter.started_working_at)%></span>
-              <% if current_user == @bounty.poster %>
-                <a href="<%= chat_index_path(user: bounty_hunter.hunter.id) %>"  class="start-chat"><span>Start a chat</span></a>
-              <% end %>
-
+              <div class="user-image"> <a href="#"> <%= image_tag "user_image.png", size: "44x44", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for about <%= time_ago_in_words(bounty_hunter.started_working_at)%></span>
               </div>
             </div>
             <% end %>
