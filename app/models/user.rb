@@ -171,13 +171,13 @@ class User < ActiveRecord::Base
 			tags_reputation_for_bounty = 0
 			bounty.tags.each do |tag|
 				if tags_reputation.has_key?(tag.id)
-					tags_reputation[tag.id] += disputes_score*bounty.price
+					tags_reputation[tag.id] += disputes_score*(bounty.price/2)
 				else
 					# if tag is not in hash += will raise an error
-					tags_reputation[tag.id] = disputes_score*bounty.price
+					tags_reputation[tag.id] = disputes_score*(bounty.price/2)
 				end
 
-				tags_reputation_for_bounty += disputes_score*bounty.price
+				tags_reputation_for_bounty += disputes_score*(bounty.price/2)
 				tags_count+=1
 			end
 			reputation += (tags_reputation_for_bounty/tags_count) unless 0 == tags_count

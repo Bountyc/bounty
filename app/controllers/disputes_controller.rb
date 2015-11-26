@@ -6,15 +6,11 @@ class DisputesController < ApplicationController
 
     def index
         if current_user.reputation < 50
-            redirect_to :bounties
-            
+            redirect_to :bounties    
         end
-	   @disputes = Dispute.where(:moderator_id => nil).limit(10)
-       @my_disputes = my_disputes(current_user)
-
-        if params[:search_text]
-            @disputes = Dispute.joins(:bounties).search("bounties.title", params[:search_text]) .where(:status => :open).limit(10) 
-        end
+	    
+        @disputes = Dispute.where(:moderator_id => nil).limit(10)
+        @my_disputes = my_disputes(current_user)
 
     end
 
