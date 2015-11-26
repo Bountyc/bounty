@@ -1,11 +1,11 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: AZOx76LvBjPYnN15hmuWrgV7DdIeo-4Bdf66DD1Unyb4WaGd0gE1Ce5F1-Y2a9iRfib_DjSgXOYTnI22
-  client_secret: EG-aAf8dq4oTDDreZl_a8rT5opMZQsDglqxaa9ZxmsE42NW7kcTNP2rcO1w_h7FrOLgywsd4BDm8ehfe
+  client_id: ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC#AZOx76LvBjPYnN15hmuWrgV7DdIeo-4Bdf66DD1Unyb4WaGd0gE1Ce5F1-Y2a9iRfib_DjSgXOYTnI22
+  client_secret: ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84#EG-aAf8dq4oTDDreZl_a8rT5opMZQsDglqxaa9ZxmsE42NW7kcTNP2rcO1w_h7FrOLgywsd4BDm8ehfe
 
   # Mode can be 'live' or 'sandbox'
-  mode: sandbox
+  mode: live
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
