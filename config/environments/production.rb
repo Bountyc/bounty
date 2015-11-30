@@ -79,5 +79,5 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'https://young-shore-8277.herokuapp.com/' }
   
-  config.force_ssl = true
+  config.force_ssl = false
 end
