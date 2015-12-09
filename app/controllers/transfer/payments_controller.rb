@@ -29,7 +29,7 @@ module Transfer
 			
 			index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
 			link = @paypal_payment.links[index]
-			render :text => @paypal_payment
+			#render :text => @paypal_payment
 			#redirect_to link.href
 		end 
 
