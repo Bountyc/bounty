@@ -5,8 +5,15 @@ module Transfer
 
 		def start_payment
 			@payment = Payment.new(payment_params)
+			PayPal::SDK.configure({
+  				:mode => "live",
+  				:client_id => "AT7L5d-Yc9WUElrEpGCjNW-hQhAeliEE8ZJRw-zZal2oMzpgs8_8hV2cX7_ltRWJeeET0v16tPqM3rSC",
+  				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
+			})
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
 	  			:intent => "sale",
+	  			:payer => {
+	    		:payment_method => "paypal" },
 	  			:redirect_urls => {
 	    		:return_url => root_url + transfer_payments_path,
 	    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
