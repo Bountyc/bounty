@@ -11,7 +11,7 @@ module Transfer
 			withdrawal.user = current_user
 
 			#Check that user has enough money in his account to make this withdrawal
-			if (current_user.balance - (withdrawal.amount) < 0
+			if (current_user.balance - withdrawal.amount) < 0
 				logger.info "User tried to withdraw more then he has in his balance"
 				flash[:error] = "You can't withdraw more money than you have in your accounts balance"
 				redirect_to root_url
