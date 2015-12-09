@@ -17,7 +17,11 @@ module Transfer
 				redirect_to root_url
 				return
 			end
-
+			PayPal::SDK.configure({
+  				:mode => "live",
+  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
+  				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
+			})
 			@payout = PayPal::SDK::REST::Payout.new(
 			  {
 				:sender_batch_header => {
