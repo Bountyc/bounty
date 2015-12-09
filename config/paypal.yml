@@ -1,8 +1,8 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC#AZOx76LvBjPYnN15hmuWrgV7DdIeo-4Bdf66DD1Unyb4WaGd0gE1Ce5F1-Y2a9iRfib_DjSgXOYTnI22
-  client_secret: ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84#EG-aAf8dq4oTDDreZl_a8rT5opMZQsDglqxaa9ZxmsE42NW7kcTNP2rcO1w_h7FrOLgywsd4BDm8ehfe
+  client_id: AT7L5d-Yc9WUElrEpGCjNW-hQhAeliEE8ZJRw-zZal2oMzpgs8_8hV2cX7_ltRWJeeET0v16tPqM3rSC#AZOx76LvBjPYnN15hmuWrgV7DdIeo-4Bdf66DD1Unyb4WaGd0gE1Ce5F1-Y2a9iRfib_DjSgXOYTnI22
+  client_secret: EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj#EG-aAf8dq4oTDDreZl_a8rT5opMZQsDglqxaa9ZxmsE42NW7kcTNP2rcO1w_h7FrOLgywsd4BDm8ehfe
 
   # Mode can be 'live' or 'sandbox'
   mode: live
@@ -14,7 +14,7 @@ test: &default
   #signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: Platform.sdk.seller@gmail.com
+  sandbox_email_address: jeffrey.kern-facilitator@comsend.com
 
   # # IP Address
   # ip_address: 127.0.0.1
