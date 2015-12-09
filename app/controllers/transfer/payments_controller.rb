@@ -29,7 +29,8 @@ module Transfer
 			
 			index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
 			link = @paypal_payment.links[index]
-			redirect_to link.href
+			render :text => @paypal_payment
+			#redirect_to link.href
 		end 
 
 		def create
@@ -56,7 +57,6 @@ module Transfer
 		  private
 
 
-			  # Never trust parameters from the scary internet, only allow the white list through.
 			  def payment_params
 				 params.require(:payment).permit(:amount)
 			  end
