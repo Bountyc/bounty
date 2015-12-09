@@ -15,8 +15,8 @@
           <label for="spinner">USD</label>
           <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
           <div class="line"></div>
-          <h4>Payment will be needed to <%= current_user.email %></h4>
-          
+          <h4>Payment will be sent to the following paypal account: <%= current_user.email %> </h4>
+      
         </div>
       </div>
       <div class="modal-footer">

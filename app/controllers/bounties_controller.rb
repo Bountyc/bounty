@@ -103,7 +103,6 @@ class BountiesController < ApplicationController
         render 'edit';
       end
     end
-
   end
 
   def add_working_user
