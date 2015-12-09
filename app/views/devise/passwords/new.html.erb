@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+  <div class="signinpanel">
+        
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                    <h4 class="nomargin">Password reset</h4>
+                    <p class="mt5 mb20">Please fill in your Email so we can send you a reset password email</p>
+				    <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control uname" %>                   
+				     <small>
+                      <%= link_to "Go back to login", new_user_session_path %>
+                    </small>
+                    <br>
+                    <!-- display errors -->
+                    <% if flash[:alert] %>
+                        <div class="alert alert-danger mtb20" role="alert">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                          <%= flash[:alert] %>
+                        </div>
+                    <% end %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
+                    <%= f.submit "Sign In", class: "btn-register mtb20" %>
+                <% end %>
+            </div><!-- col-sm-5 -->
+            
+        </div><!-- row -->
+    </div>
+</div>
 <%= render "devise/shared/links" %>
