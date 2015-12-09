@@ -8,7 +8,7 @@ module Transfer
 			PayPal::SDK.configure({
   				:mode => "live",
   				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
-  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
+  				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
 			})
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
 	  			:intent => "sale",
@@ -29,8 +29,7 @@ module Transfer
 			
 			index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
 			link = @paypal_payment.links[index]
-			#render :text => @paypal_payment
-			#redirect_to link.href
+			redirect_to link.href
 		end 
 
 		def create
@@ -57,6 +56,7 @@ module Transfer
 		  private
 
 
+			  # Never trust parameters from the scary internet, only allow the white list through.
 			  def payment_params
 				 params.require(:payment).permit(:amount)
 			  end
