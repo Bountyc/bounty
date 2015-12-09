@@ -7,8 +7,6 @@ module Transfer
 			@payment = Payment.new(payment_params)
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
 	  			:intent => "sale",
-	  			:payer => {
-	    		:payment_method => "paypal" },
 	  			:redirect_urls => {
 	    		:return_url => root_url + transfer_payments_path,
 	    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
