@@ -28,7 +28,7 @@ module Transfer
 				  {
 					:recipient_type => 'EMAIL',
 					:amount => {
-					  :value => withdrawal.amount-(withdrawal.amount*.1),
+					  :value => withdrawal.amount- withdrawal.amount*0.1,
 					  :currency => 'USD'
 					},
 					:note => 'Bounty loves you!',
