@@ -12,33 +12,20 @@ module Transfer
   				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
 			})
 
-			#@paypal_payment = PayPal::SDK::REST::Payment.new({
-	  		#	:intent => "sale",
-	  		#	:redirect_urls => {
-	    	#	:return_url => root_url + transfer_payments_path,
-	    	#	:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
-	  		#	:transactions => [ {
-	    	#		:amount => {
-	     	#		:total => sprintf('%.2f', @payment.amount),
-	      	#		:currency => "USD" 
-	      	#		},
-	    	#		:description => "Bounty Balance" 
-	    	#		} ]    			 
-	    	#	})
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
-  				:intent => "sale",
- 				:payer => {
-    			:payment_method => "paypal" },
-  				:redirect_urls => {
-    			:return_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?success=true",
-    			:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
-  				:transactions => [ {
-    				:amount => {
-      					:total => "12",
-      					:currency => "USD" 
-      					},
-    				:description => "creating a payment" 
-    				} ] } )
+	  			:intent => "sale",
+	  			:redirect_urls => {
+	    		:return_url => root_url + transfer_payments_path,
+	    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
+	  			:transactions => [ {
+	    			:amount => {
+	     			:total => sprintf('%.2f', @payment.amount),
+	      			:currency => "USD" 
+	      			},
+	    			:description => "Bounty Balance" 
+	    			} ]    			 
+	    		})
+			
 			@paypal_payment.create
 			
 			index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
