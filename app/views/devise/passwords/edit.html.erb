@@ -1,27 +1,3 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
 <div class="container">
   <div class="signinpanel">
         
@@ -29,12 +5,13 @@
             <div class="col-md-6 col-md-offset-3">
                 
                 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                    <%= f.hidden_field :reset_password_token %>
                     <h4 class="nomargin">Password reset</h4>
 
                     <label class="control-label">New password</label>
-                    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+                    <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
                     <label class="control-label">Confirm new password</label>
-                    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control"%>
                     <small>
                       <%= link_to "Go back to login", new_user_session_path %>
                     </small>
