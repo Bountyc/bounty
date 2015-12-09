@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 
-                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
                     <h4 class="nomargin">Password reset</h4>
 
                     <label class="control-label">New password</label>
@@ -23,8 +23,7 @@
                           <%= flash[:alert] %>
                         </div>
                     <% end %>
-
-                    <%= f.submit "Send", class: "btn-register mtb20" %>
+                    <%= f.submit "Save", class: "btn-register mtb20" %>
                 <% end %>
             </div><!-- col-sm-5 -->
             
