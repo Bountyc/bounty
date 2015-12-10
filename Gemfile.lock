@@ -86,6 +86,9 @@ GEM
       multi_json
       request_store (>= 1.0)
     hashie (3.4.2)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     httpclient (2.6.0.1)
     i18n (0.7.0)
     jbuilder (2.3.1)
@@ -193,6 +196,8 @@ GEM
     request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    reverse_markdown (1.0.0)
+      nokogiri
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -210,6 +215,9 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    ruby-stackoverflow (0.0.3)
+      httparty (~> 0.11.0)
+      json
     sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -287,7 +295,9 @@ DEPENDENCIES
   react-rails
   redcarpet
   rename
+  reverse_markdown
   rspec-rails
+  ruby-stackoverflow
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   seed_dump

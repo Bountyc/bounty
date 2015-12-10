@@ -41,9 +41,9 @@ gem 'redcarpet'
 
 gem "font-awesome-rails"
 gem 'bootstrap-sass', '3.2.0.2'
-
+gem 'ruby-stackoverflow'
 gem 'rails-bootstrap-markdown'
-
+gem 'reverse_markdown'
 gem 'gon'
 
 gem "rack-noie", :require => "noie"
