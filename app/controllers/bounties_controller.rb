@@ -82,7 +82,7 @@ class BountiesController < ApplicationController
   def edit
     if user_signed_in?
       set_bounty
-      if @bounty.nil? or current_user != @bounty.poster
+      if @bounty.nil? or current_user != @bounty.poster or @bounty.status == "closed"
         flash[:error] = "Sorry, something went wrong"
         redirect_to root_url
       end
