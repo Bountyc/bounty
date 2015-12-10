@@ -52,7 +52,7 @@ module Transfer
 			#	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
 
 			#	logger.error @payout.error.inspect
-			end
+			#end
 			redirect_to user_path(current_user.id)
 			#render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
 		end
