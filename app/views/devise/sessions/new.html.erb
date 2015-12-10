@@ -3,34 +3,15 @@
         
         <div class="row">
             
-            <div class="col-md-6">
-                <div class="signin-info">
-                    <!-- logopanel -->
-                
-                    <div class="mb20"></div>
-                
-                    <h4 class="text-success">Sign In With</h4>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna odio, varius id eros et, fermentum lobortis orci. Mauris egestas maximus vehicula. Proin ut dictum eros. </p>
-                    <p>Below are some of the benefits you can have when purchasing this template.</p>
-                    <div class="mb20"></div>
-                    
-              <a href="<%= user_omniauth_authorize_path(:facebook) %>"><button class="btn-facebook"> Sign In with Facebook</button></a>
-              <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>"><button class="btn-google-plus"> Sign In with Google+</button></a>
-              <br>
-             <div class="mb20"></div>
-                    <strong>Not a member? <%= link_to "Sign up", new_registration_path(resource_name) %></strong>
-                
-                </div>
+               
                 <!-- signin0-info -->
             
-            </div><!-- col-sm-7 -->
             
-            <div class="col-md-6">
-                
+            <div class="col-md-6 col-md-offset-3">
+                <h4 class="text-success">Sign In With</h4>
+
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <h4 class="nomargin">Sign In</h4>
-                    <p class="mt5 mb20">Login to access your account.</p>
-                 <label class="control-label">Email</label>
+                 <label class="control-label" style="padding-top:10px;">Email</label>
                     <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control uname" %>
                      <label class="control-label">Password</label>
                      <%= f.password_field :password, autocomplete: "off", class: "form-control pword", placeholder: "Password"%>
@@ -49,6 +30,21 @@
 
                     <%= f.submit "Sign In", class: "btn-register mtb20" %>
                 <% end %>
+                 <div class="signin-info">
+                    <!-- logopanel -->
+                
+                    <div class="mb20"></div>
+                
+  
+                    <div class="mb20"></div>
+                    
+              <a href="<%= user_omniauth_authorize_path(:facebook) %>" ><button class="btn-facebook" style="margin-top:10px;;"> Sign In with Facebook</button></a>
+              <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>"><button class="btn-google-plus"> Sign In with Google+</button></a>
+              <br>
+             <div class="mb20"></div>
+                    <strong>Not a member? <%= link_to "Sign up", new_registration_path(resource_name) %></strong>
+                
+                </div>
             </div><!-- col-sm-5 -->
             
         </div><!-- row -->
