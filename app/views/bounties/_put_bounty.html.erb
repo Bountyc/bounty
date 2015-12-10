@@ -172,4 +172,15 @@ $('#tagSelect').select2({
             }
         }
 });
+
+var newList = $.merge( $('#tagSelect').select2('data'), [
+        <% if @bounty.tags.count > 0 %>
+          {id: "<%= @bounty.tags.first.name %>"}
+          <% @bounty.tags[1..-1].each do |tag| %>
+            ,{id: "<%= tag.name %>"}
+          <% end %>
+        <% end %>
+      ]);
+$("#tagSelect").select2('data', newList)
+
   </script>
