@@ -18,6 +18,7 @@
 //= require components
 //= require_tree ./common
 //= stub bootstrap.min
+//= require bootstrap-markdown-bundle
 
 $( document ).ready(function() {
 	$("#close-error").click(function() {

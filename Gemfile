@@ -40,6 +40,9 @@ gem 'pusher'
 gem 'redcarpet'
 
 gem "font-awesome-rails"
+gem 'bootstrap-sass', '3.2.0.2'
+
+gem 'rails-bootstrap-markdown'
 
 gem 'gon'
 
