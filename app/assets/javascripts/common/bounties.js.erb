@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+  $('#explanation_modal').on('hidden.bs.modal', function () {
+    flowplayer().stop();
+  });
+
+  $('#explanation_modal').on('shown.bs.modal', function () {
+    flowplayer().play();
+  });
+
   $("#work_on_bounty").click(function() {
     $(this).remove();
   });
