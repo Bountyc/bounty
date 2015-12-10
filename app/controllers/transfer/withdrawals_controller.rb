@@ -17,47 +17,59 @@ module Transfer
 				redirect_to root_url
 				return
 			end
-			logger.info "Configuring PayPal"
-			PayPal::SDK.configure({
-  				:mode => "live",
-  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
-  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
-			})
-			@payout = PayPal::SDK::REST::Payout.new(
-			  {
-				:sender_batch_header => {
-				  :sender_batch_id => SecureRandom.hex(8),
-				  :email_subject => 'Withdrawal from Bounty',
-				},
-				:items => [
-				  {
-					:recipient_type => 'EMAIL',
-					:amount => {
-					  :value => withdrawal.amount- withdrawal.amount*0.1,
-					  :currency => 'USD'
-					},
-					:note => 'Bounty loves you!',
-					:receiver => current_user.email,
-					:sender_item_id => "0",
-				  }
-				]
-			  }
-			)
+			# logger.info "Configuring PayPal"
+			# PayPal::SDK.configure({
+  	# 			:mode => "live",
+  	# 			:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
+  	# 			:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
+			# })
+			# @payout = PayPal::SDK::REST::Payout.new(
+			#   {
+			# 	:sender_batch_header => {
+			# 	  :sender_batch_id => SecureRandom.hex(8),
+			# 	  :email_subject => 'Withdrawal from Bounty',
+			# 	},
+			# 	:items => [
+			# 	  {
+			# 		:recipient_type => 'EMAIL',
+			# 		:amount => {
+			# 		  :value => withdrawal.amount- withdrawal.amount*0.1,
+			# 		  :currency => 'USD'
+			# 		},
+			# 		:note => 'Bounty loves you!',
+			# 		:receiver => current_user.email,
+			# 		:sender_item_id => "0",
+			# 	  }
+			# 	]
+			#   }
+			# )
 
-			#begin
-			@payout_batch = @payout.create
-			withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
-			withdrawal.save
+			# #begin
+			# @payout_batch = @payout.create
+			# withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
+			# withdrawal.save
 
-			current_user.balance -= withdrawal.amount
-			current_user.save
+			# current_user.balance -= withdrawal.amount
+			# current_user.save
 
-			logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
-			#rescue
-			#	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
+			# logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
+			# #rescue
+			# #	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
 
-			#	logger.error @payout.error.inspect
-			#end
+			# #	logger.error @payout.error.inspect
+			# #end
+
+			if withdrawal.save
+				a = AdminNotifier.withdraw_money_admin_email(withdrawal.user, withdrawal).deliver
+
+				current_user.reload # In order to know about the new withdrawal
+				current_user.reload_balance
+
+				flash[:notice] = "A message was sent to admin, withdrawal will be proccesed in the next 24 hours!" + "     " + a
+			else
+				flash[:error] = "Sorry, something went wrong!"
+			end
+
 			redirect_to user_path(current_user.id)
 			#render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
 		end
