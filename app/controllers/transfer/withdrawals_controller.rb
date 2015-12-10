@@ -39,19 +39,19 @@ module Transfer
 			  }
 			)
 
-			begin
-			  @payout_batch = @payout.create
-			  withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
-			  withdrawal.save
+			#begin
+			@payout_batch = @payout.create
+			withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
+			withdrawal.save
 
-			  current_user.balance -= withdrawal.amount
-			  current_user.save
+			current_user.balance -= withdrawal.amount
+			current_user.save
 
-			  logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
-			rescue
-				logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
+			logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
+			#rescue
+			#	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
 
-			 	logger.error @payout.error.inspect
+			#	logger.error @payout.error.inspect
 			end
 			redirect_to user_path(current_user.id)
 			#render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
