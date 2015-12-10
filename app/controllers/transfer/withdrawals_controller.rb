@@ -17,6 +17,13 @@ module Transfer
 				redirect_to root_url
 				return
 			end
+			
+			if withdrawal.amount < 0
+				logger.info "User tried to withdraw minus"
+				flash[:error] = "You can't withdraw less than 0"
+				redirect_to root_url
+				return
+			end
 			# logger.info "Configuring PayPal"
 			# PayPal::SDK.configure({
   	# 			:mode => "live",
