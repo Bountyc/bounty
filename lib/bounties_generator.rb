@@ -16,6 +16,10 @@ module BountiesGenerator
 			bounty.price = 5
 		end
 
+		if bounty.price > user.balance
+			bounty.price = user.balance
+		end
+
 		bounty.poster = user
 		bounty.save
 		bounty
@@ -25,7 +29,7 @@ module BountiesGenerator
 		stackoverflow_questions = RubyStackoverflow.questions({:filter=>"withbody",:sort=>"activity",:order=>"desc"}).data
 		stackoverflow_questions.each do |question|
 			user = User.find user_ids.sample
-			if user != nil
+			if user != nil and user.reload_balance > 5
 				self.generate_bounty_from_question(question, user)
 			end
 		end
