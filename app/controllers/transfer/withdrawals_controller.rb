@@ -13,11 +13,16 @@ module Transfer
 			#Check that user has enough money in his account to make this withdrawal
 			if (current_user.balance - withdrawal.amount) < 0
 				logger.info "User tried to withdraw more then he has in his balance"
-				flash[:error] = "You can't withdraw more money than you have in your accounts balance!"
+				flash[:error] = "You can't withdraw more money than you have in your accounts balance"
 				redirect_to root_url
 				return
 			end
-
+			logger.info "Configuring PayPal"
+			PayPal::SDK.configure({
+  				:mode => "live",
+  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
+  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
+			})
 			@payout = PayPal::SDK::REST::Payout.new(
 			  {
 				:sender_batch_header => {
@@ -28,7 +33,7 @@ module Transfer
 				  {
 					:recipient_type => 'EMAIL',
 					:amount => {
-					  :value => withdrawal.amount,
+					  :value => withdrawal.amount- withdrawal.amount*0.1,
 					  :currency => 'USD'
 					},
 					:note => 'Bounty loves you!',
@@ -39,18 +44,20 @@ module Transfer
 			  }
 			)
 
-			begin
-			  @payout_batch = @payout.create
-			  withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
-			  withdrawal.save
+			#begin
+			@payout_batch = @payout.create
+			withdrawal.payout_batch_id = @payout_batch.batch_header.payout_batch_id
+			withdrawal.save
 
-			  current_user.balance -= withdrawal.amount
-			  current_user.save
+			current_user.balance -= withdrawal.amount
+			current_user.save
 
-			  logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
-			rescue ResourceNotFound => err
-			  logger.error @payout.error.inspect
-			end
+			logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
+			#rescue
+			#	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
+
+			#	logger.error @payout.error.inspect
+			#end
 			redirect_to user_path(current_user.id)
 			#render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
 		end

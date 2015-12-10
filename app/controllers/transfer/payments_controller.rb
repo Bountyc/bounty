@@ -8,7 +8,7 @@ module Transfer
 			PayPal::SDK.configure({
   				:mode => "live",
   				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
-  				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
+  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
 			})
 			@paypal_payment = PayPal::SDK::REST::Payment.new({
 	  			:intent => "sale",
