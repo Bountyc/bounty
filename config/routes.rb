@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :bounties, defaults: {format: :json}
     resources :messages, defaults: {format: :json}
+    resources :bounties_generator, defaults: {format: :json}
     resources :disputes, defaults: {format: :json} do
       put "resolve"
     end
