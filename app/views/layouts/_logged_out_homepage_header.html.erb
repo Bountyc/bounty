@@ -22,13 +22,44 @@
     </div>
   </div>
   <div class="clr"></div>
+  <div class="modal fade" id="explanation_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <h4>
+        <b>Bounty</b> is a website that allows you to ask programming questions, and put a monetary incentive on it, quickly and easily. After posting a bounty (question), any developer can come solve it to get the money. <br/><br/>
+      </h4>
+        <h5>
+        <b>What's the difference between this and stack overflow?</b><br/><br/>
+        Stack overflow is great, every developer uses it. But sometimes, we need answers very quickly, or a snippet of code. On stack overflow, there's no quick way to create a <b>correlation between how much you need an answer and how quickly you'll get it</b>. Bounty lets you do exactly that, easily and efficiently, with a great ux. <br/><br/>
+
+        <b>What's the flow of asking a bounty?</b><br/><br/>
+        <b>1.</b> Someone, anyone, has a hard programming question. He posts the question on our site, and puts money on it through paypal, quick and easy.</br>
+        <b>2.</b> Any developer comes and offers a solution the problem (he's called the <b>hunter</b>). The second you post a solution the bounty is "locked". People can still see it, but can't offer a solution themselves.</br>
+        <b>3.</b> The poster of the bounty either accepts the given solution, or rejects it. Once rejected, the bounty is once again open to anyone to offer a solution. If the bounty hunter feels this was unfair, he can dispute. We're all ears, but keep in mind that answering a bounty does not guarantee getting the money; although we'll definitely help you as much as possible.</br></br>
+
+        <b>If I don't get any answers/good answers to my bounty, can I get my money back?</b></br><br/>
+        Once you post your bounty, you can't get your money back. We do this so that posters won't reject answers just to get their money back.</br></br>
+
+        Got any questions? Be sure to contact us at <%= mail_to "support@bountyc.com" %>!</br>
+        Can't wait to see you on our site!
+
+      </h5>
+      </div>
+      
+    </div>
+  </div>
+</div>
 </header>
 <div class="jumbotron">
   <h2>Post a hard coding problem with a monetary incentive</h2>
   <h3>Solve a coding problem for money</h3>
   <span><%= image_tag "sign.png", alt: "" %></span>
   <h4>/* Quick answers. Quick money. Bounty */</h4>
+  <h4 style="width:20%; margin: auto; padding-top:20px; padding-bottom:-10px;"><button class="btn-google-plus" data-toggle="modal" data-target="#explanation_modal">How It Works</button></h4>
 </div>
+ 
 <!--<div class="how-it-works">
   <div class="container">
     <div class="row">
