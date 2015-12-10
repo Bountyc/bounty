@@ -137,6 +137,7 @@ $('#tagSelect').select2({
         }
 });
 
+// To load last tags
 var newList = $.merge( $('#tagSelect').select2('data'), [
         <% if @bounty.tags.count > 0 %>
           {id: "<%= @bounty.tags.first.name %>"}
