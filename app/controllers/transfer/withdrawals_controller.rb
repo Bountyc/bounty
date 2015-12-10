@@ -13,15 +13,11 @@ module Transfer
 			#Check that user has enough money in his account to make this withdrawal
 			if (current_user.balance - withdrawal.amount) < 0
 				logger.info "User tried to withdraw more then he has in his balance"
-				flash[:error] = "You can't withdraw more money than you have in your accounts balance"
+				flash[:error] = "You can't withdraw more money than you have in your accounts balance!"
 				redirect_to root_url
 				return
 			end
-			PayPal::SDK.configure({
-  				:mode => "live",
-  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
-  				:client_secret => "EIMkw0YYkrkM7X61aR-kG_hCdRWBYpGdu4s-JYQfjslLLSxxWecJW3oMsKnHMZhx_pZVIB-lHNOKXitj"
-			})
+
 			@payout = PayPal::SDK::REST::Payout.new(
 			  {
 				:sender_batch_header => {
@@ -32,7 +28,7 @@ module Transfer
 				  {
 					:recipient_type => 'EMAIL',
 					:amount => {
-					  :value => withdrawal.amount- withdrawal.amount*0.1,
+					  :value => withdrawal.amount,
 					  :currency => 'USD'
 					},
 					:note => 'Bounty loves you!',

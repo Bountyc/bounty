@@ -10,7 +10,9 @@ class Bounty < ActiveRecord::Base
 	
 	enum status: [:open, :pending, :closed]
 
-	after_create :change_user_balance
+	after_create :update_user_balance
+	after_update :update_user_balance, :if => :price_changed?
+ 
 
 	validates_presence_of [:price, :title, :description, :poster_id]
 	validates :price, :numericality => { :greater_than => 0}
@@ -48,10 +50,9 @@ class Bounty < ActiveRecord::Base
 	end
 
 	private
-		def change_user_balance
-			poster = self.poster
-			poster.balance -= self.price
-			poster.save
+		def update_user_balance
+			self.poster.reload
+			self.poster.reload_balance
 		end
 
 		def poster_can_afford
