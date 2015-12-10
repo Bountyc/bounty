@@ -65,7 +65,7 @@ module Transfer
 				current_user.reload # In order to know about the new withdrawal
 				current_user.reload_balance
 
-				flash[:notice] = "A message was sent to admin, withdrawal will be proccesed in the next 24 hours!" + "     " + a
+				flash[:notice] = "A message was sent to admin, withdrawal will be proccesed in the next 24 hours!"
 			else
 				flash[:error] = "Sorry, something went wrong!"
 			end
