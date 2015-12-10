@@ -48,8 +48,10 @@ module Transfer
 			  current_user.save
 
 			  logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
-			rescue ResourceNotFound => err
-			  logger.error @payout.error.inspect
+			rescue
+				logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
+
+			 	logger.error @payout.error.inspect
 			end
 			redirect_to user_path(current_user.id)
 			#render :plain => "Yey! $" + withdrawal.amount.to_s + " withdrawn"
