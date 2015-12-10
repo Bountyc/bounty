@@ -17,8 +17,8 @@
 	      <div class="edit-nav mb0">
 	        <ul class="nav pull-right">
 	          <% if @user_role == :poster %>
-		          <li class="accept"><%= link_to (image_tag("green-tick.jpg") + "Accepeted"), approve_answer_path(@bounty.pending_answer) , method: :put %></li>
-		          <li class="reject"> <a href="#myModal" role="button" class="btn" data-toggle="modal"> <%= image_tag "crose-icon.png" %> Rejected </a> </li>
+		          <li class="accept"><%= link_to (image_tag("green-tick.jpg") + "Accept"), approve_answer_path(@bounty.pending_answer) , method: :put %></li>
+		          <li class="reject"> <a href="#myModal" role="button" class="btn" data-toggle="modal"> <%= image_tag "crose-icon.png" %> Reject </a> </li>
 	          <% end %>
 	          <li><a href="#"><%= image_tag "share-icon.png" %> share </a></li>
 	        </ul>
