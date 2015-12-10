@@ -11,7 +11,7 @@
 	<div class="row">
 	  <div class="user-info">
 	    <div class="col-sm-6">
-	      <div class="user-image"> <a href="#">by <span><%= @bounty.pending_answer.hunter %> </span> </a> <span> - </span> <span> 34 mins ago copy</span> </div>
+	      <div class="user-image"> <%= link_to "by " + @bounty.pending_answer.hunter.first_name + " " +  @bounty.pending_answer.hunter.first_name, user_path(@bounty.pending_answer.hunter) %><span> - </span> <span> 34 mins ago</span> </div>
 	    </div>
 	    <div class="col-sm-6 mt10">
 	      <div class="edit-nav mb0">
