@@ -21,22 +21,17 @@ $( document ).ready(function() {
           name: "groupCustom",
           data: [{
             name: "cmdBlock",
-            toggle: true, // this param only take effect if you load bootstrap.js
             title: "block",
             icon: "fa fa-code",
             callback: function(e){
               var code = e.getSelection().text;
               var codeArr = code.split("\n");
-              var newCode = "";
+              var newCode = "\n";
               for(var i = 0; i < codeArr.length; i++){
                 codeArr[i] = "    " + codeArr[i];
                 newCode = newCode + "\n" + codeArr[i];
               }
-
               e.replaceSelection(newCode);
-
-
-              
             }
           }]
     }]
@@ -102,7 +97,7 @@ for="title">Attach Files</label>
                   </select>
                 </div>-->
                 <div class="clr"></div>
-                <label> Set Bounty Ammount</label>
+                <label> Set Bounty Amount</label>
                 <p>
                   <%= f.number_field :price, :id => "spinner", :required => true, :min => 0 %>
                   <%= f.label :price, "USD" %>
