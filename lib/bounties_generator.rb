@@ -13,7 +13,7 @@ module BountiesGenerator
 
 		bounty.price = question.score > 20 ? 20 : question.score #we don't want to go over 20 bucks for one question!
 		if bounty.price <= 0
-			bounty.price = 5
+			bounty.price = rand(20)
 		end
 
 		if bounty.price > user.balance
