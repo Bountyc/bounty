@@ -29,7 +29,7 @@ class Answer < ActiveRecord::Base
 		notification = Notification.new
 		notification.bounty_hunter = self.bounty_hunter
 		notification.user = self.bounty.poster
-		notification.message = self.hunter.email + " proposed a resolution to your bounty!"
+		notification.message = self.hunter.first_name + " " + self.hunter.last_name + " proposed a resolution to your bounty!"
 		notification.action_link = bounty_path(self.bounty.id)	
 		notification.new_answer! # No need for save because this saves already
 	end

@@ -141,6 +141,13 @@ $('#pdffile').change(function(){
 <script type="text/javascript"> 
 function format(item) { return item.id;}
 $('#tagSelect').select2({ 
+        initSelection : function (element, callback) {
+          var data = [];
+          $(element.val().split(" ")).each(function () {
+              data.push({id: this, name: this});
+          });
+          callback(data);
+        },
         tags: true,
         tokenSeparators: [","," "],
         createSearchChoice: function(term, data) {
@@ -167,16 +174,5 @@ $('#tagSelect').select2({
             }
         }
 });
-
-// To load last tags
-var newList = $.merge( $('#tagSelect').select2('data'), [
-        <% if @bounty.tags.count > 0 %>
-          {id: "<%= @bounty.tags.first.name %>"}
-          <% @bounty.tags[1..-1].each do |tag| %>
-            ,{id: "<%= tag.name %>"}
-          <% end %>
-        <% end %>
-      ]);
-$("#tagSelect").select2('data', newList)
 
   </script>
