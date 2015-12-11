@@ -6,7 +6,7 @@
 	              <div class="open-bounties-list-desc">
 	                <div class="row">
 	                  <div class="col-md-6">
-	                    <div class="open-bounties-desc"><%= bounty.working_users.count%> users working - by <span><%= bounty.poster.email %></span> - <%= time_ago_in_words(bounty.created_at) %> ago</div>
+	                    <div class="open-bounties-desc"><%= bounty.working_users.count%> users working - by <span><%= bounty.poster.first_name + " " +  bounty.poster.last_name%></span> - <%= time_ago_in_words(bounty.created_at) %> ago</div>
 	                  </div>
 	                  <div class="col-md-6">
 	                    <div class="open-bounties-tags"> 
