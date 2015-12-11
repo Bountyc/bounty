@@ -16,6 +16,7 @@ class BountiesController < ApplicationController
       gon.user_id = current_user.id
     end
 
+    @total_bounty_money_available = Bounty.sum(:price, :conditions => {:status => 0})
     render layout: 'homepage'
   end
 

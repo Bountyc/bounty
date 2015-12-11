@@ -11,7 +11,7 @@
   <% end %>
 
   <div class="container">
-    <div class="logo"> <a href="<%= root_url %>"><%= image_tag "logo.jpg", alt: "" %></a> </div>
+    <div class="logo"> <a href="<%= root_url %>"><%= image_tag "logo.png", alt: "", size: "198x52" %></a> </div>
     <div class="right-content after-sign-in">
       <ul>
         
@@ -45,6 +45,7 @@
   <h3>Solve a coding problem for money</h3>
   <span><%= image_tag "sign.png", alt: "" %></span>
   <h4>/* Quick answers. Quick money. Bounty */</h4>
+  <h4 style="color:green">/* $<%= @total_bounty_money_available.floor %> in open bounties */</h4>
   <h4 style="width:20%; margin: auto; padding-top:20px; padding-bottom:-10px;"><button class="btn-google-plus" data-toggle="modal" data-target="#explanation_modal">How It Works</button></h4>
 </div>
  
