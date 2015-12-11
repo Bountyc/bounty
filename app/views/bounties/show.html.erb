@@ -101,7 +101,7 @@
           <div class="commtent-panel">
             <% @working_bounty_hunters.each do |bounty_hunter| %>
             <div class="user-info user-comment">
-              <div class="user-image"> <a href="#"> <%= image_tag "user_image.png", size: "44x44", alt: "Image" %> by <span> <%= bounty_hunter.hunter.email %> </span> </a> <span> - </span> <span>working for about <%= time_ago_in_words(bounty_hunter.started_working_at)%></span>
+              <div class="user-image"> <a href="#"> <%= image_tag "user_image.png", size: "44x44", alt: "Image" %> by <span> <%= bounty_hunter.hunter.first_name + " " +  bounty_hunter.hunter.last_name %> </span> </a> <span> - </span> <span>working for about <%= time_ago_in_words(bounty_hunter.started_working_at)%></span>
               </div>
             </div>
             <% end %>
