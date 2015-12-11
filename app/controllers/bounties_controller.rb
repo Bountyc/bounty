@@ -31,7 +31,6 @@ class BountiesController < ApplicationController
     @answer = Answer.new
 
     if @bounty.nil?
-      flash[:error] = "Sorry, something went wrong"
       redirect_to root_url
     else
     	if @bounty.poster == current_user
