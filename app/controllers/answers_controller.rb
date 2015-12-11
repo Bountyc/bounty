@@ -37,7 +37,7 @@ class AnswersController < ApplicationController
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
 			notification.user = answer.hunter
-			notification.message = answer.bounty_hunter.hunter.first_name + " " + answer.bounty_hunter.hunter.last_name  + " just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
+			notification.message = answer.bounty_hunter.bounty.poster.first_name + " " + answer.bounty_hunter.bounty.poster.last_name  + " just accepted your answer to " + notification.bounty_hunter.bounty.title + "!"
 			notification.action_link = bounty_path(answer.bounty.id)
 			notification.answer_accepted!
 			notification.save
@@ -68,7 +68,7 @@ class AnswersController < ApplicationController
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
 			notification.user = answer.hunter
-			notification.message = answer.bounty_hunter.hunter.first_name + " " + answer.bounty_hunter.hunter.last_name  + " denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
+			notification.message = answer.bounty_hunter.bounty.poster.first_name + " " + answer.bounty_hunter.bounty.poster.last_name  + " denied your answer to "+notification.bounty_hunter.bounty.title + ". Click to view the denial reason."
 			notification.action_link = bounty_path(answer.bounty.id)			
 			notification.answer_denied!
 			notification.save
