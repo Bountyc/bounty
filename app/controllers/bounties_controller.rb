@@ -4,14 +4,18 @@ class BountiesController < ApplicationController
   include Bounties
 
   def index
-    @open_bounties = get_bounties({status: 0, search: params[:search_text], limit: 10})
+
+    limit = 10
+    gon.limit = limit
+    
+    @open_bounties = get_bounties({status: 0, search: params[:search_text], limit: limit})
     @open_bounties_count = count_bounties({status: 0, search: params[:search_text]})
 
-    @resolved_bounties = get_bounties({status: 2, search: params[:search_text], limit: 10})
+    @resolved_bounties = get_bounties({status: 2, search: params[:search_text], limit: limit})
     @resolved_bounties_count = count_bounties({status: 2, search: params[:search_text]})
 
     if user_signed_in?
-      @my_bounties = get_bounties({user_id: current_user.id, search: params[:search_text], limit: 10})
+      @my_bounties = get_bounties({user_id: current_user.id, search: params[:search_text], limit: limit})
       @my_bounties_count = count_bounties({user_id: current_user.id, search: params[:search_text]})
       gon.user_id = current_user.id
     end
