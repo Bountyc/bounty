@@ -5,31 +5,37 @@ module Transfer
 
 		def start_payment
 			@payment = Payment.new(payment_params)
-			PayPal::SDK.configure({
-  				:mode => "live",
-  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
-  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
-			})
-			@paypal_payment = PayPal::SDK::REST::Payment.new({
-	  			:intent => "sale",
-	  			:payer => {
-	    		:payment_method => "paypal" },
-	  			:redirect_urls => {
-	    		:return_url => root_url + transfer_payments_path,
-	    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
-	  			:transactions => [ {
-	    			:amount => {
-	     			:total => sprintf('%.2f', @payment.amount),
-	      			:currency => "USD" 
-	      			},
-	    			:description => "Bounty Balance" 
-	    			} ]    			 
-	    		})
-			@paypal_payment.create
-			
-			index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
-			link = @paypal_payment.links[index]
-			redirect_to link.href
+
+			if 0 >= @payment.amount
+				flash[:error] = "You can't pay an amount less than 0!"
+				redirect_to root_url
+			else
+				PayPal::SDK.configure({
+	  				:mode => "live",
+	  				:client_id => "ARwIMWY6CSmzq2sORTyuLCWGjKi4OZyhuRG-5Gc0_RK2zhUhPFEOAi3W7IetP2AdNVhDMw98B-3YVoFC",
+	  				:client_secret => "ECP5MW_w6GiCGYqth52Gw732e4j8K4gFfD-bGOZImFWFcJcmXWvpTBgCgF46Ormg-03YXkVX1Cz5QP84"
+				})
+				@paypal_payment = PayPal::SDK::REST::Payment.new({
+		  			:intent => "sale",
+		  			:payer => {
+		    		:payment_method => "paypal" },
+		  			:redirect_urls => {
+		    		:return_url => root_url + transfer_payments_path,
+		    		:cancel_url => "https://devtools-paypal.com/guide/pay_paypal/ruby?cancel=true" },
+		  			:transactions => [ {
+		    			:amount => {
+		     			:total => sprintf('%.2f', @payment.amount),
+		      			:currency => "USD" 
+		      			},
+		    			:description => "Bounty Balance" 
+		    			} ]    			 
+		    		})
+				@paypal_payment.create
+				
+				index = @paypal_payment.links.find_index {|item| item.rel == "approval_url"}
+				link = @paypal_payment.links[index]
+				redirect_to link.href
+			end
 		end 
 
 		def create
