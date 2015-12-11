@@ -21,8 +21,8 @@ module Api
 			end
 
 			has_more = false
-			if nil != params[:offset]
-				if count_bounties(params) - params[:offset].to_i - 10 > 0
+			if nil != params[:offset] and nil != params[:limit]
+				if count_bounties(params) - params[:offset].to_i - params[:limit] > 0
 					has_more = true
 				end
 			end
