@@ -100,7 +100,18 @@ class BountiesController < ApplicationController
     if @bounty.nil?
       flash[:error] = "Sorry, something went wrong"
       redirect_to root_url
-    else    
+    else
+
+      #check for price errors
+      if params[:bounty][:price].to_i < @bounty.price
+        flash[:error] = "You can't lower the price of your bounty. All other changes have been saved."
+        params[:bounty][:price] = @bounty.price
+      elsif params[:bounty][:price].to_i-@bounty.price > current_user.reload_balance
+        flash[:error] = "You don't have enough money in your balance. All other changes have been saved."
+        params[:bounty][:price] = @bounty.price
+      end
+
+
       if @bounty.update_attributes(bounty_params)
         redirect_to @bounty
       else
