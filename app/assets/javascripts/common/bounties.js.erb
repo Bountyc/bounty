@@ -38,6 +38,7 @@ $( document ).ready(function() {
 		        page = tabs_pages[2]
 		        break;
 		}
+		params += "&limit=" + gon.limit
 
   		$.ajax({
   			url: "/api/bounties?offset=" + page*10 + params, 

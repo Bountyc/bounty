@@ -15,7 +15,7 @@ module Bounties
 		end
 
 		# Make limit and offset if they aren't set already
-		limit = params[:limit] || 10
+		limit = params[:limit]
 		offset = params[:offset] || 0
 
 		bounties = bounties.limit(limit).offset(offset)
