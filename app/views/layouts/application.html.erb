@@ -5,7 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="Get your coding problems and questions solved by putting in a money bounty on it, and get money by solving programming problems and questions">
+	<meta name="description" content="Coding problems and questions solved by putting in a money bounty on it, and get money by solving programming problems and questions">
+  <meta name="keywords" content="coding, development, problems, how do i, get money, freelance jobs, programming jobs, html, javascript, python, ruby on rails">
+  <meta name="title" content="Bounty Coding">
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
   	<title>Bountyc</title>
@@ -16,6 +18,7 @@
 
 </head>
 <body>
+
 <%= render "layouts/notice" %>
 <% if user_signed_in? %>
   <%= render "layouts/header" %>
@@ -54,5 +57,7 @@
 <%= yield %>
 
 <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-566a3fe6643e65db" async="async"></script>
+
 </body>
 </html>

@@ -27,6 +27,7 @@ gem 'paypal-sdk-rest'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem "select2-rails"
+gem 'sitemap_generator'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
