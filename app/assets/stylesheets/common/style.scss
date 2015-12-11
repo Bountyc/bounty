@@ -500,12 +500,12 @@ footer .pull-right a {
 .navbar.navbar-default.inn-nav {
 	border-top: none;
 }
-/*.navbar.navbar-default.inn-nav .navbar-brand {
+.navbar.navbar-default.inn-nav .navbar-brand {
 	height: 46px;
 	background: #dae1ec;
 	color: #34353f;
 	text-shadow: none;
-}*/
+}
 .works-heading {
 	color: #fff;
 	font-size: 30px;
@@ -1600,7 +1600,6 @@ footer .pull-right a {
 	text-align: center;
 	margin-bottom: 10px;
 }
-
 .btn-google-plus {
 	color: #ffffff;
 	background: #de4c33 ;
@@ -1862,3 +1861,12 @@ footer .pull-right {
 	color: #E0694C;
 }
 
+.signin-info a:hover
+{
+	text-decoration: none;
+}
+
+signup-info a:hover
+{
+	text-decoration: none;
+}
