@@ -14,8 +14,7 @@ module Bounties
 			bounties = bounties.where(poster_id: params[:user_id])
 		end
 
-		# Make limit and offset if they aren't set already
-		limit = params[:limit] || 10
+		# Make offset if they aren't set already
 		offset = params[:offset] || 0
 
 		bounties = bounties.limit(limit).offset(offset)
