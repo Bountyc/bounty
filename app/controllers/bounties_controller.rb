@@ -47,6 +47,8 @@ class BountiesController < ApplicationController
     		else
     			@user_role = :hunter
     		end
+
+        
     	else
     		@user_role = :guest
     	end
@@ -71,6 +73,7 @@ class BountiesController < ApplicationController
 
   def new
   	@bounty = Bounty.new
+    @bounty.poster = current_user
   end
 
   def create
@@ -86,7 +89,7 @@ class BountiesController < ApplicationController
   def edit
     if user_signed_in?
       set_bounty
-      if @bounty.nil? or current_user != @bounty.poster or @bounty.status == "closed"
+      if @bounty.nil? or (current_user != @bounty.poster and current_user.is_admin == false)or @bounty.status == "closed"
         flash[:error] = "Sorry, something went wrong"
         redirect_to root_url
       end
@@ -101,12 +104,15 @@ class BountiesController < ApplicationController
       flash[:error] = "Sorry, something went wrong"
       redirect_to root_url
     else
-
+      #make sure admin didn't edit price
+      if @bounty.poster != current_user
+        params[:bounty][:price] = @bounty.price
+      end
       #check for price errors
       if params[:bounty][:price].to_i < @bounty.price
         flash[:error] = "You can't lower the price of your bounty. All other changes have been saved."
         params[:bounty][:price] = @bounty.price
-      elsif params[:bounty][:price].to_i-@bounty.price > current_user.reload_balance
+      elsif params[:bounty][:price].to_i-@bounty.price > @bounty.poster.reload_balance
         flash[:error] = "You don't have enough money in your balance. All other changes have been saved."
         params[:bounty][:price] = @bounty.price
       end
