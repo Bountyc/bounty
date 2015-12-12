@@ -96,12 +96,14 @@ for="title">Attach Files</label>
                     <option>4</option>
                   </select>
                 </div>-->
-                <div class="clr"></div>
-                <label> Set Bounty Amount</label>
-                <p>
-                  <%= f.number_field :price, :id => "spinner", :required => true, :min => 0 %>
-                  <%= f.label :price, "USD" %>
-                </p>
+                <% if current_user == @bounty.poster %>
+                  <div class="clr"></div>
+                  <label> Set Bounty Amount</label>
+                  <p>
+                    <%= f.number_field :price, :id => "spinner", :required => true, :min => 0 %>
+                    <%= f.label :price, "USD" %>
+                  </p>
+                <% end %>
               </div>
             </div>
           </div>
