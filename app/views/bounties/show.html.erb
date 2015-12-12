@@ -55,8 +55,10 @@
                           </li>
                     </ul>
                     </li>
-                    <% if (current_user == @bounty.poster || current_user.is_admin == true) and @bounty.status != "closed" %>
-                      <li><a href="<%= edit_bounty_path(@bounty) %>"><%= image_tag "edit-icon.png" %> edit</a></li>
+                    <% if nil != current_user %>
+                      <% if (current_user == @bounty.poster || current_user.is_admin == true) and @bounty.status != "closed" %>
+                        <li><a href="<%= edit_bounty_path(@bounty) %>"><%= image_tag "edit-icon.png" %> edit</a></li>
+                      <% end %>
                     <% end %>
                   </ul>
                 </div>
