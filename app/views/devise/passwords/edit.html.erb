@@ -17,11 +17,11 @@
                     </small>
                     <br>
                     <!-- display errors -->
-                    <% if flash[:alert] %>
+                    <% if flash[:notice] %>
                         <div class="alert alert-danger mtb20" role="alert">
                           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                           <span class="sr-only">Error:</span>
-                          <%= flash[:alert] %>
+                          <%= flash[:notice] %>
                         </div>
                     <% end %>
 
