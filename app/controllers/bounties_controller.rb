@@ -67,6 +67,7 @@ class BountiesController < ApplicationController
         end
       end
 
+      @title = @bounty.title
       @working_bounty_hunters = @bounty.working_bounty_hunters
     end
   end
