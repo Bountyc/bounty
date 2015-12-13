@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<h2> <%= @poster.first_name + " " + @poster.last_name %> accepted your answer on his bounty! </h2>
+      <h3><%= link_to "Click here to view bounty", @bounty %></h3>
+      <br>
+      As a result, <%= @bounty.price %>$ have been added to your account
+  </body>
+</html>
