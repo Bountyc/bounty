@@ -19,7 +19,7 @@ class Bounty < ActiveRecord::Base
 
 	validate :poster_can_afford, :on => :create
 
-	scope :search, -> (field, text) { where("#{field} LIKE ?", "%#{text}%") }
+	scope :search, -> (field, text) { where("lower(#{field}) LIKE ?", "%#{text.downcase}%") }
 	scope :open_bounties, -> { where(status: 0) }
 
 	default_scope {order('created_at DESC')}
