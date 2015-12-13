@@ -13,12 +13,14 @@
                     </small>
                     <br>
                     <!-- display errors -->
-                    <% if flash[:alert] %>
+                    <% if @user.errors.any? %>
+                      <% @user.errors.full_messages.each do |message| %>
                         <div class="alert alert-danger mtb20" role="alert">
                           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                           <span class="sr-only">Error:</span>
-                          <%= flash[:alert] %>
+                          <%= message %>
                         </div>
+                      <% end %>
                     <% end %>
 
                     <%= f.submit "Send", class: "btn-register mtb20" %>
