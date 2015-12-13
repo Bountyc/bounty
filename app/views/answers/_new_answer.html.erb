@@ -16,6 +16,8 @@
           
           <hr class="line">
           <%= button_tag("Post Your Answer", type: 'submit', class: "btn btn-default custom-btn") %>
+          <span class="warning-message">You cannot edit your answer later! Make sure your answer answers the bounty, and in nearly ALL situations answers on BountyC should have code! </span>
+
           <span class="warning-message">Be aware that answering a bounty does not guarantee getting the bounty!</span>
         <% end %>
         <%= javascript_include_tag 'wmd', 'data-turbolinks-track' => true %>
