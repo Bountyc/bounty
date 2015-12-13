@@ -23,6 +23,7 @@ module BountiesGenerator
 		bounty.poster = user
 		bounty.save
 		bounty
+		
 	end
 
 	def self.generate_bounties_for_users(user_ids)
