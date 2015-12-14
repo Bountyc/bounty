@@ -67,7 +67,7 @@ module Transfer
 			# #end
 
 			if withdrawal.save
-				a = AdminNotifier.withdraw_money_admin_email(withdrawal.user, withdrawal).deliver
+				a = AdminNotifier.withdraw_money_admin_email(withdrawal.user, withdrawal, params[:withdrawal][:email]).deliver
 
 				current_user.reload # In order to know about the new withdrawal
 				current_user.reload_balance

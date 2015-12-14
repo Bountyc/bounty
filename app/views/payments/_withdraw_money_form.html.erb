@@ -10,12 +10,18 @@
       <%= form_for @withdrawal, :url =>{:action=>'create', :controller=>"transfer/withdrawals"} do |w| %>
       <div class="modal-body"ð>
         <div class="custom-popover-body">
-          <p>Set Amount</p>
-          <%= w.text_field :amount, :class => "spinner", :id => "amount", :required => true%>
+          <p><h5>Set Amount</h5></p>
+                    <span class="col-xs-4">
+
+          <%= w.text_field :amount, :class => "form-control", :id => "amount", :required => true, style: "height: 25px;"%>
+        </span>
           <label for="spinner">USD</label>
           <p class="total-balance">Total Balance: <span>$<%= @user.balance %></span></p>
-          <div class="line"></div>
-          <h4>Payment will be sent to the following paypal account: <%= current_user.email %> </h4>
+          <div class="line"></div><br>
+         <p><h5>Paypal Email:</h5></p>
+          <div class="col-xs-6">
+            <%= w.text_field :email, :class => "form-control input-sm", :id => "email", :required => true, value: @user.email%>
+          </div>
           <p>We charge a 10% fee, as well as any paypal fee (approximately 3-4%)</p>
         </div>
       </div>

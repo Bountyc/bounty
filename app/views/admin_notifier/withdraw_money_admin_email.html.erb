@@ -4,10 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  	<h1> withdrawal request </h1>
-  	user id: <%= @user.id %><br>
-  	withdrawal id: <%= @withdrawal.id %><br>
-  	withdrawal amount: <%= @withdrawal.amount %><br>
+  	<h1> withdrawal request <% if @host == "localhost" %> on localhost:3000 -- DO NOT TRANSFER <% end %> </h1>
+    Requested on: <%= @host %><br>
+  	User id: <%= @user.id %><br>
+    Payment should be sent to this Email: <%= @email %><br>
+  	Withdrawal id: <%= @withdrawal.id %><br>
+  	Withdrawal amount: <%= @withdrawal.amount %><br>
   	Time: <%= Time.now %><br><br>
   	Confirm as fast as you can!
   </body>
