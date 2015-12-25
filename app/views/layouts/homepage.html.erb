@@ -52,6 +52,14 @@ src="https://www.facebook.com/tr?id=1667838356834923&ev=PageView&noscript=1"
 
 </script>
   
+  <% if user_signed_in? and current_user.sign_in_count == 1 %>
+    <%= render "users/add_tags_user" %>
+    <script>
+      $( document ).ready(function() {
+        $('#user-tags-modal').modal('show');
+      });
+    </script>
+  <% end %>
 </head>
 <body>
 <%= render "layouts/notice" %>

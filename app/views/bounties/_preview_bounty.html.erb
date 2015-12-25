@@ -1,6 +1,6 @@
 <div class="open-bounties-list">
 	            <div class="open-bounties-header"> <%= link_to bounty_path(bounty.id) do%><span class="open-bounties-views"><i><%= image_tag("eye.png") %></i> <%= bounty.views.count %></span> <span class="open-bounties-price">$<%= bounty.price.floor %></span>
-	                <h3><%= bounty.title %></h3><% end %>
+	                <h3><%= truncate(bounty.title, length: 70) %></h3><% end %>
 	              </div>
 	              <div class="clearfix"></div>
 	              <div class="open-bounties-list-desc">

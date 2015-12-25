@@ -61,8 +61,6 @@ module Transfer
 
 			# logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
 			# #rescue
-			# #	logger.info "JESUS FUCK CHRIST ERROR OMG ERROR ONWUBUWIDBWYBIWBY OGOWIWHHWHWUEHU"
-
 			# #	logger.error @payout.error.inspect
 			# #end
 

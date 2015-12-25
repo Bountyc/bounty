@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable'
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 	devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 	
+	acts_as_taggable
+
     validates_presence_of [:first_name, :last_name]
 
 	has_many :bounty_hunters
@@ -35,6 +37,8 @@ class User < ActiveRecord::Base
 
 	has_many :bounty_received_messages, foreign_key: "receiver_id", class_name: "BountyMessage"
 
+	acts_as_taggable_on :tags
+	
 	def messages
 		BountyMessage.where("sender_id=? OR receiver_id=?", self.id, self.id) 
 	end

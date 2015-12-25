@@ -80,6 +80,8 @@ class BountiesController < ApplicationController
   	@bounty = Bounty.new(bounty_params)
   	@bounty.poster = current_user
   	if @bounty.save
+      #email all those involved
+      u = UserNotifier.notify_users_bounty_email(@bounty).deliver
 		  redirect_to @bounty, notice: 'Bounty was successfully created.'
     else
       render :new

@@ -49,6 +49,15 @@ class Bounty < ActiveRecord::Base
 		end
 	end
 
+	# SEO
+	def slug
+    name.downcase.gsub(" ", "-")  
+  	end
+
+  	def to_param
+   		"#{id}-#{slug}"
+  	end
+
 	private
 		def update_user_balance
 			self.poster.reload
