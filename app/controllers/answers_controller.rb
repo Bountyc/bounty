@@ -33,6 +33,7 @@ class AnswersController < ApplicationController
 			# current_user.reload_balance
 
 			answer.save
+			answer.hunter.reload_balance
 
 			notification = Notification.new
 			notification.bounty_hunter = answer.bounty_hunter
@@ -42,7 +43,10 @@ class AnswersController < ApplicationController
 			notification.answer_accepted!
 			notification.save
 
-			answer.hunter.reload_balance
+			# Send email
+			UserNotifier.accept_answer(answer.bounty, answer.hunter).deliver_now
+
+
 		else
 			flash[:error] = "You are not allowed to deny!"
 			redirect_to root_url

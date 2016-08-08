@@ -1,5 +1,6 @@
 class UserNotifier < ApplicationMailer
 
+<<<<<<< HEAD
 	def notify_users_bounty_email(bounty)
 		@bounty = bounty
 		users = []
@@ -22,4 +23,13 @@ class UserNotifier < ApplicationMailer
 
 	end
 
+	def accept_answer(bounty, resolver)
+
+		@poster = bounty.poster
+		@resolver = resolver
+		@bounty = bounty
+
+		mail( :to => resolver.email,
+			:subject => 'Someone has accepted your answer!' )
+	end
 end

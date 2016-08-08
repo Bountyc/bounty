@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   	@working_on_bounties_count = @user.bounty_hunters.where(status: 0).count
 
   	@resolutions_count = @user.answers.count
+
+    @title = @user.first_name + " " + @user.last_name + " - BountyC"
   end
 
   def edit

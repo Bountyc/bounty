@@ -30,5 +30,7 @@ module Bountyapp
     }
 
     config.middleware.use Rack::NoIE, {:redirect => "/why-i-dont-support-ie.html", :minimum => 29}
+
+    ActsAsTaggableOn.force_lowercase = true
   end
 end
