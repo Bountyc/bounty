@@ -1,0 +1,91 @@
+<!-- boostraps model fade - money exchange -->
+<div class="modal fade" id="user-tags-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:white">
+        <h2 style="text-align:center;">Welcome to <%=image_tag("logo.png", :alt => "rss feed", size: "198x52", style: "margin-top: -5px;") %></h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><%= image_tag "sm-crose-icon.png" %></button>
+      </div>
+      <%= form_for current_user do |u| %>
+      <div class="modal-body">
+        <div class="custom-popover-body">
+          <div class="form-group">
+            <h5>Add tags that you're interested/experienced in; you'll be notified when new bounties in your tag are created, so you can be the first to answer them!</h5>
+            <%= u.text_field :tag_list, class: "form-control", id: "tagSelect", placeholder: "Just start typing here!"%>
+          </div>      
+        </div>
+      <div class="modal-footer">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">Skip</button>
+         <%= button_tag("Go", type: 'submit', class: "btn btn-default pull-left", id: 'submit') %>
+
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<%= javascript_include_tag 'chosen.jquery', 'data-turbolinks-track' => true %>
+
+<script type="text/javascript">
+$('#pdffile').change(function(){
+     $('#subfile').val($(this).val());
+});
+</script>
+
+<script type="text/javascript"> 
+    var config = {
+      '.chzn-select'           : {},
+      '.chzn-select-deselect'  : {allow_single_deselect:true},
+      '.chzn-select-no-single' : {disable_search_threshold:10},
+      '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chzn-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+ $(function() {
+    var spinner = $( "#spinner" ).spinner();
+ });
+</script> 
+<script type="text/javascript"> 
+function format(item) { return item.id;}
+$('#tagSelect').select2({ 
+        tags: true,
+        tokenSeparators: [","," "],
+        createSearchChoice: function(term, data) {
+        if ($(data).filter(function() {
+              return this.id.localeCompare(term) === 0;
+            }).length === 0) {
+              return {
+                id: term,
+                name: term
+              };
+            }
+        },
+        multiple: true,
+        formatSelection: format,
+        formatResult: format,
+        ajax: {
+            dataType: 'json',
+            url: '<%= tags_path(:format => :json) %>',
+            data: function (term, page) {
+                return { q: term };
+            },
+            results: function(data, page) {
+                return { results: data };
+            }
+        }
+});
+
+// To load last tags
+var newList = $.merge( $('#tagSelect').select2('data'), [
+        <% if current_user.tags.count > 0 %>
+          {id: "<%= current_user.tags.first.name %>"}
+          <% current_user.tags[1..-1].each do |tag| %>
+            ,{id: "<%= tag.name %>"}
+          <% end %>
+        <% end %>
+      ]);
+$("#tagSelect").select2('data', newList)
+  </script>
