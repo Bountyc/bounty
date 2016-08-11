@@ -1,6 +1,5 @@
 class UserNotifier < ApplicationMailer
 
-<<<<<<< HEAD
 	def notify_users_bounty_email(bounty)
 		@bounty = bounty
 		users = []
